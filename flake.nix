@@ -27,6 +27,7 @@
         modules = [];
         home-modules = [];
       };
+      yukikaze = mkSystem (import ./hosts/yukikaze);
       # nixosSystem = neon-utils.mkSystem {system = "x86_64-linux";};
     };
   in
