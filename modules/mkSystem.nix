@@ -55,7 +55,7 @@ in
         # unstable channel
         inherit pkgs-unstable;
         # my nur channel
-        inherit (inputs) nur-hawtian;
+        inherit (inputs) nur-hawtian secrets-hawtian;
         # self!
         inherit self;
         # inject `inputs`

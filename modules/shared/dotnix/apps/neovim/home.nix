@@ -7,8 +7,6 @@
   nur-hawtian,
   ...
 }: let
-  cfg = config.dotnix.apps.neovim;
-
   user-dotpath = "${config.home.homeDirectory}/.dotvim";
 
   plugins = {
@@ -56,41 +54,33 @@
     require("dotvim").setup()
   '';
 in {
-  options.dotnix.apps.neovim = {
-    enable = lib.mkEnableOption "Enable module dotnix.apps.neovim";
+  home.packages = with pkgs; [
+    python3.pkgs.pynvim
+    nodePackages.neovim
+    tree-sitter
+    nixAwareNvimConfig
+  ];
+
+  programs.neovim = {
+    enable = true;
+    package = pkgs.neovim-nightly;
+    plugins = builtins.attrValues plugins;
   };
 
-  config = lib.mkIf cfg.enable {
-    home-manager = dotnix-utils.hm.hmConfig {
-      home.packages = with pkgs; [
-        python3.pkgs.pynvim
-        nodePackages.neovim
-        tree-sitter
-        nixAwareNvimConfig
-      ];
+  xdg.configFile = {
+    "nvim/init-dora.lua" = {
+      text = init-dora;
+      force = true;
+    };
 
-      programs.neovim = {
-        enable = true;
-        package = pkgs.neovim-nightly;
-        plugins = builtins.attrValues plugins;
-      };
+    "nvim/init.lua" = {
+      text = init-dora;
+      force = true;
+    };
 
-      xdg.configFile = {
-        "nvim/init-dora.lua" = {
-          text = init-dora;
-          force = true;
-        };
-
-        "nvim/init.lua" = {
-          text = init-dora;
-          force = true;
-        };
-
-        "nvim/nix-aware.json" = {
-          source = "${nixAwareNvimConfig}/nix-aware.json";
-          force = true;
-        };
-      };
+    "nvim/nix-aware.json" = {
+      source = "${nixAwareNvimConfig}/nix-aware.json";
+      force = true;
     };
   };
 }

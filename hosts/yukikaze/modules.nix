@@ -1,28 +1,12 @@
-{
-  pkgs,
-  dotnix-utils,
-  ...
-}: let
-  inherit (dotnix-utils) enabled enableModules;
+{dotnix-utils, ...}: let
+  inherit (dotnix-utils) enabled;
+  hostname = "yukikaze";
 in {
-  dotnix = {
-    development = {
-      build-tools = {
-        enable = true;
-        unstable = [
-          "cmake"
-        ];
-      };
-      languages = {
-        all = enabled;
-      };
-    };
+  dotnix.darwin-shared-suit = enabled;
 
-    suits = enableModules [
-      "desktop"
-      "devops"
-      "development"
-      "term"
-    ];
-  };
+  dotnix.desktop.neovide.extraSettings.font.size = 18;
+
+  networking.hostName = hostname;
+  networking.computerName = hostname;
+  system.defaults.smb.NetBIOSName = hostname;
 }
