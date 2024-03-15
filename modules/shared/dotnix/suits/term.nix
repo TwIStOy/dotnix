@@ -1,6 +1,7 @@
 {
   config,
   lib,
+  pkgs,
   dotnix-utils,
   ...
 }: let
@@ -24,10 +25,42 @@ in {
         "yazi"
         "zoxide"
       ];
+
+      hm.packages = with pkgs; [
+        neofetch
+
+        # decompress
+        zip
+        xz
+        unzip
+        p7zip
+
+        # common tools
+        delta
+        (ripgrep.override {withPCRE2 = true;})
+        hyperfine
+        fd
+        skim
+        btop
+        tokei
+        ydict
+        curl
+        wget
+        dig
+        expect
+        gnugrep
+        gnused
+        gawk
+        jq
+        yq-go
+
+        xclip
+        fswatch
+      ];
     };
 
-    home-manager =
-      dotnix-utils.hm.hmConfig {
-      };
+    home-manager = dotnix-utils.hm.hmConfig {
+      programs.nix-index.enable = true;
+    };
   };
 }

@@ -2,6 +2,7 @@
   config,
   lib,
   dotnix-utils,
+  pkgs,
   ...
 }: let
   inherit (dotnix-utils) enabled enableModules;
@@ -33,6 +34,10 @@ in {
           all = enabled;
         };
       };
+
+      hm.packages = with pkgs; [
+        rsync
+      ];
     };
 
     home-manager =
