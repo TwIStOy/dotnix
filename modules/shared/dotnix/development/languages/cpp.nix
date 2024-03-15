@@ -35,7 +35,6 @@ in {
         nixAwareClangdConfig
       ]
       ++ (with pkgs; [
-        gdb
         cmake
         cmake-language-server
         llvmPackages_17.clang-unwrapped
