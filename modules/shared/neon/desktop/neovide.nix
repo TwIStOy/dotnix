@@ -1,7 +1,9 @@
 {
   config,
   pkgs,
+  pkgs-unstable,
   lib,
+  neon-utils,
   ...
 }: let
   cfg = config.neon.desktop.neovide;
@@ -18,9 +20,18 @@ in {
     enable = lib.mkEnableOption "neovide";
 
     package = lib.mkOption {
-      type = lib.types.package;
-      default = pkgs.neovide;
-      description = "neovide package to use";
+      type = lib.types.enum ["stable" "unstable" "homebrew"];
+      default = "stable";
+      description = "neovide package from which channel";
+    };
+
+    # Remove this option after https://github.com/NixOS/nixpkgs/issues/290611 is fixed
+    skipPackage = lib.mkOption {
+      type = lib.types.bool;
+      default = false;
+      description = ''
+        Skip the package installation.
+      '';
     };
 
     settings = {
@@ -86,28 +97,25 @@ in {
         List of remote hosts to create wrappers for.
       '';
     };
-
-    # Remove this option after https://github.com/NixOS/nixpkgs/issues/290611 is fixed
-    skipPackage = lib.mkOption {
-      type = lib.types.bool;
-      default = false;
-      description = ''
-        Skip the package installation.
-      '';
-    };
   };
 
   config = lib.mkIf cfg.enable {
-    home.packages = let
+    neon.hm.packages = let
       mkNeovideWrapper = host:
         pkgs.writeShellScriptBin "neovide-${host}" ''
           #!/bin/bash
           ${neovideBin} --neovim-bin "$XDG_CONFIG_HOME/neovide/remote-hosts/${host}" $@
         '';
     in
+      (
+        if cfg.package == "stable"
+        then [pkgs.neovide]
+        else if cfg.package == "unstable"
+        then [pkgs-unstable.neovide]
+        else []
+      )
       # neovideWrappers
-      (lib.lists.forEach cfg.createRemoteHostWrappers mkNeovideWrapper)
-      ++ (lib.lists.optional (!cfg.skipPackage) cfg.package)
+      ++ (lib.lists.forEach cfg.createRemoteHostWrappers mkNeovideWrapper)
       ++ (lib.lists.optional pkgs.stdenv.isDarwin (
         pkgs.writeShellScriptBin "neovide" ''
           #!/bin/bash
@@ -115,32 +123,34 @@ in {
         ''
       ));
 
-    xdg.configFile = let
-      mkRemoteNvimBin = host: {
-        "neovide/remote-hosts/${host}" = {
-          source = pkgs.writeShellScript host ''
-            #!/bin/bash
-            ssh ${host} "bash -l -c \"nvim $@\""
-          '';
-          force = true;
-          executable = true;
+    home-manager = neon-utils.hm.hmConfig {
+      xdg.configFile = let
+        mkRemoteNvimBin = host: {
+          "neovide/remote-hosts/${host}" = {
+            source = pkgs.writeShellScript host ''
+              #!/bin/bash
+              ssh ${host} "bash -l -c \"nvim $@\""
+            '';
+            force = true;
+            executable = true;
+          };
         };
-      };
-    in
-      lib.mkMerge (
-        [
-          {
-            "neovide/config.toml" = {
-              source = genConfig ({
-                  inherit (cfg.settings) maximized frame srgb idle;
-                  neovim-bin = "${cfg.settings.neovim-bin}/bin/nvim";
-                }
-                // cfg.extraSettings);
-              force = true;
-            };
-          }
-        ]
-        ++ (lib.lists.forEach cfg.createRemoteHostWrappers mkRemoteNvimBin)
-      );
+      in
+        lib.mkMerge (
+          [
+            {
+              "neovide/config.toml" = {
+                source = genConfig ({
+                    inherit (cfg.settings) maximized frame srgb idle;
+                    neovim-bin = "${cfg.settings.neovim-bin}/bin/nvim";
+                  }
+                  // cfg.extraSettings);
+                force = true;
+              };
+            }
+          ]
+          ++ (lib.lists.forEach cfg.createRemoteHostWrappers mkRemoteNvimBin)
+        );
+    };
   };
 }
