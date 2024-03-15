@@ -19,6 +19,7 @@ in {
         "direnv"
         "gh"
         "git"
+        "lazygit"
       ];
 
       development = {

@@ -16,6 +16,13 @@ in {
       apps = enableModules [
         "eza"
         "fish"
+        "neovim"
+        "rime_ls"
+        "starship"
+        "tealdeer"
+        "tmux"
+        "yazi"
+        "zoxide"
       ];
     };
 
