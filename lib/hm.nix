@@ -10,4 +10,13 @@
       dotnix-constants.user.name
     ]
     value;
+
+  hmModule = value:
+    inputs.nixpkgs.lib.attrsets.setAttrByPath
+    [
+      "users"
+      dotnix-constants.user.name
+      "imports"
+    ]
+    [value];
 }

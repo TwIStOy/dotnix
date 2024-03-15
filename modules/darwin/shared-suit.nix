@@ -1,11 +1,11 @@
 {
   config,
   lib,
-  dotnix-constants,
+  dotnix-utils,
   ...
 }: let
   cfg = config.dotnix.darwin-shared-suit;
-  inherit (dotnix-constants) enabled;
+  inherit (dotnix-utils) enabled;
 in {
   options.dotnix.darwin-shared-suit = {
     enable = lib.mkEnableOption "Enable shared-suit for all darwin hosts.";

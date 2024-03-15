@@ -1,7 +1,7 @@
 {
   description = "Dotnix: hawtian's nix configuration for both macos and linux";
 
-  outputs = {...} @ inputs: let
+  outputs = {self, ...} @ inputs: let
     inherit (inputs) flake-utils nixpkgs nixpkgs-unstable;
 
     dotnix-constants = import ./constants.nix;
@@ -14,28 +14,21 @@
     });
     mkSystem = import ./modules/mkSystem.nix (
       {
-        inherit inputs dotnix-constants dotnix-utils;
+        inherit self inputs dotnix-constants dotnix-utils;
       }
       // inputs
     );
 
+    hostsConfiguration = import ./hosts {
+      inherit (inputs) flake-utils;
+      inherit mkSystem;
+    };
+
     debugUtils = {
-      inherit dotnix-utils;
-      files = dotnix-utils.path.listModules ./modules;
-      darwinSystem = mkSystem {
-        system = "x86_64-darwin";
-        modules = [];
-        home-modules = [];
-      };
-      yukikaze = mkSystem {
-        system = "aarch64-darwin";
-      } (import ./hosts/yukikaze);
-      yamato = mkSystem {
-        system = "x86_64-linux";
-      } (import ./hosts/yamato);
     };
   in
     nixpkgs.lib.attrsets.mergeAttrsList [
+      hostsConfiguration
       formatter
       debugUtils
     ];

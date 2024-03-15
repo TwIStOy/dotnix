@@ -1,4 +1,5 @@
 {
+  self,
   inputs,
   nix-darwin,
   nixpkgs,
@@ -54,9 +55,11 @@ in
         inherit pkgs-unstable;
         # my nur channel
         inherit (inputs) nur-hawtian;
+        # self!
+        inherit self;
       };
-    in {
-      flake-outputs = mkSystemImpl {
+    in
+      mkSystemImpl {
         inherit inputs system specialArgs;
 
         modules =
@@ -75,5 +78,4 @@ in
               };
             }
           ];
-      };
-    }
+      }
