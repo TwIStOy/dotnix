@@ -29,7 +29,16 @@ in {
         normal = {family = "MonoLisa Nerd Font";};
         bold = "MonaspiceKr Nerd Font Mono";
         bold_italic = "MonaspiceKr Nerd Font Mono";
-        features."MonoLisa Nerd Font" = ["+ss11" "+zero" "-calt" "+ss10" "+ss02" "+ss17" "+ss13" "+ss04"];
+        features."MonoLisa Nerd Font" = [
+          "+ss11"
+          "+zero"
+          "-calt"
+          "+ss10"
+          "+ss02"
+          "+ss17"
+          "+ss13"
+          "+ss04"
+        ];
       };
       vsync = true;
     };
@@ -43,7 +52,7 @@ in {
       ];
     };
     languages = {
-      cpp = enabled;
+      all = enabled;
     };
   };
 }
