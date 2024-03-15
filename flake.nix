@@ -23,14 +23,10 @@
       inherit (inputs) flake-utils;
       inherit mkSystem;
     };
-
-    debugUtils = {
-    };
   in
     nixpkgs.lib.attrsets.mergeAttrsList [
       hostsConfiguration
       formatter
-      debugUtils
     ];
 
   inputs = {
