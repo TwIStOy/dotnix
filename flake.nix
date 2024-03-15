@@ -1,5 +1,5 @@
 {
-  description = "Neon: hawtian's nix configuration for both macos and linux";
+  description = "Dotnix: hawtian's nix configuration for both macos and linux";
 
   outputs = {...} @ inputs: let
     inherit (inputs) flake-utils nixpkgs nixpkgs-unstable;
