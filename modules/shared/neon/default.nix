@@ -1,3 +1,3 @@
-{neon-utils, ...}: {
-  imports = neon-utils.path.listModules ./.;
+{dotnix-utils, ...}: {
+  imports = dotnix-utils.path.listModules ./.;
 }

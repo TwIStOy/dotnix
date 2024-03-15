@@ -1,16 +1,16 @@
 {
   inputs,
-  neon-constants,
+  dotnix-constants,
 }: let
   moduleArgs =
     {
-      inherit neon-constants;
+      inherit dotnix-constants;
     }
     // inputs;
 in {
   path = import ./path.nix moduleArgs;
 
-  hm = import ./hm.nix {inherit inputs neon-constants;};
+  hm = import ./hm.nix {inherit inputs dotnix-constants;};
 
   # shortcuts
   enabled = {

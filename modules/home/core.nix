@@ -1,6 +1,6 @@
-{neon-constants, ...}: {
+{dotnix-constants, ...}: {
   home = {
-    username = neon-constants.user.name;
+    username = dotnix-constants.user.name;
     stateVersion = "23.11";
   };
 

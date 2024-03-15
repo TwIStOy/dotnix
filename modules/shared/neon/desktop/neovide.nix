@@ -3,10 +3,10 @@
   pkgs,
   pkgs-unstable,
   lib,
-  neon-utils,
+  dotnix-utils,
   ...
 }: let
-  cfg = config.neon.desktop.neovide;
+  cfg = config.dotnix.desktop.neovide;
   settingsFormat = pkgs.formats.toml {};
   genConfig = opts: settingsFormat.generate "config.toml" opts;
   neovideBin =
@@ -16,7 +16,7 @@
       "/Applications/Neovide.app/Contents/MacOS/neovide"
     else "neovide";
 in {
-  options.neon.desktop.neovide = {
+  options.dotnix.desktop.neovide = {
     enable = lib.mkEnableOption "neovide";
 
     package = lib.mkOption {
@@ -100,7 +100,7 @@ in {
   };
 
   config = lib.mkIf cfg.enable {
-    neon.hm.packages = let
+    dotnix.hm.packages = let
       mkNeovideWrapper = host:
         pkgs.writeShellScriptBin "neovide-${host}" ''
           #!/bin/bash
@@ -123,7 +123,7 @@ in {
         ''
       ));
 
-    home-manager = neon-utils.hm.hmConfig {
+    home-manager = dotnix-utils.hm.hmConfig {
       xdg.configFile = let
         mkRemoteNvimBin = host: {
           "neovide/remote-hosts/${host}" = {

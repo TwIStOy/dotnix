@@ -5,9 +5,9 @@
   lib,
   ...
 }: let
-  cfg = config.neon.development.build-tools;
+  cfg = config.dotnix.development.build-tools;
 in {
-  options.neon.development.build-tools = {
+  options.dotnix.development.build-tools = {
     enable = lib.mkEnableOption "Enable development build tools";
 
     unstable = lib.mkOption {
@@ -18,7 +18,7 @@ in {
   };
 
   config = lib.mkIf cfg.enable {
-    neon.hm.packages = let
+    dotnix.hm.packages = let
       inherit (cfg) unstable;
       resolvePkg = pkg:
         if (builtins.elem pkg unstable)

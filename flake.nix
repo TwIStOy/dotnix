@@ -4,9 +4,9 @@
   outputs = {...} @ inputs: let
     inherit (inputs) flake-utils nixpkgs nixpkgs-unstable;
 
-    neon-constants = import ./constants.nix;
-    neon-utils = import ./lib {
-      inherit inputs neon-constants;
+    dotnix-constants = import ./constants.nix;
+    dotnix-utils = import ./lib {
+      inherit inputs dotnix-constants;
     };
 
     formatter = flake-utils.lib.eachDefaultSystem (system: {
@@ -14,14 +14,14 @@
     });
     mkSystem = import ./modules/mkSystem.nix (
       {
-        inherit inputs neon-constants neon-utils;
+        inherit inputs dotnix-constants dotnix-utils;
       }
       // inputs
     );
 
     debugUtils = {
-      inherit neon-utils;
-      files = neon-utils.path.listModules ./modules;
+      inherit dotnix-utils;
+      files = dotnix-utils.path.listModules ./modules;
       darwinSystem = mkSystem {
         system = "x86_64-darwin";
         modules = [];
@@ -30,7 +30,7 @@
       yukikaze = mkSystem {
         system = "x86_64-darwin";
       } (import ./hosts/yukikaze);
-      # nixosSystem = neon-utils.mkSystem {system = "x86_64-linux";};
+      # nixosSystem = dotnix-utils.mkSystem {system = "x86_64-linux";};
     };
   in
     nixpkgs.lib.attrsets.mergeAttrsList [

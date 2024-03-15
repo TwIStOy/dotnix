@@ -1,17 +1,17 @@
 {
   config,
   lib,
-  neon-utils,
+  dotnix-utils,
   ...
 }: let
-  cfg = config.neon.desktop.kitty;
+  cfg = config.dotnix.desktop.kitty;
 in {
-  options.neon.desktop.kitty = {
+  options.dotnix.desktop.kitty = {
     enable = lib.mkEnableOption "Enable kitty terminal";
   };
 
   config = lib.mkIf cfg.enable {
-    home-manager = neon-utils.hm.hmConfig {
+    home-manager = dotnix-utils.hm.hmConfig {
       programs.kitty = {
         enable = true;
 

@@ -1,9 +1,9 @@
 {
   pkgs,
   pkgs-unstable,
-  neon-utils,
+  dotnix-utils,
   ...
 }: let
-  inherit (neon-utils) enabled;
+  inherit (dotnix-utils) enabled;
 in {
 }

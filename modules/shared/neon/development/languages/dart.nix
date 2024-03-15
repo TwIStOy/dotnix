@@ -4,14 +4,14 @@
   lib,
   ...
 }: let
-  cfg = config.neon.development.languages.dart;
+  cfg = config.dotnix.development.languages.dart;
 in {
-  options.neon.development.languages.dart = {
+  options.dotnix.development.languages.dart = {
     enable = lib.mkEnableOption "Enable Dart";
   };
 
   config = lib.mkIf cfg.enable {
-    neon.hm.packages =
+    dotnix.hm.packages =
       if pkgs.stdenv.isDarwin
       then
         with pkgs; [

@@ -1,3 +1,3 @@
 _: {
-  neon.hm.enable = true;
+  dotnix.hm.enable = true;
 }

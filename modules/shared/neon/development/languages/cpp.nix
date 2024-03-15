@@ -4,10 +4,10 @@
   pkgs-unstable,
   lib,
   nur-hawtian,
-  neon-utils,
+  dotnix-utils,
   ...
 }: let
-  cfg = config.neon.development.languages.cpp;
+  cfg = config.dotnix.development.languages.cpp;
 
   inherit (pkgs-unstable) gcc;
   nixAwareClangdConfig = pkgs.stdenv.mkDerivation {
@@ -24,12 +24,12 @@
     '';
   };
 in {
-  options.neon.development.languages.cpp = {
+  options.dotnix.development.languages.cpp = {
     enable = lib.mkEnableOption "Enable C++ development";
   };
 
   config = lib.mkIf cfg.enable {
-    neon.hm.packages =
+    dotnix.hm.packages =
       [
         gcc
         nixAwareClangdConfig
@@ -44,7 +44,7 @@ in {
         nur-hawtian.packages.${pkgs.system}.gersemi
       ];
     # generate clangd user configuration file
-    home-manager = neon-utils.hm.hmConfig {
+    home-manager = dotnix-utils.hm.hmConfig {
       xdg.configFile."clangd/config.yaml" = {
         text = ''
           CompileFlags:

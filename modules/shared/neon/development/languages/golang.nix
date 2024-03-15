@@ -4,14 +4,14 @@
   lib,
   ...
 }: let
-  cfg = config.neon.development.languages.golang;
+  cfg = config.dotnix.development.languages.golang;
 in {
-  options.neon.development.languages.golang = {
+  options.dotnix.development.languages.golang = {
     enable = lib.mkEnableOption "Enable golang";
   };
 
   config = lib.mkIf cfg.enable {
-    neon.hm.packages = with pkgs; [
+    dotnix.hm.packages = with pkgs; [
       go
       gotools
       gopls

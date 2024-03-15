@@ -1,11 +1,11 @@
 {
   pkgs,
-  neon-utils,
+  dotnix-utils,
   ...
 }: let
-  inherit (neon-utils) enabled;
+  inherit (dotnix-utils) enabled;
 in {
-  neon.development = {
+  dotnix.development = {
     build-tools = {
       enable = true;
       unstable = [
@@ -17,7 +17,7 @@ in {
     };
   };
 
-  neon.desktop = {
+  dotnix.desktop = {
     kitty = enabled;
 
     neovide = {

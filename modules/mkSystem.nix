@@ -4,8 +4,8 @@
   nixpkgs,
   home-manager,
   agenix,
-  neon-constants,
-  neon-utils,
+  dotnix-constants,
+  dotnix-utils,
   ...
 }: let
   inherit (nixpkgs.lib.strings) hasSuffix;
@@ -49,7 +49,7 @@ in
       platModules = platformModules system;
       # inject the specialArgs into all modules and home-manager modules
       specialArgs = {
-        inherit neon-constants neon-utils;
+        inherit dotnix-constants dotnix-utils;
         # unstable channel
         inherit pkgs-unstable;
         # my nur channel
@@ -69,7 +69,7 @@ in
                 useUserPackages = true;
 
                 extraSpecialArgs = specialArgs;
-                users."${neon-constants.user.name}" = {
+                users."${dotnix-constants.user.name}" = {
                   imports = [./home] ++ home-modules;
                 };
               };

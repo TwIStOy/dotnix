@@ -1,14 +1,14 @@
 {
   config,
   lib,
-  neon-constants,
+  dotnix-constants,
   ...
 }: let
-  cfg = config.neon.hm;
+  cfg = config.dotnix.hm;
 
   inherit (lib) types;
 in {
-  options.neon.hm = {
+  options.dotnix.hm = {
     enable = lib.mkEnableOption "Enable home-manager integration";
 
     packages = lib.mkOption {
@@ -22,7 +22,7 @@ in {
     home-manager =
       lib.attrsets.setAttrByPath [
         "users"
-        neon-constants.user.name
+        dotnix-constants.user.name
         "home"
         "packages"
       ]
