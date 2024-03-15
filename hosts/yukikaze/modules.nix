@@ -22,6 +22,7 @@ in {
       "desktop"
       "devops"
       "development"
+      "term"
     ];
   };
 }

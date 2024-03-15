@@ -17,6 +17,8 @@ in {
         "atuin"
         "bat"
         "direnv"
+        "gh"
+        "git"
       ];
 
       development = {

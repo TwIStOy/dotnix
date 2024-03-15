@@ -1,0 +1,40 @@
+{
+  config,
+  lib,
+  dotnix-utils,
+  dotnix-constants,
+  ...
+}: let
+  cfg = config.dotnix.apps.git;
+in {
+  options.dotnix.apps.git = {
+    enable = lib.mkEnableOption "Enable module dotnix.apps.git";
+  };
+
+  config = lib.mkIf cfg.enable {
+    home-manager = dotnix-utils.hm.hmConfig {
+      programs.git = {
+        enable = true;
+        lfs.enable = true;
+
+        userName = dotnix-constants.user.fullName;
+        userEmail = dotnix-constants.user.email;
+
+        extraConfig = {
+          init.defaultBranch = "master";
+          push.autoSetupRemote = true;
+          pull.rebase = false;
+        };
+
+        signing = {
+          key = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIG92SyvgOOe9pGPGHEY9VbDBWwqaRgm9tg1RJUxlfdCN";
+          signByDefault = true;
+        };
+
+        extraConfig = {
+          gpg.format = "ssh";
+        };
+      };
+    };
+  };
+}
