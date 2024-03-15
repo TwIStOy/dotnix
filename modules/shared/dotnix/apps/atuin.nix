@@ -5,10 +5,10 @@
   osConfig,
   ...
 }: let
-  cfg = config.dotnix.term.atuin;
+  cfg = config.dotnix.apps.atuin;
 in {
-  options.dotnix.term.atuin = {
-    enable = lib.mkEnableOption "Enable module dotnix.term.atuin";
+  options.dotnix.apps.atuin = {
+    enable = lib.mkEnableOption "Enable module dotnix.apps.atuin";
   };
 
   config = lib.mkIf cfg.enable {

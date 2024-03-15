@@ -7,7 +7,7 @@
       inherit dotnix-constants;
     }
     // inputs;
-in {
+in rec {
   path = import ./path.nix moduleArgs;
 
   hm = import ./hm.nix {inherit inputs dotnix-constants;};
@@ -16,4 +16,13 @@ in {
   enabled = {
     enable = true;
   };
+
+  enableModules = modules:
+    builtins.listToAttrs (
+      builtins.map (m: {
+        name = m;
+        value = enabled;
+      })
+      modules
+    );
 }

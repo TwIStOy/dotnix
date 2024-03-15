@@ -1,7 +1,12 @@
 {nixpkgs, ...}: let
-  # check if the file is a nix file, but skip `default.nix`
+  isVimTemplateFile = path:
+    nixpkgs.lib.strings.hasPrefix ".vim-template:" path;
+  isDefaultNix = path: path == "default.nix";
+  # check if the file is a nix file, but skip `default.nix` and 'vim-template' files
   isNixFile = path:
-    path != "default.nix" && nixpkgs.lib.strings.hasSuffix ".nix" path;
+    !(isDefaultNix path)
+    && !(isVimTemplateFile path)
+    && nixpkgs.lib.strings.hasSuffix ".nix" path;
   # check if the directory contains a default.nix file
   directoryContainsDefaultNix = path:
     builtins.pathExists
