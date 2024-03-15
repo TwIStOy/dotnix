@@ -22,14 +22,5 @@ in {
         with pkgs; [
           flutter
         ];
-
-    homebrew = {
-      taps = [
-        "leoafarias/fvm"
-      ];
-      brews = [
-        "fvm"
-      ];
-    };
   };
 }

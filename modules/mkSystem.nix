@@ -43,8 +43,9 @@ in
       modules,
       home-modules,
     }: let
+      isDarwin = hasSuffix "darwin" system;
       mkSystemImpl =
-        if (hasSuffix "darwin" system)
+        if isDarwin
         then nix-darwin.lib.darwinSystem
         else nixpkgs.lib.nixosSystem;
       platModules = platformModules system;
@@ -57,10 +58,14 @@ in
         inherit (inputs) nur-hawtian;
         # self!
         inherit self;
+        # inject `inputs`
+        inherit inputs;
+        # inject darwin check
+        inherit isDarwin;
       };
     in
       mkSystemImpl {
-        inherit inputs system specialArgs;
+        inherit system specialArgs;
 
         modules =
           platModules

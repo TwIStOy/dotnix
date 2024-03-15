@@ -1,3 +1,3 @@
-{ht-fn, ...}: {
-  imports = ht-fn.listDirectory ./.;
+{dotnix-utils, ...}: {
+  imports = dotnix-utils.path.listModules ./.;
 }
