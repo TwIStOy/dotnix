@@ -12,6 +12,10 @@ in {
   };
 
   config = lib.mkIf cfg.enable {
-    dotnix.shared-suit = enabled;
+    dotnix = {
+      shared-suit = enabled;
+      system-tools = enabled;
+      nixos-shared = enabled;
+    };
   };
 }
