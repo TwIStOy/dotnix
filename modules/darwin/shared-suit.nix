@@ -18,6 +18,7 @@ in {
         "yabai"
         "karabiner"
         "pbcopy-paste"
+        "ssh"
       ];
     };
   };
