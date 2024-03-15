@@ -28,9 +28,11 @@
         home-modules = [];
       };
       yukikaze = mkSystem {
-        system = "x86_64-darwin";
+        system = "aarch64-darwin";
       } (import ./hosts/yukikaze);
-      # nixosSystem = dotnix-utils.mkSystem {system = "x86_64-linux";};
+      yamato = mkSystem {
+        system = "x86_64-linux";
+      } (import ./hosts/yamato);
     };
   in
     nixpkgs.lib.attrsets.mergeAttrsList [

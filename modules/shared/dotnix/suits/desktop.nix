@@ -2,9 +2,11 @@
   config,
   lib,
   pkgs,
+  dotnix-utils,
   ...
 }: let
   cfg = config.dotnix.suits.desktop;
+  inherit (dotnix-utils) enableModules;
 in {
   options.dotnix.suits.desktop = {
     enable = lib.mkEnableOption "Enable desktop suit";

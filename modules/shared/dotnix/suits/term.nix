@@ -28,6 +28,7 @@ in {
 
       hm.packages = with pkgs; [
         neofetch
+        xdg-utils
 
         # decompress
         zip
