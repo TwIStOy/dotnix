@@ -10,7 +10,7 @@
 in {
   path = import ./path.nix moduleArgs;
 
-  attrs = import ./attrs.nix {inherit inputs neon-constants;};
+  hm = import ./hm.nix {inherit inputs neon-constants;};
 
   # shortcuts
   enabled = {

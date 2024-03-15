@@ -14,8 +14,8 @@ in {
   config = lib.mkIf cfg.enable {
     neon.development.languages = {
       cpp = enabled;
-      dart = enabled;
       golang = enabled;
+      dart = enabled;
     };
   };
 }

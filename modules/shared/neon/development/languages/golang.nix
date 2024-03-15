@@ -11,10 +11,12 @@ in {
   };
 
   config = lib.mkIf cfg.enable {
-    home.packages = with pkgs; [
-      go
-      gotools
-      gopls
-    ];
+    neon.hm.config = {
+      home.packages = with pkgs; [
+        go
+        gotools
+        gopls
+      ];
+    };
   };
 }

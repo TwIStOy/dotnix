@@ -43,16 +43,4 @@ in {
       vsync = true;
     };
   };
-
-  neon.development = {
-    build-tools = {
-      enable = true;
-      unstable = [
-        "cmake"
-      ];
-    };
-    languages = {
-      all = enabled;
-    };
-  };
 }

@@ -28,31 +28,33 @@ in {
   };
 
   config = lib.mkIf cfg.enable {
-    home.packages =
-      [
-        gcc
-        nixAwareClangdConfig
-      ]
-      ++ (with pkgs; [
-        cmake
-        cmake-language-server
-        llvmPackages_17.clang-unwrapped
-      ])
-      ++ [
-        # format cmake files
-        nur-hawtian.packages.${pkgs.system}.gersemi
-      ];
+    neon.hm.config = {
+      home.packages =
+        [
+          gcc
+          nixAwareClangdConfig
+        ]
+        ++ (with pkgs; [
+          cmake
+          cmake-language-server
+          llvmPackages_17.clang-unwrapped
+        ])
+        ++ [
+          # format cmake files
+          nur-hawtian.packages.${pkgs.system}.gersemi
+        ];
 
-    # generate clangd user configuration file
-    xdg.configFile."clangd/config.yaml" = {
-      text = ''
-        CompileFlags:
-          Compiler: ${gcc}/bin/g++
-          Add: [${builtins.readFile "${nixAwareClangdConfig}/dist/extra_args"}]
-        Diagnostics:
-          Suppress: "builtin_definition"
-      '';
-      force = true;
+      # generate clangd user configuration file
+      xdg.configFile."clangd/config.yaml" = {
+        text = ''
+          CompileFlags:
+            Compiler: ${gcc}/bin/g++
+            Add: [${builtins.readFile "${nixAwareClangdConfig}/dist/extra_args"}]
+          Diagnostics:
+            Suppress: "builtin_definition"
+        '';
+        force = true;
+      };
     };
   };
 }
