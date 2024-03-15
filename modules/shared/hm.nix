@@ -5,13 +5,16 @@
   ...
 }: let
   cfg = config.neon.hm;
+
+  inherit (lib) types;
 in {
   options.neon.hm = {
     enable = lib.mkEnableOption "Enable home-manager integration";
-    config = lib.mkOption {
-      type = lib.types.attrsOf lib.types.attrs;
-      default = {};
-      description = "The home-manager configuration to use for the user";
+
+    packages = lib.mkOption {
+      type = types.listOf types.package;
+      default = [];
+      description = "The set of packages to appear in the user environment.";
     };
   };
 
@@ -20,7 +23,9 @@ in {
       lib.attrsets.setAttrByPath [
         "users"
         neon-constants.user.name
+        "home"
+        "packages"
       ]
-      cfg.config;
+      cfg.packages;
   };
 }

@@ -11,19 +11,17 @@ in {
   };
 
   config = lib.mkIf cfg.enable {
-    neon.hm.config = {
-      home.packages =
-        if pkgs.stdenv.isDarwin
-        then
-          with pkgs; [
-            dart
-            cocoapods
-          ]
-        else
-          with pkgs; [
-            flutter
-          ];
-    };
+    neon.hm.packages =
+      if pkgs.stdenv.isDarwin
+      then
+        with pkgs; [
+          dart
+          cocoapods
+        ]
+      else
+        with pkgs; [
+          flutter
+        ];
 
     homebrew = {
       taps = [

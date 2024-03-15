@@ -4,6 +4,7 @@
   pkgs-unstable,
   lib,
   nur-hawtian,
+  neon-utils,
   ...
 }: let
   cfg = config.neon.development.languages.cpp;
@@ -28,23 +29,22 @@ in {
   };
 
   config = lib.mkIf cfg.enable {
-    neon.hm.config = {
-      home.packages =
-        [
-          gcc
-          nixAwareClangdConfig
-        ]
-        ++ (with pkgs; [
-          cmake
-          cmake-language-server
-          llvmPackages_17.clang-unwrapped
-        ])
-        ++ [
-          # format cmake files
-          nur-hawtian.packages.${pkgs.system}.gersemi
-        ];
-
-      # generate clangd user configuration file
+    neon.hm.packages =
+      [
+        gcc
+        nixAwareClangdConfig
+      ]
+      ++ (with pkgs; [
+        cmake
+        cmake-language-server
+        llvmPackages_17.clang-unwrapped
+      ])
+      ++ [
+        # format cmake files
+        nur-hawtian.packages.${pkgs.system}.gersemi
+      ];
+    # generate clangd user configuration file
+    home-manager = neon-utils.hm.hmConfig {
       xdg.configFile."clangd/config.yaml" = {
         text = ''
           CompileFlags:

@@ -18,28 +18,26 @@ in {
   };
 
   config = lib.mkIf cfg.enable {
-    neon.hm.config = {
-      home.packages = let
-        inherit (cfg) unstable;
-        resolvePkg = pkg:
-          if (builtins.elem pkg unstable)
-          then pkgs-unstable.${pkg}
-          else pkgs.${pkg};
-        ret = [
-          # for makefile
-          "gnumake"
-          # for ninja file
-          "ninja"
-          # find library
-          "pkg-config"
-          # generate makefile/ninja file
-          "cmake"
-          # for justfile
-          "just"
-        ];
-        retPkg = builtins.map resolvePkg ret;
-      in
-        retPkg;
-    };
+    neon.hm.packages = let
+      inherit (cfg) unstable;
+      resolvePkg = pkg:
+        if (builtins.elem pkg unstable)
+        then pkgs-unstable.${pkg}
+        else pkgs.${pkg};
+      ret = [
+        # for makefile
+        "gnumake"
+        # for ninja file
+        "ninja"
+        # find library
+        "pkg-config"
+        # generate makefile/ninja file
+        "cmake"
+        # for justfile
+        "just"
+      ];
+      retPkg = builtins.map resolvePkg ret;
+    in
+      retPkg;
   };
 }
