@@ -9,4 +9,9 @@
     // inputs;
 in {
   path = import ./path.nix moduleArgs;
+
+  # shortcuts
+  enabled = {
+    enable = true;
+  };
 }

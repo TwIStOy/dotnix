@@ -25,10 +25,16 @@ in {
         then pkgs-unstable.${pkg}
         else pkgs.${pkg};
       ret = [
-        "gnumake" # for makefile
-        "ninja" # for ninja file
-        "pkg-config" # find library
-        "cmake" # generate makefile/ninja file
+        # for makefile
+        "gnumake"
+        # for ninja file
+        "ninja"
+        # find library
+        "pkg-config"
+        # generate makefile/ninja file
+        "cmake"
+        # for justfile
+        "just"
       ];
       retPkg = builtins.map resolvePkg ret;
     in

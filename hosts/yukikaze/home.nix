@@ -1,8 +1,11 @@
 {
   pkgs,
   pkgs-unstable,
+  neon-utils,
   ...
-}: {
+}: let
+  inherit (neon-utils) enabled;
+in {
   neon.desktop.neovide = {
     enable = true;
     package = pkgs-unstable.neovide;
@@ -32,7 +35,15 @@
     };
   };
 
-  neon.development.build-tools = {
-    enable = true;
+  neon.development = {
+    build-tools = {
+      enable = true;
+      unstable = [
+        "cmake"
+      ];
+    };
+    languages = {
+      cpp = enabled;
+    };
   };
 }

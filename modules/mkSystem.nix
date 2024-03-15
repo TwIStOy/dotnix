@@ -9,6 +9,7 @@
   ...
 }: let
   inherit (nixpkgs.lib.strings) hasSuffix;
+
   sharedModule = import ./shared;
   nixosModule = import ./nixos;
   darwinModule = import ./darwin;
@@ -31,38 +32,48 @@
       else nixosModules
     );
 in
-  {
-    system,
-    modules,
-    home-modules,
-  }: let
-    mkSystemImpl =
-      if (hasSuffix "darwin" system)
-      then nix-darwin.lib.darwinSystem
-      else nixpkgs.lib.nixosSystem;
-    platModules = platformModules system;
-    specialArgs = {
-      inherit neon-constants neon-utils;
+  {system}: let
+    pkgs-unstable = import inputs.nixpkgs-unstable {
+      inherit system;
+      config.allowUnfree = true;
     };
-  in {
-    flake-outputs = mkSystemImpl {
-      inherit inputs system specialArgs;
+  in
+    {
+      modules,
+      home-modules,
+    }: let
+      mkSystemImpl =
+        if (hasSuffix "darwin" system)
+        then nix-darwin.lib.darwinSystem
+        else nixpkgs.lib.nixosSystem;
+      platModules = platformModules system;
+      # inject the specialArgs into all modules and home-manager modules
+      specialArgs = {
+        inherit neon-constants neon-utils;
+        # unstable channel
+        inherit pkgs-unstable;
+        # my nur channel
+        inherit (inputs) nur-hawtian;
+      };
+    in {
+      flake-outputs = mkSystemImpl {
+        inherit inputs system specialArgs;
 
-      modules =
-        platModules
-        ++ modules
-        ++ [
-          {
-            home-manager = {
-              useGlobalPkgs = true;
-              useUserPackages = true;
+        modules =
+          platModules
+          ++ modules
+          ++ [
+            {
+              home-manager = {
+                useGlobalPkgs = true;
+                useUserPackages = true;
 
-              extraSpecialArgs = specialArgs;
-              users."${neon-constants.user.name}" = {
-                imports = [./home] ++ home-modules;
+                extraSpecialArgs = specialArgs;
+                users."${neon-constants.user.name}" = {
+                  imports = [./home] ++ home-modules;
+                };
               };
-            };
-          }
-        ];
-    };
-  }
+            }
+          ];
+      };
+    }
