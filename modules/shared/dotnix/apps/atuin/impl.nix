@@ -1,4 +1,8 @@
-{config, osConfig, ...}: {
+{
+  config,
+  osConfig,
+  ...
+}: {
   programs.atuin = {
     enable = true;
     enableBashIntegration = true;

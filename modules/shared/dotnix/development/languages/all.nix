@@ -16,6 +16,11 @@ in {
       cpp = enabled;
       golang = enabled;
       dart = enabled;
+      nix = enabled;
+      node = enabled;
+      python = enabled;
+      rust = enabled;
+      lua = enabled;
     };
   };
 }

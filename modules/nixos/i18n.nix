@@ -17,4 +17,3 @@
     LC_TIME = "zh_CN.UTF-8";
   };
 }
-
