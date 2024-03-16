@@ -23,10 +23,18 @@
       inherit (inputs) flake-utils;
       inherit mkSystem;
     };
+
+    templates = {
+      templates.devenv = {
+        path = ./templates/devenv;
+        description = "devenv templates";
+      };
+    };
   in
     nixpkgs.lib.attrsets.mergeAttrsList [
       hostsConfiguration
       formatter
+      templates
     ];
 
   inputs = {
