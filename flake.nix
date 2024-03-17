@@ -9,15 +9,16 @@
       inherit inputs dotnix-constants;
     };
 
-    formatter = flake-utils.lib.eachDefaultSystem (system: {
-      formatter = nixpkgs-unstable.legacyPackages.${system}.alejandra;
-    });
     mkSystem = import ./modules/mkSystem.nix (
       {
         inherit self inputs dotnix-constants dotnix-utils;
       }
       // inputs
     );
+
+    formatter = flake-utils.lib.eachDefaultSystem (system: {
+      formatter = nixpkgs-unstable.legacyPackages.${system}.alejandra;
+    });
 
     hostsConfiguration = import ./hosts {
       inherit (inputs) flake-utils;
@@ -30,11 +31,45 @@
         description = "devenv templates";
       };
     };
+
+    checks = flake-utils.lib.eachDefaultSystem (system: {
+      checks.pre-commit-check =
+        inputs.pre-commit-hooks.lib.${system}.run
+        {
+          src = ./.;
+          hooks = {
+            actionlint.enable = true;
+
+            statix = {
+              enable = true;
+            };
+
+            alejandra = {
+              enable = true;
+              excludes = [
+                "hardware-configuration.*.nix"
+                ".*vim-template.*"
+              ];
+            };
+          };
+
+          settings = {
+            # Work around for `statix`,
+            # issue: https://github.com/cachix/pre-commit-hooks.nix/issues/288
+            statix.ignore = [
+              "hardware-configuration.nix"
+              ".vim-template:*.nix"
+              ".vim-template:default.nix"
+            ];
+          };
+        };
+    });
   in
     nixpkgs.lib.attrsets.mergeAttrsList [
       hostsConfiguration
       formatter
       templates
+      checks
     ];
 
   inputs = {
@@ -73,8 +108,6 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    neovim-nightly-overlay.url = "github:nix-community/neovim-nightly-overlay";
-
     # Secrets management
     agenix = {
       url = "github:ryantm/agenix";
@@ -89,6 +122,8 @@
       url = "github:nix-community/fenix";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+
+    neovim-nightly-overlay.url = "github:nix-community/neovim-nightly-overlay";
   };
 
   nixConfig = {
