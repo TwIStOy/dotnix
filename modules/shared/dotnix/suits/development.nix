@@ -37,6 +37,8 @@ in {
 
       hm.packages = with pkgs; [
         rsync
+        # man pages
+        man-pages
       ];
     };
 
