@@ -1,7 +1,6 @@
 {
   config,
   lib,
-  dotnix-utils,
   pkgs,
   pkgs-unstable,
   nur-hawtian,
@@ -20,7 +19,8 @@
     clangd = llvmPackages_17.clang-unwrapped;
     clang-format = llvmPackages_17.clang-unwrapped;
     inherit (python312Packages) black;
-    inherit (pkgs) rust-analyzer rustfmt;
+    inherit (pkgs) rustfmt;
+    rust-analyzer = pkgs.rust-analyzer-nightly;
   };
 
   nixAwareNvimConfig = pkgs.stdenv.mkDerivation {
