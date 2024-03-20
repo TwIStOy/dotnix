@@ -19,5 +19,9 @@ in {
         enable = true;
       };
     };
+
+    dotnix.services.vscode-server = {
+      enable = true;
+    };
   };
 }

@@ -7,6 +7,7 @@
   agenix,
   dotnix-constants,
   dotnix-utils,
+  vscode-server,
   ...
 }: let
   inherit (nixpkgs.lib.strings) hasSuffix;
@@ -23,6 +24,7 @@
   nixosModules = [
     home-manager.nixosModules.home-manager
     agenix.nixosModules.default
+    vscode-server.nixosModules.default
     nixosModule
   ];
   platformModules = system:

@@ -124,6 +124,9 @@
     };
 
     neovim-nightly-overlay.url = "github:nix-community/neovim-nightly-overlay";
+
+    # fix vscode server on nixos
+    vscode-server.url = "github:nix-community/nixos-vscode-server";
   };
 
   nixConfig = {
