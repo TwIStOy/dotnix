@@ -21,6 +21,7 @@ in {
         "gh"
         "git"
         "lazygit"
+        "difftastic"
       ];
 
       development = {
