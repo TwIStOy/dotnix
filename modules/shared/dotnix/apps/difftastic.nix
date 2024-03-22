@@ -12,8 +12,8 @@ in {
 
   config = lib.mkIf cfg.enable {
     home-manager = dotnix-utils.hm.hmConfig {
-      programs.difftastic = {
-        enabled = true;
+      programs.git.difftastic = {
+        enable = true;
       };
     };
   };
