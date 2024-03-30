@@ -51,7 +51,7 @@
     vim.loader.enable()
     local dotpath = "${user-dotpath}"
     vim.opt.rtp:prepend(dotpath)
-    require("dotvim").setup()
+    require("dotvim.bootstrap").setup()
   '';
 in {
   home.packages = with pkgs; [
@@ -68,11 +68,6 @@ in {
   };
 
   xdg.configFile = {
-    "nvim/init-dora.lua" = {
-      text = init-dora;
-      force = true;
-    };
-
     "nvim/init.lua" = {
       text = init-dora;
       force = true;
