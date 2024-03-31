@@ -3,6 +3,7 @@
     self,
     flake-utils,
     devenv,
+    fenix,
     ...
   } @ inputs:
     flake-utils.lib.eachDefaultSystem (system: let
@@ -43,6 +44,7 @@
               rust = {
                 enable = true;
                 channel = "stable";
+                toolchain.rust-analyzer = fenix.packages.${system}.complete.rust-analyzer;
               };
             };
 
