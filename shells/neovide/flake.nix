@@ -79,6 +79,9 @@
             # Enable structured diffing for supported languages.
             difftastic.enable = true;
 
+            # Generate a `.devcontainer.json` file.
+            devcontainer.enable = true;
+
             # allows to execute bash code once the shell activates
             enterShell = ''
             '';
@@ -98,8 +101,10 @@
     # eachDefaultSystem
     flake-utils.url = "github:numtide/flake-utils";
 
-    fenix.url = "github:nix-community/fenix";
-    fenix.inputs = {nixpkgs.follows = "nixpkgs";};
+    fenix = {
+      url = "github:nix-community/fenix";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
   nixConfig = {
