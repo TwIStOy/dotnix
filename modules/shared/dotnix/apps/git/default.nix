@@ -24,16 +24,19 @@ in {
           init.defaultBranch = "master";
           push.autoSetupRemote = true;
           pull.rebase = false;
+          gpg.format = "ssh";
+          core.excludesfile = "~/.config/git/ignore";
         };
 
         signing = {
           key = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIG92SyvgOOe9pGPGHEY9VbDBWwqaRgm9tg1RJUxlfdCN";
           signByDefault = true;
         };
+      };
 
-        extraConfig = {
-          gpg.format = "ssh";
-        };
+      xdg.configFile."git/ignore" = {
+        source = ./gitignore;
+        force = true;
       };
     };
   };
