@@ -1,6 +1,6 @@
 {
   config,
-  pkgs,
+  pkgs-unstable,
   lib,
   dotnix-utils,
   ...
@@ -12,7 +12,7 @@ in {
   };
 
   config = lib.mkIf cfg.enable {
-    dotnix.hm.packages = with pkgs; [
+    dotnix.hm.packages = with pkgs-unstable; [
       rust-analyzer
       cargo
       rustc

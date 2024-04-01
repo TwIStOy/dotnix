@@ -38,15 +38,13 @@
                 fixDarwinDylibNames
                 OpenGL
                 Security
+              ])
+              ++ (with pkgs-unstable; [
+                rustc
+                cargo
+                rust-analyzer
+                rustfmt
               ]);
-
-            languages = {
-              rust = {
-                enable = true;
-                channel = "stable";
-                toolchain.rust-analyzer = fenix.packages.${system}.complete.rust-analyzer;
-              };
-            };
 
             # set environment variables
             env = with pkgs; (lib.optionalAttrs stdenv.cc.isClang {
