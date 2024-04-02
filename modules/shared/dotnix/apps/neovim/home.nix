@@ -9,7 +9,7 @@
   user-dotpath = "${config.home.homeDirectory}/.dotvim";
 
   plugins = {
-    inherit (nur-hawtian.packages.${pkgs.system}.vimPlugins) gh-actions-nvim;
+    inherit (nur-hawtian.packages.${pkgs.system}.vimPlugins) gh-actions-nvim fugit2-nvim codesnap-nvim;
     inherit (pkgs-unstable.vimPlugins) telescope-fzf-native-nvim;
     inherit (pkgs-unstable.vimPlugins) markdown-preview-nvim;
   };
