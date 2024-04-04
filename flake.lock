@@ -974,17 +974,17 @@
         "nixpkgs-stable": "nixpkgs-stable_3"
       },
       "locked": {
-        "lastModified": 1712158397,
-        "narHash": "sha256-+t7XTKOw9IORffdD0a5RXAGrNAmXmR//RIB8vDosN64=",
+        "lastModified": 1712245314,
+        "narHash": "sha256-w7GsFJIz1+d8oI1emEKv0YKdGV2VMIGxhzZwyzHQYFM=",
         "owner": "TwIStOy",
         "repo": "nur-packages",
-        "rev": "b044d6e61aa9b54ffe41695cdaba11f6ad1c124d",
+        "rev": "6183f18e14e6554666937d21be45e78f50aecb2f",
         "type": "github"
       },
       "original": {
         "owner": "TwIStOy",
         "repo": "nur-packages",
-        "rev": "b044d6e61aa9b54ffe41695cdaba11f6ad1c124d",
+        "rev": "6183f18e14e6554666937d21be45e78f50aecb2f",
         "type": "github"
       }
     },

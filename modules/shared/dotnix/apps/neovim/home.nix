@@ -8,10 +8,13 @@
 }: let
   user-dotpath = "${config.home.homeDirectory}/.dotvim";
 
+  nurVimPlugins = nur-hawtian.packages.${pkgs.system}.vimPlugins;
+  unstableVimPlugins = pkgs-unstable.vimPlugins;
+
   plugins = {
-    inherit (nur-hawtian.packages.${pkgs.system}.vimPlugins) gh-actions-nvim fugit2-nvim;
-    inherit (pkgs-unstable.vimPlugins) telescope-fzf-native-nvim;
-    inherit (pkgs-unstable.vimPlugins) markdown-preview-nvim;
+    inherit (nurVimPlugins) gh-actions-nvim fugit2-nvim codesnap-nvim;
+    inherit (unstableVimPlugins) telescope-fzf-native-nvim;
+    inherit (unstableVimPlugins) markdown-preview-nvim;
   };
 
   bins = with pkgs-unstable; {
