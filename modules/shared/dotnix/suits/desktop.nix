@@ -41,9 +41,13 @@ in {
         };
         extraSettings = {
           font = {
-            normal = {family = "MonoLisa Nerd Font";};
-            bold = "MonaspiceKr Nerd Font Mono";
-            bold_italic = "MonaspiceKr Nerd Font Mono";
+            normal = {family = "Maple Mono NF CN";};
+            # bold = "MonaspiceKr Nerd Font Mono";
+            # bold_italic = "MonaspiceKr Nerd Font Mono";
+            features."Maple Mono NF CN" = [
+              "+ss01"
+              "+ss02"
+            ];
             features."MonoLisa Nerd Font" = [
               "+ss11"
               "+zero"

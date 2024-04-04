@@ -17,10 +17,7 @@ in {
 
         theme = "Catppuccin-Mocha";
         settings = {
-          font_family = "MonoLisa Light";
-          bold_font = "MonoLisa SemiBold";
-          italic_font = "MonoLisa Light Italic";
-          bold_italic_font = "MonoLisa SemiBold Italic";
+          font_family = "Maple Mono NF CN";
 
           disable_ligatures = "never";
           share_connections = "yes";
@@ -103,9 +100,22 @@ in {
         };
 
         extraConfig = ''
-          modify_font underline_position 22
-          modify_font cell_width 90%
-          modify_font baseline 0
+          font_features MapleMono-NF-CN-Bold +ss01 +ss02
+          font_features MapleMono-NF-CN-BoldItalic +ss01 +ss02
+          font_features MapleMono-NF-CN-ExtraBold +ss01 +ss02
+          font_features MapleMono-NF-CN-ExtraBoldItalic +ss01 +ss02
+          font_features MapleMono-NF-CN-ExtraLight +ss01 +ss02
+          font_features MapleMono-NF-CN-ExtraLightItalic +ss01 +ss02
+          font_features MapleMono-NF-CN-Italic +ss01 +ss02
+          font_features MapleMono-NF-CN-Light +ss01 +ss02
+          font_features MapleMono-NF-CN-LightItalic +ss01 +ss02
+          font_features MapleMono-NF-CN-Medium +ss01 +ss02
+          font_features MapleMono-NF-CN-MediumItalic +ss01 +ss02
+          font_features MapleMono-NF-CN-Regular +ss01 +ss02
+          font_features MapleMono-NF-CN-SemiBold +ss01 +ss02
+          font_features MapleMono-NF-CN-SemiBoldItalic +ss01 +ss02
+          font_features MapleMono-NF-CN-Thin +ss01 +ss02
+          font_features MapleMono-NF-CN-ThinItalic +ss01 +ss02
 
           font_features Iosevka +ss07 cv49=16 cv94=1 VXLA=2 VXLC=2 cv34=12 cv31=13
           font_features Iosevka-Semibold +ss07 cv49=16 cv94=1 VXLA=2 VXLC=2 cv34=12 cv31=13
@@ -134,47 +144,54 @@ in {
           font_features MonoLisaThin-Regular       +ss01 +ss07 +ss11 -calt +ss09 +ss02 +ss14 +ss16
           font_features MonoLisaThin-Italic        +ss01 +ss07 +ss11 -calt +ss09 +ss02 +ss14 +ss16
 
-          # Seti-UI + Custom
-          symbol_map U+E5FA-U+E6FF Symbols Nerd Font
-
-          # Heavy Angle Brackets
-          symbol_map U+276C-U+2771 Symbols Nerd Font
-
-          # Box Drawing
-          symbol_map U+2500-U+259F Symbols Nerd Font
-
-          # Devicons
-          symbol_map U+E700-U+E7C5 Symbols Nerd Font
-
-          # Powerline Symbols
-          symbol_map U+E0A0-U+E0A2,U+E0B0-U+E0B3 Symbols Nerd Font
-          # Powerline Extra Symbols
-          symbol_map U+E0A3,U+E0B4-U+E0C8,U+E0CA,U+E0CC-U+E0D4,U+2630 Symbols Nerd Font
-
-          # Pomicons
-          symbol_map U+E000-U+E00A Symbols Nerd Font
-
-          # Font Awesome
-          symbol_map U+F000-U+F2E0 Symbols Nerd Font
-
-          # Font Awesome Extension
-          symbol_map U+E200-U+E2A9 Symbols Nerd Font
-
-          # Material Design Icons
-          symbol_map U+F0001-U+F1AF0 Symbols Nerd Font
-
-          # Power symbols
-          symbol_map U+23FB-U+23FE,U+2B58 Symbols Nerd Font
-
-          # Weather
-          symbol_map U+E300-U+E3EB Symbols Nerd Font
-
-          # Octicons
-          symbol_map U+F400-U+F505,U+2665,U+26A1,U+F4A9-U+F532,U+EA60-U+EBEB Symbols Nerd Font
-
-          # Font Logos
-          symbol_map U+F300-U+F32F Symbols Nerd Font
+          modify_font underline_position 22
+          modify_font cell_width 90%
+          modify_font baseline 0
         '';
+
+        # extraConfig = ''
+        #
+        #   # Seti-UI + Custom
+        #   symbol_map U+E5FA-U+E6FF Symbols Nerd Font
+        #
+        #   # Heavy Angle Brackets
+        #   symbol_map U+276C-U+2771 Symbols Nerd Font
+        #
+        #   # Box Drawing
+        #   symbol_map U+2500-U+259F Symbols Nerd Font
+        #
+        #   # Devicons
+        #   symbol_map U+E700-U+E7C5 Symbols Nerd Font
+        #
+        #   # Powerline Symbols
+        #   symbol_map U+E0A0-U+E0A2,U+E0B0-U+E0B3 Symbols Nerd Font
+        #   # Powerline Extra Symbols
+        #   symbol_map U+E0A3,U+E0B4-U+E0C8,U+E0CA,U+E0CC-U+E0D4,U+2630 Symbols Nerd Font
+        #
+        #   # Pomicons
+        #   symbol_map U+E000-U+E00A Symbols Nerd Font
+        #
+        #   # Font Awesome
+        #   symbol_map U+F000-U+F2E0 Symbols Nerd Font
+        #
+        #   # Font Awesome Extension
+        #   symbol_map U+E200-U+E2A9 Symbols Nerd Font
+        #
+        #   # Material Design Icons
+        #   symbol_map U+F0001-U+F1AF0 Symbols Nerd Font
+        #
+        #   # Power symbols
+        #   symbol_map U+23FB-U+23FE,U+2B58 Symbols Nerd Font
+        #
+        #   # Weather
+        #   symbol_map U+E300-U+E3EB Symbols Nerd Font
+        #
+        #   # Octicons
+        #   symbol_map U+F400-U+F505,U+2665,U+26A1,U+F4A9-U+F532,U+EA60-U+EBEB Symbols Nerd Font
+        #
+        #   # Font Logos
+        #   symbol_map U+F300-U+F32F Symbols Nerd Font
+        # '';
       };
     };
   };
