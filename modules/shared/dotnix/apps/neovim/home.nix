@@ -19,8 +19,13 @@
     clangd = llvmPackages_17.clang-unwrapped;
     clang-format = llvmPackages_17.clang-unwrapped;
     inherit (python312Packages) black;
-    inherit (pkgs) rustfmt;
+    inherit (pkgs) rustfmt yaml-language-server;
     rust-analyzer = pkgs.rust-analyzer-nightly;
+    vscode-html-language-server = pkgs.vscode-langservers-extracted;
+    vscode-eslint-language-server = pkgs.vscode-langservers-extracted;
+    vscode-markdown-language-server = pkgs.vscode-langservers-extracted;
+    vscode-json-language-server = pkgs.vscode-langservers-extracted;
+    vscode-css-language-server = pkgs.vscode-langservers-extracted;
   };
 
   nixAwareNvimConfig = pkgs.stdenv.mkDerivation {
