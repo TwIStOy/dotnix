@@ -66,6 +66,7 @@
       "tailscale"
       "neovide"
       "wireshark"
+      "kitty"
     ];
   };
 }
