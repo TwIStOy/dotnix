@@ -19,8 +19,7 @@
       autoUpdate = true;
       upgrade = true;
 
-      # cleanup = "zap";
-      cleanup = "none";
+      cleanup = "zap";
     };
 
     masApps = {};
