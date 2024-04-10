@@ -32,13 +32,16 @@ in {
           "dev.work.local.simple"
           "dev.work.remote"
         ];
-        settings = {
-          maximized = false;
-          srgb = true;
-          idle = true;
-          neovim-bin = pkgs.neovim-nightly;
-          frame = "transparent";
-        };
+        settings =
+          {
+            maximized = false;
+            srgb = true;
+            idle = true;
+            neovim-bin = pkgs.neovim-nightly;
+          }
+          // (lib.optionalAttrs pkgs.stdenv.isDarwin {
+            frame = "transparent";
+          });
         extraSettings = {
           font = {
             normal = {family = "Maple Mono NF CN";};
