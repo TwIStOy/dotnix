@@ -26,10 +26,10 @@
 
   maple-font = pkgs.stdenv.mkDerivation rec {
     pname = "maple-font";
-    version = "v7.0-beta12";
+    version = "v7.0-beta13";
     src = builtins.fetchurl {
       url = "https://github.com/subframe7536/maple-font/releases/download/${version}/MapleMono-NF-CN.zip";
-      sha256 = "1387ybyqhlzag6186hqbglj1jrmsw45a47120dzc253z41hgkf12";
+      sha256 = "0gg2gkvj4lycr05w8bijqdiyxhvxya7cjswqqzr7gmr6hk9qjya3";
     };
     nativeBuildInputs = with pkgs; [unzip];
     sourceRoot = ".";
