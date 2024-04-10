@@ -68,6 +68,7 @@
       "neovide"
       "wireshark"
       "kitty"
+      "xquartz"
     ];
   };
 }
