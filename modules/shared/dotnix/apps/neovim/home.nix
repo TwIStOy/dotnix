@@ -30,6 +30,7 @@
     vscode-markdown-language-server = pkgs.vscode-langservers-extracted;
     vscode-json-language-server = pkgs.vscode-langservers-extracted;
     vscode-css-language-server = pkgs.vscode-langservers-extracted;
+    jdtls = jdt-language-server;
   };
 
   nixAwareNvimConfig = pkgs.stdenv.mkDerivation {
