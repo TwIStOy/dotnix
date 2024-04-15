@@ -14,9 +14,10 @@ in {
   config = lib.mkIf cfg.enable {
     dotnix.hm.packages = with pkgs-unstable; [
       rust-analyzer
-      cargo
       rustc
       rustfmt
+      cargo
+      cargo-nextest
     ];
     home-manager =
       dotnix-utils.hm.hmConfig {

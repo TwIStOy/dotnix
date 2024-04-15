@@ -21,6 +21,7 @@ in {
       python = enabled;
       rust = enabled;
       lua = enabled;
+      java = enabled;
     };
   };
 }
