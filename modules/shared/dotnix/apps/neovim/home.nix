@@ -15,6 +15,7 @@
     inherit (nurVimPlugins) gh-actions-nvim fugit2-nvim codesnap-nvim;
     inherit (unstableVimPlugins) telescope-fzf-native-nvim;
     inherit (unstableVimPlugins) markdown-preview-nvim;
+    inherit (unstableVimPlugins) rest-nvim;
   };
 
   bins = with pkgs-unstable; {
