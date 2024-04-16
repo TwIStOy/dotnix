@@ -95,7 +95,14 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    nur-hawtian.url = "github:TwIStOy/nur-packages?rev=6183f18e14e6554666937d21be45e78f50aecb2f";
+    nur-hawtian = {
+      url = "github:TwIStOy/nur-packages?rev=6183f18e14e6554666937d21be45e78f50aecb2f";
+      inputs = {
+        flake-utils.follows = "flake-utils";
+        nixpkgs.follows = "nixpkgs-unstable";
+        nixpkgs-stable.follows = "nixpkgs";
+      };
+    };
 
     secrets-hawtian = {
       url = "git+ssh://git@github.com/TwIStOy/nix-secret.git?shallow=1";
@@ -126,7 +133,13 @@
     neovim-nightly-overlay.url = "github:nix-community/neovim-nightly-overlay";
 
     # fix vscode server on nixos
-    vscode-server.url = "github:nix-community/nixos-vscode-server";
+    vscode-server = {
+      url = "github:nix-community/nixos-vscode-server";
+      inputs = {
+        flake-utils.follows = "flake-utils";
+        nixpkgs.follows = "nixpkgs";
+      };
+    };
   };
 
   nixConfig = {
