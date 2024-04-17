@@ -33,6 +33,7 @@
       "leoafarias/fvm"
       "qmk/qmk"
       "FelixKratz/formulae"
+      "d12frosted/emacs-plus"
     ];
 
     brews = [
@@ -69,6 +70,7 @@
       "wireshark"
       "kitty"
       "xquartz"
+      "emacs-plus@30"
     ];
   };
 }
