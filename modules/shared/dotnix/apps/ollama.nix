@@ -14,5 +14,10 @@ in {
     environment.systemPackages = with pkgs-unstable; [
       ollama
     ];
+
+    services.ollama = {
+      enable = true;
+      package = pkgs-unstable.ollama;
+    };
   };
 }
