@@ -3,7 +3,7 @@
     backend = "docker";
     containers = {
       chatgpt-next-web = {
-        image = "yidadaa/chatgpt-next-web";
+        image = "yidadaa/chatgpt-next-web:v2.11.3";
         autoStart = true;
         ports = ["3000:3000"];
         environmentFiles = [
