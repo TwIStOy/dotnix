@@ -17,6 +17,9 @@ in {
         config = {
           pager = "less -FR";
           theme = "catppuccin-mocha";
+          map-syntax = [
+            "**/flake.lock:JSON"
+          ];
         };
         themes = {
           catppuccin-mocha = {
