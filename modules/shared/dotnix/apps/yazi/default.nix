@@ -14,6 +14,25 @@
     "yazi/plugins/${plugin}".text =
       builtins.readFile ./plugins/${plugin};
   };
+
+  useNvimAsOpenerFiles = [
+    "*.json"
+    "*.cpp"
+    "*.lua"
+    "*.toml"
+    "*.yaml"
+    "*.c"
+    "*.rs"
+    "*.ts"
+    "*.nix"
+    "justfile"
+    "LICENSE"
+    "flake.lock"
+  ];
+  nvimRules = lib.lists.forEach useNvimAsOpenerFiles (file: {
+    name = file;
+    use = "text";
+  });
 in {
   options.dotnix.apps.yazi = {
     enable = lib.mkEnableOption "Enable module dotnix.apps.yazi";
@@ -40,44 +59,7 @@ in {
             ];
           };
           open = {
-            rules = [
-              {
-                name = "*.json";
-                use = "text";
-              }
-              {
-                name = "*.cpp";
-                use = "text";
-              }
-              {
-                name = "*.lua";
-                use = "text";
-              }
-              {
-                name = "*.toml";
-                use = "text";
-              }
-              {
-                name = "*.yaml";
-                use = "text";
-              }
-              {
-                name = "*.c";
-                use = "text";
-              }
-              {
-                name = "*.rs";
-                use = "text";
-              }
-              {
-                name = "*.ts";
-                use = "text";
-              }
-              {
-                name = "*.nix";
-                use = "text";
-              }
-            ];
+            rules = nvimRules;
           };
           manager = {
             keymap = [
