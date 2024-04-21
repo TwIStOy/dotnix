@@ -34,7 +34,7 @@ in {
           opener = {
             text = [
               {
-                exec = "nvim \"$@\"";
+                run = "nvim \"$@\"";
                 block = true;
               }
             ];
@@ -83,7 +83,7 @@ in {
             keymap = [
               {
                 on = ["l"];
-                exec = "plugin --sync smart-enter";
+                run = "plugin --sync smart-enter";
                 desc = "Enter the child directory, or open the file";
               }
             ];
