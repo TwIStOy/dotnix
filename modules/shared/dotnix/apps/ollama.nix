@@ -1,6 +1,7 @@
 {
   config,
   lib,
+  pkgs,
   pkgs-unstable,
   ...
 }: let
@@ -15,9 +16,11 @@ in {
       ollama
     ];
 
-    services.ollama = {
-      enable = true;
-      package = pkgs-unstable.ollama;
+    services = lib.optionalAttrs (!pkgs.stdenv.isDarwin) {
+      ollama = {
+        enable = true;
+        package = pkgs-unstable.ollama;
+      };
     };
   };
 }
