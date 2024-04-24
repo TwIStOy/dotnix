@@ -19,6 +19,8 @@ in {
         enableZshIntegration = true;
         enableFishIntegration = true;
 
+        catppuccin.enable = true;
+
         settings = {
           character = {
             success_symbol = "[](bold green)";
