@@ -23,7 +23,10 @@
             # packages in development env
             packages = with pkgs;
               [
+                # for test-cases
                 cargo-nextest
+                # language-server for toml files
+                taplo
               ]
               ++ lib.lists.optionals stdenv.isDarwin (
                 [

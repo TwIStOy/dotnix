@@ -1,0 +1,10 @@
+alias t := test
+
+build:
+  cargo build --all-targets
+
+release:
+  cargo build --workspace --release
+
+test:
+  cargo nextest run
