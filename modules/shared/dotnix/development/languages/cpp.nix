@@ -34,9 +34,9 @@ in {
         gcc
         nixAwareClangdConfig
       ]
-      ++ (with pkgs; [
+      ++ (with pkgs-unstable; [
         cmake-language-server
-        llvmPackages_17.clang-unwrapped
+        llvmPackages_18.clang-unwrapped
       ])
       ++ [
         # format cmake files
