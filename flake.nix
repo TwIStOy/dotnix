@@ -131,7 +131,7 @@
     };
 
     neovim-nightly-overlay = {
-      url = "github:nix-community/neovim-nightly-overlay";
+      url = "github:nix-community/neovim-nightly-overlay?rev=e45cf8ce3f84056b006935b3f64c35ea6be76300";
     };
 
     # fix vscode server on nixos
