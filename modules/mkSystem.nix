@@ -8,7 +8,6 @@
   dotnix-constants,
   dotnix-utils,
   vscode-server,
-  catppuccin,
   ...
 }: let
   inherit (nixpkgs.lib.strings) hasSuffix;
@@ -26,7 +25,6 @@
     home-manager.nixosModules.home-manager
     agenix.nixosModules.default
     vscode-server.nixosModules.default
-    catppuccin.nixosModules.catppuccin
     nixosModule
   ];
   platformModules = system:
@@ -85,7 +83,6 @@ in
                   imports =
                     [
                       ./home
-                      catppuccin.homeManagerModules.catppuccin
                     ]
                     ++ home-modules;
                 };

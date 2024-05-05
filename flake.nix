@@ -142,9 +142,6 @@
         nixpkgs.follows = "nixpkgs";
       };
     };
-
-    # colorscheme
-    catppuccin.url = "github:catppuccin/nix";
   };
 
   nixConfig = {
