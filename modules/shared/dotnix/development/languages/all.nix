@@ -22,6 +22,7 @@ in {
       rust = enabled;
       lua = enabled;
       java = enabled;
+      markdown = enabled;
     };
   };
 }
