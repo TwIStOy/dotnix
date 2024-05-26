@@ -72,6 +72,7 @@
       "wireshark"
       "kitty"
       "xquartz"
+      "devpod"
     ];
   };
 }
