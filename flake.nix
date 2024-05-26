@@ -131,7 +131,8 @@
     };
 
     neovim-nightly-overlay = {
-      url = "github:nix-community/neovim-nightly-overlay";
+      # Before #527 merged, use the following commit
+      url = "github:nix-community/neovim-nightly-overlay?rev=770dc8e93f2d494909cf36d5529d29e49d557f00";
     };
 
     # fix vscode server on nixos

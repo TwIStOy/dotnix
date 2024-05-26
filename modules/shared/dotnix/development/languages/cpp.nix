@@ -9,7 +9,8 @@
 }: let
   cfg = config.dotnix.development.languages.cpp;
 
-  inherit (pkgs-unstable) gcc;
+  gcc = pkgs-unstable.gcc14;
+  # inherit (pkgs-unstable) gcc;
   nixAwareClangdConfig = pkgs.stdenv.mkDerivation {
     name = "nix-aware-clangd-config";
 
