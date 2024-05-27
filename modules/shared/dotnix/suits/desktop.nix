@@ -2,14 +2,13 @@
   config,
   lib,
   pkgs,
-  pkgs-unstable,
-  # dotnix-utils,
-  # inputs,
+  dotnix-utils,
+  inputs,
   ...
 }: let
   cfg = config.dotnix.suits.desktop;
-  # inherit (dotnix-utils) enableModules;
-  # neovim-nightly = inputs.neovim-nightly-overlay.packages.${pkgs.system}.neovim;
+  inherit (dotnix-utils) enableModules;
+  neovim-nightly = inputs.neovim-nightly-overlay.packages.${pkgs.system}.neovim;
 in {
   options.dotnix.suits.desktop = {
     enable = lib.mkEnableOption "Enable desktop suit";
@@ -40,7 +39,7 @@ in {
             maximized = false;
             srgb = true;
             idle = true;
-            neovim-bin = pkgs-unstable.neovim;
+            neovim-bin = neovim-nightly;
           }
           // (lib.optionalAttrs pkgs.stdenv.isDarwin {
             frame = "transparent";

@@ -4,9 +4,10 @@
   pkgs,
   pkgs-unstable,
   nur-hawtian,
+  inputs,
   ...
 }: let
-  # neovim-nightly = inputs.neovim-nightly-overlay.packages.${pkgs.system}.neovim;
+  neovim-nightly = inputs.neovim-nightly-overlay.packages.${pkgs.system}.neovim;
 
   user-dotpath = "${config.home.homeDirectory}/.dotvim";
 
@@ -76,7 +77,7 @@ in {
 
   programs.neovim = {
     enable = true;
-    package = pkgs-unstable.neovim;
+    package = neovim-nightly;
     plugins = builtins.attrValues plugins;
   };
 
