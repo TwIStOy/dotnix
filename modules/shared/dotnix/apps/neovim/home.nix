@@ -7,8 +7,9 @@
   inputs,
   ...
 }: let
-  neovim-nightly = inputs.neovim-nightly-overlay.packages.${pkgs.system}.neovim;
-
+  # neovim-nightly = inputs.neovim-nightly-overlay.packages.${pkgs.system}.neovim;
+  neovim-nightly = pkgs.neovim-nightly;
+  
   user-dotpath = "${config.home.homeDirectory}/.dotvim";
 
   nurVimPlugins = nur-hawtian.packages.${pkgs.system}.vimPlugins;
