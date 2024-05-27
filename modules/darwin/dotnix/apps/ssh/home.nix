@@ -11,6 +11,7 @@ in {
     };
     includes = [
       "~/.orbstack/ssh/config"
+      "~/.ssh/devpod_config"
       "${osConfig.age.secrets.ssh-remote-host-config.path}"
     ];
   };
