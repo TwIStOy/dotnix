@@ -108,6 +108,27 @@
           ];
         }
         {
+          description = "ALT+f: layout float";
+          manipulators = [
+            {
+              type = "basic";
+              from = {
+                key_code = "e";
+                modifiers = {
+                  mandatory = [
+                    "left_option"
+                  ];
+                };
+              };
+              to = [
+                {
+                  shell_command = "${pkgs-unstable.yabai}/bin/yabai -m space --layout float";
+                }
+              ];
+            }
+          ];
+        }
+        {
           description = "ALT+z: Toggle zoom-fullscreen";
           manipulators = [
             {
