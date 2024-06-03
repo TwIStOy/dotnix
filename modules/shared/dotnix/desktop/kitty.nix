@@ -17,7 +17,7 @@ in {
         enable = true;
         package = pkgs-unstable.kitty;
 
-        theme = "Catppuccin-Latte";
+        theme = "Catppuccin-Mocha";
         settings = {
           font_family = "Maple Mono NF CN";
 
