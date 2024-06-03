@@ -62,7 +62,7 @@ in {
 
       pkgs.monaspace
       # nerdfonts
-      # https://github.com/NixOS/nixpkgs/blob/nixos-23.11/pkgs/data/fonts/nerdfonts/shas.nix
+      # https://github.com/NixOS/nixpkgs/blob/nixos-24.05/pkgs/data/fonts/nerdfonts/shas.nix
       (pkgs-unstable.nerdfonts.override {
         fonts = [
           # symbols icon only
