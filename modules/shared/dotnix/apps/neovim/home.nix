@@ -26,7 +26,7 @@
     inherit fzf stylua lua-language-server statix;
     clangd = llvmPackages_18.clang-unwrapped;
     clang-format = llvmPackages_18.clang-unwrapped;
-    inherit (python312Packages) black;
+    inherit (pkgs-unstable.python312Packages) black;
     inherit (pkgs) rustfmt yaml-language-server;
     inherit (pkgs-unstable) taplo;
     rust-analyzer = pkgs.rust-analyzer-nightly;
@@ -70,7 +70,7 @@
   '';
 in {
   home.packages = with pkgs; [
-    python3.pkgs.pynvim
+    pkgs-unstable.python312Packages.pynvim
     nodePackages.neovim
     tree-sitter
     nixAwareNvimConfig

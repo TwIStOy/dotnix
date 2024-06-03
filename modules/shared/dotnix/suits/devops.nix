@@ -2,6 +2,7 @@
   config,
   lib,
   pkgs,
+  pkgs-unstable,
   dotnix-utils,
   ...
 }: let
@@ -13,12 +14,16 @@ in {
 
   config = lib.mkIf cfg.enable {
     home-manager = dotnix-utils.hm.hmConfig {
-      home.packages = with pkgs; [
-        ansible
-
-        lazydocker # docker TUI
-        dive # explore layers in docker images
-      ];
+      home.packages =
+        (with pkgs; [
+          lazydocker # docker TUI
+          dive # explore layers in docker images
+        ])
+        ++ (
+          with pkgs-unstable; [
+            ansible
+          ]
+        );
     };
   };
 }
