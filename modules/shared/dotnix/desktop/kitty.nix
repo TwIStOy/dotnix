@@ -61,6 +61,8 @@ in {
           shell = "/run/current-system/sw/bin/fish --login";
 
           clipboard_control = "write-clipboard write-primary read-clipboard read-primary";
+
+          allow_remote_control = "yes";
         };
 
         keybindings = {
