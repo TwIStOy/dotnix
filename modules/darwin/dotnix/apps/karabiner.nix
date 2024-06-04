@@ -630,6 +630,90 @@
             }
           ];
         }
+        {
+          description = "Double tap right shift to send f18";
+          manipulators = [
+            {
+              type = "basic";
+              conditions = [
+                {
+                  name = "right_shift_pressed";
+                  type = "variable_if";
+                  value = 1;
+                }
+              ];
+              from = {
+                key_code = "right_shift";
+                modifiers.optional = ["any"];
+              };
+              to = [
+                {
+                  key_code = "right_shift";
+                }
+              ];
+              to_if_alone = [
+                {
+                  key_code = "f18";
+                }
+                {
+                  set_variable = {
+                    name = "right_shift_pressed";
+                    value = 0;
+                  };
+                }
+              ];
+              parameters = {
+                "basic.to_if_alone_timeout_milliseconds" = 500;
+              };
+            }
+
+            {
+              type = "basic";
+              from = {
+                key_code = "right_shift";
+                modifiers.optional = ["any"];
+              };
+              to = [
+                {
+                  key_code = "right_shift";
+                }
+              ];
+              to_if_alone = [
+                {
+                  set_variable = {
+                    name = "right_shift_pressed";
+                    value = 1;
+                  };
+                }
+                {
+                  key_code = "right_shift";
+                }
+              ];
+              to_delayed_action = {
+                to_if_invoked = [
+                  {
+                    set_variable = {
+                      name = "right_shift_pressed";
+                      value = 0;
+                    };
+                  }
+                ];
+                to_if_canceled = [
+                  {
+                    set_variable = {
+                      name = "right_shift_pressed";
+                      value = 0;
+                    };
+                  }
+                ];
+              };
+              parameters = {
+                "basic.to_delayed_action_delay_milliseconds" = 500;
+                "basic.to_if_alone_timeout_milliseconds" = 500;
+              };
+            }
+          ];
+        }
       ];
     };
   };
