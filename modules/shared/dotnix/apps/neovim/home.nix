@@ -8,8 +8,8 @@
   ...
 }: let
   # neovim-nightly = inputs.neovim-nightly-overlay.packages.${pkgs.system}.neovim;
-  neovim-nightly = pkgs.neovim-nightly;
-  
+  inherit (pkgs) neovim-nightly;
+
   user-dotpath = "${config.home.homeDirectory}/.dotvim";
 
   nurVimPlugins = nur-hawtian.packages.${pkgs.system}.vimPlugins;
@@ -27,7 +27,7 @@
     clangd = llvmPackages_18.clang-unwrapped;
     clang-format = llvmPackages_18.clang-unwrapped;
     inherit (pkgs-unstable.python312Packages) black;
-    inherit (pkgs) rustfmt yaml-language-server;
+    inherit (pkgs) rustfmt yaml-language-server libgit2;
     inherit (pkgs-unstable) taplo;
     rust-analyzer = pkgs.rust-analyzer-nightly;
     vscode-html-language-server = pkgs.vscode-langservers-extracted;
