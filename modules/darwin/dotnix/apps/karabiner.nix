@@ -607,7 +607,7 @@
           ];
         }
         {
-          description = "CMD+SHIFT+n: Send current window to a new desktop";
+          description = "SUPER+n: Send current window to a new desktop";
           manipulators = [
             {
               type = "basic";
