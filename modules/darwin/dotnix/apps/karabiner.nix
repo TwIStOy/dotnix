@@ -179,12 +179,12 @@
           ];
         }
         {
-          description = "ALT+E: layout stack";
+          description = "ALT+S: layout stack";
           manipulators = [
             {
               type = "basic";
               from = {
-                key_code = "e";
+                key_code = "s";
                 modifiers = {
                   mandatory = [
                     "left_option"
