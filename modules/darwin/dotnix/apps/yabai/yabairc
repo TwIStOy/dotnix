@@ -7,8 +7,6 @@ yabai -m signal --add event=dock_did_restart action="sudo yabai --load-sa"
 ## 输出 debug 日志，出问题时方便排查
 yabai -m config debug_output on
 
-# 窗口平铺
-yabai -m space --layout bsp
 # 默认拆分规则 first_child second_child
 yabai -m config window_placement             second_child
 # 窗口间距设置
@@ -33,7 +31,7 @@ yabai -m config focus_follows_mouse          off
 yabai -m config mouse_follows_focus          off
 
 # 浮动窗口问题在顶部
-yabai -m config window_topmost               on
+yabai -m config window_topmost               false
 # 修改窗口阴影 on: 打开 off: 关闭 float: 只显示浮动窗口的阴影
 yabai -m config window_shadow                float
 
@@ -64,5 +62,10 @@ yabai -m rule --add app="^Telegram$" manage=off
 yabai -m rule --add app="^Copilot for Xcode$" manage=off
 # show digital colour meter topmost and on all spaces
 yabai -m rule --add app="^Digital Colou?r Meter$" sticky=on
+# move app to specific space
+# space 1: development:term
+yabai -m rule --add app="^kitty$" space=^1
+# space 3: development:ide/gui
+yabai -m rule --add app="^Neovide$" space=^3
 
 echo "yabai configuration loaded.."
