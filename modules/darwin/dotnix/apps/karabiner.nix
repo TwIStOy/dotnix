@@ -617,6 +617,8 @@
                   mandatory = [
                     "left_command"
                     "left_shift"
+                    "left_option"
+                    "left_control"
                   ];
                 };
               };
