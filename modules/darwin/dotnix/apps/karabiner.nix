@@ -163,7 +163,7 @@
             {
               type = "basic";
               from = {
-                key_code = "e";
+                key_code = "f";
                 modifiers = {
                   mandatory = [
                     "left_option"
