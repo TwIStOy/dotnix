@@ -16,6 +16,7 @@ in {
       shared-suit = enabled;
       apps = enableModules [
         "yabai"
+        "hammerspoon"
         "karabiner"
         "pbcopy-paste"
         "ssh"
