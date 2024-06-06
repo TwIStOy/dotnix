@@ -47,9 +47,7 @@
               ]);
 
             # set environment variables
-            env = with pkgs; (lib.optionalAttrs stdenv.cc.isClang {
-              NIX_LDFLAGS = "-l${stdenv.cc.libcxx.cxxabi.libName}";
-            });
+            env = {};
 
             # define scripts to be executed in the shell
             scripts = {
