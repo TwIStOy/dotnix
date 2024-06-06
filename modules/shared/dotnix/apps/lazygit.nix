@@ -3,7 +3,6 @@
   lib,
   dotnix-utils,
   pkgs,
-  nur-hawtian,
   ...
 }: let
   cfg = config.dotnix.apps.lazygit;
@@ -16,7 +15,7 @@ in {
     home-manager = dotnix-utils.hm.hmConfig {
       programs.lazygit = {
         enable = true;
-        package = nur-hawtian.packages.${pkgs.system}.lazygit;
+        package = pkgs.lazygit;
         settings = {
           gui = {
             mouseEvents = true;
