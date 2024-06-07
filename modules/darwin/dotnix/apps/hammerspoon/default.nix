@@ -30,12 +30,9 @@
     stackline:init({
       paths = {
         yabai = "${yabai}/bin/yabai",
-        jq = "${pkgs.jq}/bin/jq",
-      },
-      appearance = {
-        size = 40,
       }
     })
+    stackline.config:set('appearance.size', 40)
   '';
 
   init-ipc-aarch = ''
