@@ -115,28 +115,6 @@
           ];
         }
         {
-          description = "CMD+ALT+ENTER: open kitty";
-          manipulators = [
-            {
-              type = "basic";
-              from = {
-                key_code = "return_or_enter";
-                modifiers = {
-                  mandatory = [
-                    "left_command"
-                    "left_option"
-                  ];
-                };
-              };
-              to = [
-                {
-                  shell_command = "open -a kitty";
-                }
-              ];
-            }
-          ];
-        }
-        {
           description = "ALT+E: layout bsp";
           manipulators = [
             {
@@ -200,28 +178,31 @@
           ];
         }
         {
-          description = "ALT+z: Toggle zoom-fullscreen";
+          description = "SUPER+tab: next window in stack";
           manipulators = [
             {
               type = "basic";
               from = {
-                key_code = "z";
+                key_code = "tab";
                 modifiers = {
                   mandatory = [
+                    "left_command"
+                    "left_shift"
                     "left_option"
+                    "left_control"
                   ];
                 };
               };
               to = [
                 {
-                  shell_command = "${pkgs-unstable.yabai}/bin/yabai -m window --toggle zoom-fullscreen";
+                  shell_command = "${pkgs-unstable.yabai}/bin/yabai -m window --focus stack.next";
                 }
               ];
             }
           ];
         }
         {
-          description = "ALT+h: Focus left";
+          description = "SUPER+h: Focus left";
           manipulators = [
             {
               type = "basic";
@@ -229,7 +210,10 @@
                 key_code = "h";
                 modifiers = {
                   mandatory = [
+                    "left_command"
+                    "left_shift"
                     "left_option"
+                    "left_control"
                   ];
                 };
               };
@@ -242,7 +226,7 @@
           ];
         }
         {
-          description = "ALT+j: Focus down";
+          description = "SUPER+j: Focus down";
           manipulators = [
             {
               type = "basic";
@@ -250,7 +234,10 @@
                 key_code = "j";
                 modifiers = {
                   mandatory = [
+                    "left_command"
+                    "left_shift"
                     "left_option"
+                    "left_control"
                   ];
                 };
               };
@@ -263,7 +250,7 @@
           ];
         }
         {
-          description = "ALT+k: Focus up";
+          description = "SUPER+k: Focus up";
           manipulators = [
             {
               type = "basic";
@@ -271,7 +258,10 @@
                 key_code = "k";
                 modifiers = {
                   mandatory = [
+                    "left_command"
+                    "left_shift"
                     "left_option"
+                    "left_control"
                   ];
                 };
               };
@@ -284,7 +274,7 @@
           ];
         }
         {
-          description = "ALT+l: Focus right";
+          description = "SUPER+l: Focus right";
           manipulators = [
             {
               type = "basic";
@@ -292,7 +282,10 @@
                 key_code = "l";
                 modifiers = {
                   mandatory = [
+                    "left_command"
+                    "left_shift"
                     "left_option"
+                    "left_control"
                   ];
                 };
               };
@@ -305,7 +298,7 @@
           ];
         }
         {
-          description = "CMD+ALT+w: Close current space";
+          description = "SUPER+w: Close current space";
           manipulators = [
             {
               type = "basic";
@@ -314,7 +307,9 @@
                 modifiers = {
                   mandatory = [
                     "left_command"
+                    "left_shift"
                     "left_option"
+                    "left_control"
                   ];
                 };
               };
