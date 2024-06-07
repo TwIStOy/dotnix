@@ -12,7 +12,7 @@ yabai -m config window_placement             second_child
 # 窗口间距设置
 yabai -m config top_padding                  10
 yabai -m config bottom_padding               10
-yabai -m config left_padding                 10
+yabai -m config left_padding                 30
 yabai -m config right_padding                10
 yabai -m config window_gap                   10
 # 自动平衡所有窗口始终占据相同的空间

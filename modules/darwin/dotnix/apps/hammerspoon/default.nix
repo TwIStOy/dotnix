@@ -11,6 +11,7 @@
   cfg = config.dotnix.apps.hammerspoon;
   inherit (dotnix-constants) user;
   homeDir = config.users.users."${user.name}".home;
+  inherit (pkgs-unstable) yabai;
 
   hammerspoon = pkgs.writeShellScriptBin "hs" ''
     #!${pkgs.bash}/bin/bash
@@ -26,7 +27,15 @@
 
   init-stackline = ''
     local stackline = require "stackline"
-    stackline:init()
+    stackline:init({
+      paths = {
+        yabai = "${yabai}/bin/yabai",
+        jq = "${pkgs.jq}/bin/jq",
+      },
+      appearance = {
+        size = 40,
+      }
+    })
   '';
 
   init-ipc-aarch = ''
