@@ -12,9 +12,9 @@ in {
   };
 
   # Configure keymap in X11
-  services.xserver = {
+  services.xserver.xkb = {
     layout = "us";
-    xkbVariant = "";
+    variant = "";
   };
 
   system.stateVersion = "24.05";
