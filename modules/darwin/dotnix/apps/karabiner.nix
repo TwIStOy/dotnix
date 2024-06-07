@@ -195,7 +195,7 @@
               };
               to = [
                 {
-                  shell_command = "${pkgs-unstable.yabai}/bin/yabai -m window --focus stack.next";
+                  shell_command = "${pkgs-unstable.yabai}/bin/yabai -m window --focus stack.next || ${pkgs-unstable.yabai}/bin/yabai -m window --focus stack.first";
                 }
               ];
             }
