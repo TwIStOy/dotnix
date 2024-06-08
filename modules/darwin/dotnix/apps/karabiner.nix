@@ -99,6 +99,46 @@
     complex_modifications = {
       rules = [
         {
+          description = "RIGHT_CMD to SUPER";
+          manipulators = [
+            {
+              type = "basic";
+              parameters = {
+                "basic.to_if_held_down_threshold_milliseconds" = 10;
+              };
+              from = {
+                key_code = "right_command";
+              };
+              to_if_alone = [
+                {
+                  key_code = "f19";
+                }
+              ];
+              to_if_held_down = [
+                {
+                  key_code = "left_command";
+                  modifiers = [
+                    "left_shift"
+                    "left_option"
+                    "left_control"
+                  ];
+                  lazy = true;
+                }
+              ];
+            }
+          ];
+          conditions = [
+            {
+              type = "device_if";
+              identifiers = [
+                {
+                  vendor_id = 1452;
+                }
+              ];
+            }
+          ];
+        }
+        {
           description = "CAPS_LOCK to CTRL";
           manipulators = [
             {
@@ -684,7 +724,6 @@
                 "basic.to_if_alone_timeout_milliseconds" = 500;
               };
             }
-
             {
               type = "basic";
               from = {
