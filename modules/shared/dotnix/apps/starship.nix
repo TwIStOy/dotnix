@@ -24,6 +24,9 @@ in {
             success_symbol = "[](bold green)";
             error_symbol = "[](bold red)";
           };
+          cmd_duration = {
+            disabled = true;
+          };
           git_branch = {
             symbol = " ";
             ignore_branches = ["master" "main"];
@@ -31,6 +34,12 @@ in {
           git_metrics = {
             disabled = false;
             ignore_submodules = true;
+          };
+          lua = {
+            version_format = "v\${major}.\${minor}";
+          };
+          nix_shell = {
+            heuristic = true;
           };
         };
       };
