@@ -25,11 +25,14 @@
             config,
             ...
           }: {
+            inherit (pkgs.llvmPackages_latest) stdenv;
+
             # packages in development env
             packages = with pkgs;
               [
                 pkg-config
                 gettext
+                include-what-you-use
               ]
               ++ lib.lists.optionals stdenv.isDarwin (with darwin.apple_sdk_11_0.frameworks; [
                 AppKit
@@ -42,7 +45,7 @@
 
             # set environment variables
             env = {
-              ASAN_SYMBOLIZER_PATH="${pkgs.llvm_18}/bin/llvm-symbolizer";
+              ASAN_SYMBOLIZER_PATH = "${pkgs.llvm_18}/bin/llvm-symbolizer";
               CMAKE_EXTRA_FLAGS = "-DENABLE_ASAN_UBSAN=ON -DENABLE_LTO=OFF";
             };
 
