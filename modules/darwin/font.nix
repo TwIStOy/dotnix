@@ -7,7 +7,7 @@
 }: let
   monolisa = pkgs.stdenv.mkDerivation {
     pname = "monolisa";
-    version = "2.012";
+    version = "2.015";
     src = "${secrets-hawtian}/fonts/";
 
     installPhase = ''
@@ -26,10 +26,10 @@
 
   maple-font = pkgs.stdenv.mkDerivation rec {
     pname = "maple-font";
-    version = "v7.0-beta17";
+    version = "v7.0-beta21";
     src = builtins.fetchurl {
       url = "https://github.com/subframe7536/maple-font/releases/download/${version}/MapleMono-NF-CN.zip";
-      sha256 = "0i0jjhdvl60sykafvwamvah353xwcj7hly40bhzcndzzjqr92gxn";
+      sha256 = "07ywfldi23h3yx1di2dzlbxwh3vvycny2bslxwq96gan82cqd0qn";
     };
     nativeBuildInputs = with pkgs; [unzip];
     sourceRoot = ".";
@@ -49,31 +49,23 @@
     '';
   };
 in {
-  fonts = {
-    # will be removed after this PR is merged:
-    #   https://github.com/LnL7/nix-darwin/pull/754
-    fontDir.enable = true;
+  fonts.packages = [
+    monolisa
+    maple-font
 
-    # will change to `fonts.packages` after this PR is merged:
-    #   https://github.com/LnL7/nix-darwin/pull/754
-    fonts = [
-      monolisa
-      maple-font
-
-      pkgs.monaspace
-      # nerdfonts
-      # https://github.com/NixOS/nixpkgs/blob/nixos-24.05/pkgs/data/fonts/nerdfonts/shas.nix
-      (pkgs-unstable.nerdfonts.override {
-        fonts = [
-          # symbols icon only
-          "NerdFontsSymbolsOnly"
-          # Characters
-          "FiraCode"
-          "JetBrainsMono"
-          "Iosevka"
-          "Monaspace"
-        ];
-      })
-    ];
-  };
+    pkgs.monaspace
+    # nerdfonts
+    # https://github.com/NixOS/nixpkgs/blob/nixos-24.05/pkgs/data/fonts/nerdfonts/shas.nix
+    (pkgs-unstable.nerdfonts.override {
+      fonts = [
+        # symbols icon only
+        "NerdFontsSymbolsOnly"
+        # Characters
+        "FiraCode"
+        "JetBrainsMono"
+        "Iosevka"
+        "Monaspace"
+      ];
+    })
+  ];
 }
