@@ -55,13 +55,79 @@
       "MonoLisaSemiBold-Italic"
       "MonoLisaThin-Regular"
       "MonoLisaThin-Italic"
+      "MonoLisaVariableRegular-Black"
+      "MonoLisaVariableRegular-Black"
+      "MonoLisaVariableItalic-Black"
+      "MonoLisaVariableItalic-Black"
+      "MonoLisaVariableRegular-Bold"
+      "MonoLisaVariableRegular-Bold"
+      "MonoLisaVariableItalic-Bold"
+      "MonoLisaVariableItalic-Bold"
+      "MonoLisaVariableRegular-ExtraBold"
+      "MonoLisaVariableRegular-ExtraBold"
+      "MonoLisaVariableItalic-ExtraBold"
+      "MonoLisaVariableItalic-ExtraBold"
+      "MonoLisaVariableRegular-ExtraLight"
+      "MonoLisaVariableRegular-ExtraLight"
+      "MonoLisaVariableItalic-ExtraLight"
+      "MonoLisaVariableItalic-ExtraLight"
+      "MonoLisaVariable-Italic"
+      "MonoLisaVariable-Italic"
+      "MonoLisaVariableRegular-Light"
+      "MonoLisaVariableRegular-Light"
+      "MonoLisaVariableItalic-Light"
+      "MonoLisaVariableItalic-Light"
+      "MonoLisaVariableRegular-Medium"
+      "MonoLisaVariableRegular-Medium"
+      "MonoLisaVariableItalic-Medium"
+      "MonoLisaVariableItalic-Medium"
+      "MonoLisaVariable-Regular"
+      "MonoLisaVariable-Regular"
+      "MonoLisaVariableRegular-SemiBold"
+      "MonoLisaVariableRegular-SemiBold"
+      "MonoLisaVariableItalic-SemiBold"
+      "MonoLisaVariableItalic-SemiBold"
+      "MonoLisaVariableRegular-Thin"
+      "MonoLisaVariableRegular-Thin"
+      "MonoLisaVariableItalic-Thin"
+      "MonoLisaVariableItalic-Thin"
     ];
-    features = "+ss01 +ss07 +ss11 -calt +ss09 +ss02 +ss14 +ss16";
+    features = "-calt +ss01 +ss07 +ss09 +ss11 +ss16 +ss18";
   };
+
+  iosevka-normal-config = to-font-config {
+    family = "Iosevka";
+    variants = [
+      ""
+      "SemiBold"
+      "Bold"
+    ];
+    features = "+ss07 cv49=16 cv94=1 VXLA=2 VXLC=2 cv34=12 cv31=13";
+  };
+
+  iosevka-italic-config = to-font-config {
+    family = "Iosevka";
+    variants = [
+      "Italic"
+      "Oblique"
+      "Bold-Italic"
+      "Bold-Oblique"
+    ];
+    features = "+ss07 cv49=16 cv94=1 VXLA=2 VXLC=2 cv34=12 cv36=27 cv32=2 cv25=27 cv31=13";
+  };
+
+  iosevka-config = ''
+    ${iosevka-normal-config}
+    ${iosevka-italic-config}
+  '';
 
   symbol-map-nerd-icons = map-nerd-icon-ranges {
     family = "Symbols Nerd Font";
   };
+
+  use-font-family = "MonoLisa";
+
+  contains-nerd-icons = name: (lib.strings.hasInfix "NF" name) || (lib.strings.hasInfix "Nerd Font" name);
 in {
   options.dotnix.desktop.kitty = {
     enable = lib.mkEnableOption "Enable kitty terminal";
@@ -75,7 +141,7 @@ in {
 
         theme = "Catppuccin-Mocha";
         settings = {
-          font_family = "Maple Mono NF CN";
+          font_family = use-font-family;
 
           disable_ligatures = "never";
           share_connections = "yes";
@@ -162,15 +228,12 @@ in {
         extraConfig = ''
           ${maple-config}
           ${monolisa-config}
-
-          font_features Iosevka +ss07 cv49=16 cv94=1 VXLA=2 VXLC=2 cv34=12 cv31=13
-          font_features Iosevka-Semibold +ss07 cv49=16 cv94=1 VXLA=2 VXLC=2 cv34=12 cv31=13
-          font_features Iosevka-Italic +ss07 cv49=16 cv94=1 VXLA=2 VXLC=2 cv34=12 cv36=27 cv32=2 cv25=27 cv31=13
-          font_features Iosevka-Oblique +ss07 cv49=16 cv94=1 VXLA=2 VXLC=2 cv34=12 cv36=27 cv32=2 cv25=27 cv31=13
-          font_features Iosevka-Bold +ss07 cv49=16 cv94=1 VXLA=2 VXLC=2 cv34=12 cv31=13
-          font_features Iosevka-Bold-Italic +ss07 cv49=16 cv94=1 VXLA=2 VXLC=2 cv34=12 cv36=27 cv32=2 cv25=27 cv31=13
-          font_features Iosevka-Bold-Oblique +ss07 cv49=16 cv94=1 VXLA=2 VXLC=2 cv34=12 cv36=27 cv32=2 cv25=27 cv31=13
-
+          ${iosevka-config}
+          ${
+            if !(contains-nerd-icons use-font-family)
+            then symbol-map-nerd-icons
+            else ""
+          }
 
           modify_font underline_position 22
           modify_font cell_width 90%

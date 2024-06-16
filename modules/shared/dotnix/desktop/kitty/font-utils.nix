@@ -1,13 +1,26 @@
-{
+rec {
+  concat-family-variant = {
+    family,
+    variant,
+  }:
+    if family == ""
+    then variant
+    else if variant == ""
+    then family
+    else family + "-" + variant;
+
   to-font-config = {
     family,
     variants,
     features,
   }: let
-    full-names-features =
-      if family == ""
-      then builtins.map (x: x + " " + features) variants
-      else builtins.map (x: family + "-" + x + " " + features) variants;
+    full-names = builtins.map (x:
+      concat-family-variant {
+        inherit family;
+        variant = x;
+      })
+    variants;
+    full-names-features = builtins.map (x: x + " " + features) full-names;
     lines = builtins.map (x: "font_features " + x) full-names-features;
   in
     builtins.foldl' (x: y: x + "\n" + y) "" lines;
@@ -55,7 +68,7 @@
       # Font Logos
       "U+F300-U+F32F"
     ];
-    lines = builtins.map (x: "symbol_map " + x + " " + x) nerd-icon-ranges;
+    lines = builtins.map (x: "symbol_map " + x + " " + family) nerd-icon-ranges;
   in
     builtins.foldl' (x: y: x + "\n" + y) "" lines;
 }
