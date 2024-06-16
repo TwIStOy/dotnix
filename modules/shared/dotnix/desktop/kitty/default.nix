@@ -93,6 +93,9 @@
       "MonoLisaVariableItalic-Thin"
     ];
     features = "-calt +ss01 +ss07 +ss09 +ss11 +ss16 +ss18";
+    extra-config = ''
+      modify_font cell_width 90%
+    '';
   };
 
   iosevka-normal-config = to-font-config {

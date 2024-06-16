@@ -13,6 +13,7 @@ rec {
     family,
     variants,
     features,
+    extra-config ? "",
   }: let
     full-names = builtins.map (x:
       concat-family-variant {
@@ -22,8 +23,10 @@ rec {
     variants;
     full-names-features = builtins.map (x: x + " " + features) full-names;
     lines = builtins.map (x: "font_features " + x) full-names-features;
-  in
-    builtins.foldl' (x: y: x + "\n" + y) "" lines;
+  in ''
+    ${builtins.foldl' (x: y: x + "\n" + y) "" lines}
+    ${extra-config}
+  '';
 
   map-nerd-icon-ranges = {family}: let
     nerd-icon-ranges = [
