@@ -19,7 +19,7 @@
   '';
 
   stackline-src = pkgs.fetchFromGitHub {
-    owner = "AdamWagner";
+    owner = "TwIStOy";
     repo = "stackline";
     rev = "master";
     sha256 = "sha256-x7SIgKR6rwkoVVbaAvjFr1N7wTF3atni/d6xGLBBRN4=";
@@ -64,12 +64,9 @@ in {
     # setup the Hammerspoon configuration
     home-manager = dotnix-utils.hm.hmConfig {
       home = {
-        packages =
-          [
-          ]
-          ++ lib.lists.optionals (with pkgs.stdenv; (isDarwin && (isAarch32 || isAarch64))) [
-            hammerspoon
-          ];
+        packages = lib.lists.optionals (with pkgs.stdenv; (isDarwin && (isAarch32 || isAarch64))) [
+          hammerspoon
+        ];
 
         # TODO(hawtian): link stackline and init-stackline
         file = {
