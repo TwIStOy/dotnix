@@ -147,12 +147,10 @@ in {
           font_family = use-font-family;
 
           disable_ligatures = "never";
-          share_connections = "yes";
           scrollback_lines = "10000";
 
           mouse_hide_wait = "0";
           copy_on_select = "yes";
-          terminal_select_modifiers = "alt";
 
           input_delay = 1;
           repaint_delay = 8;
