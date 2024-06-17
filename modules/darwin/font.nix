@@ -12,9 +12,7 @@
 
     installPhase = ''
       runHook preInstall
-
       install -Dm644 *.ttf -t $out/share/fonts/truetype
-
       runHook postInstall
     '';
 
@@ -24,34 +22,57 @@
     };
   };
 
-  maple-font = pkgs.stdenv.mkDerivation rec {
-    pname = "maple-font";
+  fontFromGithub = {
+    name,
+    url,
+    sha256,
+    version,
+    followRedirects ? true,
+  }:
+    pkgs.stdenv.mkDerivation ({
+        pname = name;
+        inherit version;
+        src = builtins.fetchurl {
+          url = builtins.replaceStrings ["$VERSION"] [version] url;
+          inherit sha256;
+        };
+        nativeBuildInputs = with pkgs; [unzip];
+
+        dontPatch = true;
+        dontConfigure = true;
+        dontBuild = true;
+        doCheck = false;
+        dontFixup = true;
+
+        installPhase = ''
+          runHook preInstall
+          install -Dm644 *.ttf -t $out/share/fonts/truetype
+          runHook postInstall
+        '';
+      }
+      // lib.optionalAttrs (!followRedirects) {
+        sourceRoot = ".";
+      });
+
+  lxgw-wenkai = fontFromGithub {
+    name = "lxgw-wenkai";
+    version = "v1.330";
+    url = "https://github.com/lxgw/LxgwWenKai/releases/download/$VERSION/lxgw-wenkai-$VERSION.zip";
+    sha256 = "033qc5xyxdf777sa6xxipg86ch2jbyybvfhw8yzwl20690apwc9g";
+  };
+
+  maple-font = fontFromGithub {
+    name = "maple-font";
     version = "v7.0-beta21";
-    src = builtins.fetchurl {
-      url = "https://github.com/subframe7536/maple-font/releases/download/${version}/MapleMono-NF-CN.zip";
-      sha256 = "07ywfldi23h3yx1di2dzlbxwh3vvycny2bslxwq96gan82cqd0qn";
-    };
-    nativeBuildInputs = with pkgs; [unzip];
-    sourceRoot = ".";
-
-    dontPatch = true;
-    dontConfigure = true;
-    dontBuild = true;
-    doCheck = false;
-    dontFixup = true;
-
-    installPhase = ''
-      runHook preInstall
-
-      install -Dm64 *.ttf -t $out/share/fonts/truetype
-
-      runHook postInstall
-    '';
+    url = "https://github.com/subframe7536/maple-font/releases/download/$VERSION/MapleMono-NF-CN.zip";
+    sha256 = "07ywfldi23h3yx1di2dzlbxwh3vvycny2bslxwq96gan82cqd0qn";
+    followRedirects = false;
   };
 in {
   fonts.packages = [
     monolisa
     maple-font
+    lxgw-wenkai
 
     pkgs.monaspace
     # nerdfonts
