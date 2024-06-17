@@ -1,6 +1,9 @@
 _: {
   security.pam.enableSudoTouchIdAuth = true;
 
+  # fix timezone
+  time.timeZone = "Asia/Shanghai";
+
   system = {
     # activationScripts are executed every time you boot the system or run
     # `nixos-rebuild` / `darwin-rebuild`.
