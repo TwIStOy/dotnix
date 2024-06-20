@@ -8,7 +8,7 @@
   monolisa = pkgs.stdenv.mkDerivation {
     pname = "monolisa";
     version = "2.015";
-    src = "${secrets-hawtian}/fonts/";
+    src = "${secrets-hawtian}/fonts/MonoLisa";
 
     installPhase = ''
       runHook preInstall
@@ -18,6 +18,23 @@
 
     meta = {
       description = "Monolisa font";
+      platforms = lib.platforms.all;
+    };
+  };
+
+  akzidenz-grotesk = pkgs.stdenv.mkDerivation {
+    pname = "akzidenz-grotesk";
+    version = "1.0";
+    src = "${secrets-hawtian}/fonts/Akzidenz-Grotesk";
+
+    installPhase = ''
+      runHook preInstall
+      install -Dm644 *.otf -t $out/share/fonts/truetype
+      runHook postInstall
+    '';
+
+    meta = {
+      description = "Akzidenz Grotesk font";
       platforms = lib.platforms.all;
     };
   };
@@ -71,6 +88,7 @@
 in {
   fonts.packages = [
     monolisa
+    akzidenz-grotesk
     maple-font
     lxgw-wenkai
 

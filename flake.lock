@@ -1010,10 +1010,10 @@
     "secrets-hawtian": {
       "flake": false,
       "locked": {
-        "lastModified": 1718452931,
-        "narHash": "sha256-MJR/ovfrccpAKZJUmWOUje/gmtCCVYkJ7avd0byxmR0=",
+        "lastModified": 1718895602,
+        "narHash": "sha256-cCi/Fe70+imlwy5riNQIf9B913BU0UYHBIdy2ZIUP4I=",
         "ref": "refs/heads/master",
-        "rev": "1febb1ec65bba6d88def1e1b1652446b324ff2ba",
+        "rev": "85a11593b767215622c49fac883a0ce3d9044f32",
         "shallow": true,
         "type": "git",
         "url": "ssh://git@github.com/TwIStOy/nix-secret.git"
