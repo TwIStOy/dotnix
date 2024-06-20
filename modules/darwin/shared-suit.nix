@@ -20,6 +20,7 @@ in {
         "karabiner"
         "pbcopy-paste"
         "ssh"
+        "zed"
       ];
     };
   };
