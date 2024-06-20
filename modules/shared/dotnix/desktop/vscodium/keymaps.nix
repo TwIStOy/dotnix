@@ -1,4 +1,6 @@
-[
+let
+  build-when = conditions: builtins.foldl' (acc: elem: "${acc} && ${elem}") "" conditions;
+in [
   {
     "key" = "ctrl+l";
     "command" = "-extension.vim_navigateCtrlL";

@@ -5,12 +5,16 @@
 }: {
   # Extensions
   "extensions.ignoreRecommendations" = true;
+  "extensions.experimental.affinity" = {
+    "vscodevim.vim" = 1;
+  };
 
   # Workbench
   "workbench.colorTheme" = "Catppuccin Mocha";
   "workbench.iconTheme" = "catppuccin-perfect-mocha";
   "workbench.editor.highlightModifiedTabs" = true;
   "workbench.activityBar.location" = "top";
+  "workbench.tree.renderIndentGuides" = "none";
 
   # Editor
   "editor.fontSize" = 18;
@@ -22,7 +26,8 @@
   "editor.lineNumbers" = "relative";
   "editor.inlineSuggest.enabled" = true;
   "editor.inlayHints.enabled" = "off";
-  "editor.formatOnSave" = true;
+  "editor.formatOnSave" = false;
+  "editor.guides.indentation" = false;
 
   # Explorer
   "explorer.confirmDragAndDrop" = false;
@@ -72,6 +77,45 @@
     "markdown" = false;
     "scminput" = false;
     "yaml" = false;
+  };
+
+  # vscodevim.vim
+  "vim.incsearch" = true;
+  "vim.hlsearch" = true;
+  "vim.useCtrlKeys" = true;
+  "vim.leader" = "<space>";
+  "vim.useSystemClipboard" = false;
+  "vim.surround" = true;
+  "vim.insertModeKeyBindings" = [
+    #     {
+    #       "before": ["j", "j"],
+    #       "after": ["<Esc>"]
+    #     }
+  ];
+  "vim.normalModeKeyBindingsNonRecursive" = [
+    {
+      before = ["<leader>" "f" "t"];
+      commands = [
+        "workbench.files.action.showActiveFileInExplorer"
+      ];
+    }
+    #     {
+    #       "before": ["<leader>", "d"],
+    #       "after": ["d", "d"]
+    #     },
+    #     {
+    #       "before": ["<C-n>"],
+    #       "commands": [":nohl"]
+    #     },
+    #     {
+    #       "before": ["K"],
+    #       "commands": ["lineBreakInsert"],
+    #       "silent": true
+    #     }
+  ];
+  "vim.handleKeys" = {
+    #     "<C-a>": false,
+    #     "<C-f>": false
   };
 
   # Language Specific
