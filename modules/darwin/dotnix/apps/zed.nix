@@ -8,10 +8,19 @@
 
   settings = {
     theme = "Catppuccin Macchiato - No Italics";
+    auto_update = false;
+    auto_update_extensions = {
+      "catppuccin" = false;
+      "nix" = true;
+    };
+    auto_install_extensions = {
+      "catppuccin" = true;
+      "nix" = true;
+    };
     vim_mode = true;
     cursor_blink = false;
     relative_line_numbers = true;
-    ui_font_family = "Iosevka";
+    ui_font_family = "Akzidenz-Grotesk BQ";
     buffer_font_family = "MonoLisa Variable";
     preferred_line_length = 80;
     buffer_font_features = {
@@ -43,9 +52,6 @@
     indent_guides = {
       enabled = false;
     };
-    auto_install_extensions = [
-      "catppuccin"
-    ];
     git = {
       inline_blame = {
         enabled = false;
