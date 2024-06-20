@@ -21,6 +21,10 @@ in {
         enable = true;
       };
 
+      vscodium = {
+        enable = true;
+      };
+
       neovide = {
         enable = true;
         package =
