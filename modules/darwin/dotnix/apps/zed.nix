@@ -13,6 +13,7 @@
     relative_line_numbers = true;
     ui_font_family = "Iosevka";
     buffer_font_family = "MonoLisa Variable";
+    preferred_line_length = 80;
     buffer_font_features = {
       calt = false;
       ss01 = true;
@@ -45,6 +46,22 @@
     auto_install_extensions = [
       "catppuccin"
     ];
+    git = {
+      inline_blame = {
+        enabled = false;
+      };
+    };
+    languages = {
+      Python = {
+        indent_guides = {
+          enabled = true;
+          coloring = "indent_aware";
+        };
+      };
+      Rust = {
+        preferred_line_length = 100;
+      };
+    };
   };
 
   keymaps = [
@@ -73,7 +90,7 @@ in {
     };
 
     home-manager = dotnix-utils.hm.hmConfig {
-      xdg.configFile."zed/config.json" = {
+      xdg.configFile."zed/settings.json" = {
         text = builtins.toJSON settings;
         force = true;
       };
