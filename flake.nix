@@ -132,7 +132,9 @@
 
     neovim-nightly-overlay = {
       # Before #527 merged, use the following commit
-      url = "github:nix-community/neovim-nightly-overlay?rev=7b5ca2486bba58cac80b9229209239740b67cf90";
+      # url = "github:nix-community/neovim-nightly-overlay?rev=7b5ca2486bba58cac80b9229209239740b67cf90";
+      url = "github:nix-community/neovim-nightly-overlay";
+      inputs.nixpkgs.follows = "nixpkgs-unstable";
     };
 
     # fix vscode server on nixos
