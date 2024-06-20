@@ -68,6 +68,22 @@
         preferred_line_length = 100;
       };
     };
+    terminal = {
+      shell = {
+        program = "fish";
+      };
+      font_family = "MonaspiceAr Nerd Font";
+    };
+    assistant = {
+      version = "1";
+      provider = {
+        name = "openai";
+        type = "openai";
+        default_model = "gpt-4o";
+        api_url = "https://api.gptsapi.net";
+      };
+    };
+    # TODO(Hawtian Wang): setup OPENAI_API_KEY later
   };
 
   keymaps = [
