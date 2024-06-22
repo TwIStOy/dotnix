@@ -2,9 +2,12 @@
   inherit (dotnix-utils) enabled;
   hostname = "yukikaze";
 in {
-  dotnix.darwin-shared-suit = enabled;
+  dotnix = {
+    darwin-shared-suit = enabled;
 
-  dotnix.desktop.neovide.extraSettings.font.size = 18;
+    desktop.neovide.extraSettings.font.size = 18;
+    apps.zed.buffer_font_size = 18;
+  };
 
   networking.hostName = hostname;
   networking.computerName = hostname;

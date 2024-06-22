@@ -6,7 +6,7 @@
 }: let
   cfg = config.dotnix.apps.zed;
 
-  settings = {
+  gen-settings = {buffer_font_size}: {
     theme = "Catppuccin Macchiato - No Italics";
     auto_update = false;
     auto_update_extensions = {
@@ -32,7 +32,7 @@
       ss16 = true;
       ss18 = true;
     };
-    buffer_font_size = 20;
+    inherit buffer_font_size;
     scrollbar = {
       show = "never";
     };
@@ -104,6 +104,14 @@
 in {
   options.dotnix.apps.zed = {
     enable = lib.mkEnableOption "Zed";
+
+    buffer_font_size = lib.mkOption {
+      type = lib.types.int;
+      default = 20;
+      description = ''
+        The font size of the buffer.
+      '';
+    };
   };
 
   config = lib.mkIf cfg.enable {
@@ -113,7 +121,9 @@ in {
 
     home-manager = dotnix-utils.hm.hmConfig {
       xdg.configFile."zed/settings.json" = {
-        text = builtins.toJSON settings;
+        text = builtins.toJSON (gen-settings {
+          inherit (cfg) buffer_font_size;
+        });
         force = true;
       };
       xdg.configFile."zed/keymap.json" = {
