@@ -25,6 +25,7 @@ in {
             github.copilot-chat
             ms-vscode-remote.remote-ssh
             ms-vscode-remote.remote-ssh-edit
+            ms-vscode-remote.remote-containers
             ms-vscode.remote-explorer
             llvm-vs-code-extensions.vscode-clangd
             xaver.clang-format
