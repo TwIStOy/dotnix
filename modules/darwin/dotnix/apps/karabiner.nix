@@ -45,6 +45,42 @@
         };
         mouse_flip_vertical_wheel = true;
       }
+      {
+        disable_built_in_keyboard_if_exists = true;
+        fn_function_keys = [];
+        game_pad_swap_sticks = false;
+        identifiers = {
+          is_game_pad = false;
+          is_keyboard = true;
+          is_pointing_device = false;
+          # iqunix zone x75
+          product_id = 20754;
+          vendor_id = 12815;
+        };
+        ignore = false;
+        manipulate_caps_lock_led = true;
+        mouse_flip_horizontal_wheel = false;
+        mouse_flip_vertical_wheel = false;
+        mouse_flip_x = false;
+        mouse_flip_y = false;
+        mouse_swap_wheels = false;
+        mouse_swap_xy = false;
+        simple_modifications = [
+          {
+            from = {key_code = "left_option";};
+            to = [{key_code = "left_command";}];
+          }
+          {
+            from = {key_code = "left_command";};
+            to = [{key_code = "left_option";}];
+          }
+          {
+            from = {key_code = "right_option";};
+            to = [{key_code = "right_command";}];
+          }
+        ];
+        treat_as_built_in_keyboard = false;
+      }
     ];
     fn_function_keys = [
       {
