@@ -65,6 +65,8 @@
   "rust-analyzer.check.command" = "clippy";
   "rust-analyzer.checkOnSave" = true;
   "rust-analyzer.lens.enable" = false;
+  "rust-analyzer.restartServerOnConfigChange" = true;
+  "rust-analyzer.server.path" = "rust-analyzer";
 
   # jnoortheen.nix-ide
   "nix.serverPath" = "${pkgs.nil}/bin/nil";
