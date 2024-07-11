@@ -81,45 +81,6 @@
     "yaml" = false;
   };
 
-  # vscodevim.vim
-  "vim.incsearch" = true;
-  "vim.hlsearch" = true;
-  "vim.useCtrlKeys" = true;
-  "vim.leader" = "<space>";
-  "vim.useSystemClipboard" = false;
-  "vim.surround" = true;
-  "vim.insertModeKeyBindings" = [
-    #     {
-    #       "before": ["j", "j"],
-    #       "after": ["<Esc>"]
-    #     }
-  ];
-  "vim.normalModeKeyBindingsNonRecursive" = [
-    {
-      before = ["<leader>" "f" "t"];
-      commands = [
-        "workbench.files.action.showActiveFileInExplorer"
-      ];
-    }
-    #     {
-    #       "before": ["<leader>", "d"],
-    #       "after": ["d", "d"]
-    #     },
-    #     {
-    #       "before": ["<C-n>"],
-    #       "commands": [":nohl"]
-    #     },
-    #     {
-    #       "before": ["K"],
-    #       "commands": ["lineBreakInsert"],
-    #       "silent": true
-    #     }
-  ];
-  "vim.handleKeys" = {
-    #     "<C-a>": false,
-    #     "<C-f>": false
-  };
-
   # Language Specific
   "[cpp]" = {
   };

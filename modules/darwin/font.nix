@@ -39,6 +39,23 @@
     };
   };
 
+  readex-pro = pkgs.stdenv.mkDerivation {
+    pname = "readex-pro";
+    version = "1.0";
+    src = "${secrets-hawtian}/fonts/ReadexPro";
+
+    installPhase = ''
+      runHook preInstall
+      install -Dm644 *.ttf -t $out/share/fonts/truetype
+      runHook postInstall
+    '';
+
+    meta = {
+      description = "Readex font";
+      platforms = lib.platforms.all;
+    };
+  };
+
   fontFromGithub = {
     name,
     url,
@@ -91,6 +108,7 @@ in {
     akzidenz-grotesk
     maple-font
     lxgw-wenkai
+    readex-pro
 
     pkgs.monaspace
     # nerdfonts

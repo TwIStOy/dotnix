@@ -34,7 +34,6 @@ in {
           ++ (with extensions.open-vsx; [
             catppuccin.catppuccin-vsc
             catppuccin.catppuccin-vsc-icons
-            vscodevim.vim
             mkhl.direnv
             draivin.hsnips
             draivin.hscopes
