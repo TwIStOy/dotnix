@@ -6,21 +6,24 @@
 }: let
   cfg = config.dotnix.apps.zed;
 
+  extensions = [
+    "macos-classic"
+    "catppuccin"
+    "nix"
+  ];
+
+  auto_install_extensions = builtins.foldl' (acc: ext: acc // {ext = true;}) {} extensions;
+  auto_update_extensions = builtins.foldl' (acc: ext: acc // {ext = true;}) {} extensions;
+
   gen-settings = {buffer_font_size}: {
     theme = "Catppuccin Macchiato - No Italics";
     auto_update = false;
-    auto_update_extensions = {
-      "catppuccin" = false;
-      "nix" = true;
-    };
-    auto_install_extensions = {
-      "catppuccin" = true;
-      "nix" = true;
-    };
+    inherit auto_update_extensions;
+    inherit auto_install_extensions;
     vim_mode = true;
     cursor_blink = false;
     relative_line_numbers = true;
-    ui_font_family = "Akzidenz-Grotesk BQ";
+    ui_font_family = "Readex Pro";
     buffer_font_family = "MonoLisa Variable";
     preferred_line_length = 80;
     buffer_font_features = {
