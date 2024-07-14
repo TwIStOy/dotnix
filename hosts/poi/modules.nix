@@ -5,7 +5,7 @@ _: {
     };
     desktop.neovide.extraSettings.font.size = 22;
     apps.ollama = {
-      enable = true;
+      enable = false;
     };
   };
 }

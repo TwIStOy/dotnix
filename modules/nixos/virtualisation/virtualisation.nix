@@ -1,4 +1,4 @@
-_: {
+{pkgs, ...}: {
   virtualisation = {
     docker = {
       enable = true;
@@ -8,4 +8,8 @@ _: {
       enableOnBoot = true;
     };
   };
+
+  environment.systemPackages = with pkgs; [
+    docker-compose
+  ];
 }
