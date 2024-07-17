@@ -15,7 +15,7 @@
   auto_install_extensions = builtins.foldl' (acc: ext: acc // {ext = true;}) {} extensions;
   auto_update_extensions = builtins.foldl' (acc: ext: acc // {ext = true;}) {} extensions;
 
-  gen-settings = {buffer_font_size}: {
+  gen-settings = {buffer_font_size, ui_font_size}: {
     theme = "Catppuccin Macchiato - No Italics";
     auto_update = false;
     inherit auto_update_extensions;
@@ -36,6 +36,7 @@
       ss18 = true;
     };
     inherit buffer_font_size;
+    inherit ui_font_size;
     scrollbar = {
       show = "never";
     };
@@ -115,6 +116,14 @@ in {
         The font size of the buffer.
       '';
     };
+
+    ui_font_size = lib.mkOption {
+      type = lib.types.int;
+      default = 16;
+      description = ''
+        The font size of the UI.
+      '';
+    };
   };
 
   config = lib.mkIf cfg.enable {
@@ -125,7 +134,7 @@ in {
     home-manager = dotnix-utils.hm.hmConfig {
       xdg.configFile."zed/settings.json" = {
         text = builtins.toJSON (gen-settings {
-          inherit (cfg) buffer_font_size;
+          inherit (cfg) buffer_font_size ui_font_size;
         });
         force = true;
       };
