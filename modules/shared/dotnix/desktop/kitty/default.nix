@@ -186,6 +186,7 @@ in {
           clipboard_control = "write-clipboard write-primary read-clipboard read-primary";
 
           allow_remote_control = "yes";
+          listen_on = "tcp:0.0.0.0:0";
         };
 
         keybindings = {

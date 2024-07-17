@@ -44,6 +44,7 @@ in {
           j = "just";
           lg = "lazygit";
           tdev = "tmux atta -t dev || tmux new -s dev";
+          goto = "kitten ssh --kitten forward_remote_control=yes";
         };
       };
     };
