@@ -21,6 +21,7 @@ in {
         "pbcopy-paste"
         "ssh"
         "zed"
+        "squirrel"
       ];
     };
   };
