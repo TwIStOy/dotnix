@@ -81,6 +81,9 @@
     "yaml" = false;
   };
 
+  # mkhl.direnv
+  "direnv.restart.automatic" = true;
+
   # Language Specific
   "[cpp]" = {
   };
