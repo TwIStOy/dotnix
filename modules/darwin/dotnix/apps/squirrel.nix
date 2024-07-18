@@ -35,15 +35,41 @@ in {
       };
 
       home.file."Library/Rime/squirrel.custom.yaml" = {
-        text = toYAML {
-          patch = {
-            "style/horizontal" = true;
-            "style/font_point" = 18;
-            "style/font_face" = "Maple Mono NF CN";
+        force = true;
+        source =
+          (pkgs.formats.yaml {}).generate "squirrel.custom.yaml"
+          {
+            patch = {
+              style = {
+                font_point = 16;
+                horizontal = true;
+                color_scheme = "wechat_dark";
+              };
+              app_options = {
+                "com.apple.Xcode" = {
+                  ascii_mode = true;
+                };
+                "net.kovidgoyal.kitty" = {
+                  ascii_mode = true;
+                };
+                "com.neovide.neovide" = {
+                  ascii_mode = true;
+                };
+                "com.microsoft.VSCode" = {
+                  ascii_mode = true;
+                };
+                "com.microsoft.VSCodeInsiders" = {
+                  ascii_mode = true;
+                };
+                "com.1password.1password" = {
+                  ascii_mode = true;
+                };
+                "com.runningwithcrayons.Alfred" = {
+                  ascii_mode = true;
+                };
+              };
+            };
           };
-          # style/color_scheme: mac_light
-          # style/color_scheme_dark: mac_dark
-        };
       };
     };
   };
