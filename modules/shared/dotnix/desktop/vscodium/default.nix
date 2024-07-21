@@ -30,10 +30,10 @@ in {
             llvm-vs-code-extensions.vscode-clangd
             xaver.clang-format
             thang-nm.catppuccin-perfect-icons
-          ])
-          ++ (with extensions.open-vsx; [
             catppuccin.catppuccin-vsc
             catppuccin.catppuccin-vsc-icons
+          ])
+          ++ (with extensions.open-vsx; [
             mkhl.direnv
             draivin.hsnips
             draivin.hscopes
