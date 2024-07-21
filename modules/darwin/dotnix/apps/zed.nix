@@ -15,7 +15,10 @@
   auto_install_extensions = builtins.foldl' (acc: ext: acc // {ext = true;}) {} extensions;
   auto_update_extensions = builtins.foldl' (acc: ext: acc // {ext = true;}) {} extensions;
 
-  gen-settings = {buffer_font_size, ui_font_size}: {
+  gen-settings = {
+    buffer_font_size,
+    ui_font_size,
+  }: {
     theme = "Catppuccin Macchiato - No Italics";
     auto_update = false;
     inherit auto_update_extensions;

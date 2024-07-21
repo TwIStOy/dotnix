@@ -56,4 +56,7 @@ nvim-test: nvim-clean
   @ln -s $HOME/.config/nvim/init-user.lua $HOME/.config/nvim/init.lua
 
 fmt:
-  @nix fmt
+  @nix fmt -- --exclude "./modules/shared/dotnix/development/languages/.vim-template.*.nix" --exclude "./modules/shared/dotnix/apps/.vim-template:*.nix" --exclude "./modules/darwin/dotnix/.vim-template:*.nix" --exclude "./modules/shared/dotnix/development/languages/.vim-template:*.nix" .
+
+ci-fmt:
+  @nix fmt -- --exclude "./modules/shared/dotnix/development/languages/.vim-template.*.nix" --exclude "./modules/shared/dotnix/apps/.vim-template:*.nix" --exclude "./modules/darwin/dotnix/.vim-template:*.nix" --exclude "./modules/shared/dotnix/development/languages/.vim-template:*.nix" --check .

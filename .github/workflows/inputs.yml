@@ -1,0 +1,25 @@
+name: Nix Flake Eval Tests
+
+on:
+  push:
+    branches:
+      - master
+    paths-ignore:
+      - "**.md"
+      - "Justfile"
+  pull_request:
+    branches:
+      - master
+    paths-ignore:
+      - "**.md"
+      - "Justfile"
+
+jobs:
+  checks:
+    name: Check expressions
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+      - name: Check Nix flake Nixpkgs inputs
+        uses: DeterminateSystems/flake-checker-action@v4
