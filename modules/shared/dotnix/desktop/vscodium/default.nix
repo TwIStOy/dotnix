@@ -32,6 +32,7 @@ in {
             thang-nm.catppuccin-perfect-icons
             catppuccin.catppuccin-vsc
             catppuccin.catppuccin-vsc-icons
+            vscodevim.vim
           ])
           ++ (with extensions.open-vsx; [
             mkhl.direnv

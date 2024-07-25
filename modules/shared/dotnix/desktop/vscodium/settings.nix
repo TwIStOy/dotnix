@@ -84,6 +84,37 @@
   # mkhl.direnv
   "direnv.restart.automatic" = true;
 
+  # vscodevim.vim
+  "vim.hlSearch" = true;
+  "vim.leader" = "<space>";
+  "vim.handleKeys" = {
+    "<C-l>" = false;
+  };
+  "vim.insertModeKeyBindings" = [
+    {
+      before = ["j" "j"];
+      after = ["<Esc>"];
+    }
+  ];
+  "vim.normalModeKeyBindings" = [
+    {
+      before = [":"];
+      commands = ["workbench.action.showCommands"];
+      silent = true;
+    }
+    {
+      before = ["leader" "f" "s"];
+      commands = ["workbench.action.files.save"];
+    }
+  ];
+  "vim.visualModeKeyBindings" = [];
+  "vim.operatorPendingModeKeyBindings" = [];
+  "vim.insertModeKeyBindingsNonRecursive" = [];
+  "vim.normalModeKeyBindingsNonRecursive" = [
+  ];
+  "vim.visualModeKeyBindingsNonRecursive" = [];
+  "vim.operatorPendingModeKeyBindingsNonRecursive" = [];
+
   # Language Specific
   "[cpp]" = {
   };

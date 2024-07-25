@@ -1,5 +1,7 @@
 let
   build-when = conditions: builtins.foldl' (acc: elem: "${acc} && ${elem}") "" conditions;
+
+  in-mode = mode: "vim.mode == '${mode}'";
 in [
   {
     "key" = "ctrl+l";
