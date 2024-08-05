@@ -27,4 +27,5 @@ in {
   "ssh-remote-hosts.age".publicKeys = mkSecrets (homeServers ++ desktops);
   "copilot-gpt4-service-env.age".publicKeys = mkSecrets (homeServers ++ desktops);
   "chatgpt-next-web.age".publicKeys = mkSecrets (homeServers ++ desktops);
+  "github-runners-poi-aaku.age".publicKeys = mkSecrets (homeServers ++ desktops);
 }

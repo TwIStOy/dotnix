@@ -7,5 +7,8 @@ _: {
     apps.ollama = {
       enable = false;
     };
+    services.github-runner = {
+      enable = true;
+    };
   };
 }

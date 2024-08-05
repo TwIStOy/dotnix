@@ -52,5 +52,9 @@ in {
       file = "chatgpt-next-web.age";
       owner = user.name;
     };
+    github-runners-poi-aaku = ageSecret {
+      file = "github-runners-poi-aaku.age";
+      owner = user.name;
+    };
   };
 }
