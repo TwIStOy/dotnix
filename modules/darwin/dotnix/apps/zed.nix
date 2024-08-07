@@ -49,8 +49,22 @@
           path_lookup = true;
         };
         initialization_options = {
-          check = {
-            command = "clippy";
+          check = {command = "clippy";};
+          imports = {
+            granularity = {
+              enforce = true;
+              group = "crate";
+            };
+            prefix = "crate";
+          };
+          semanticHighlighting = {
+            operator = {specialization = {enable = true;};};
+            punctuation = {enable = true;};
+          };
+          files = {
+            watcher = "server";
+            excludeDirs = [".direnv" ".devenv"];
+            watcherExclude = [".direnv" ".devenv"];
           };
         };
       };
@@ -105,6 +119,11 @@
       context = "Editor && vim_mode == insert && !menu";
       bindings = {
         "ctrl-l" = "editor::AcceptInlineCompletion";
+      };
+    }
+    {
+      context = "Editor && vim_mode == normal && !menu";
+      bindings = {
       };
     }
   ];
