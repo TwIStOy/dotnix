@@ -67,6 +67,10 @@
   "rust-analyzer.lens.enable" = false;
   "rust-analyzer.restartServerOnConfigChange" = true;
   "rust-analyzer.server.path" = "rust-analyzer";
+  "rust-analyzer.files.excludeDirs" = [
+    ".direnv"
+    ".devenv"
+  ];
 
   # jnoortheen.nix-ide
   "nix.serverPath" = "${pkgs.nil}/bin/nil";
@@ -98,13 +102,12 @@
   ];
   "vim.normalModeKeyBindings" = [
     {
-      before = [":"];
-      commands = ["workbench.action.showCommands"];
-      silent = true;
-    }
-    {
       before = ["leader" "f" "s"];
       commands = ["workbench.action.files.save"];
+    }
+    {
+      before = ["leader" "f" "t"];
+      commands = ["workbench.files.action.focusFilesExplorer"];
     }
   ];
   "vim.visualModeKeyBindings" = [];
