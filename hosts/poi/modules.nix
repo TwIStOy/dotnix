@@ -8,7 +8,7 @@ _: {
       enable = false;
     };
     services.github-runner = {
-      enable = true;
+      enable = false;
     };
   };
 }
