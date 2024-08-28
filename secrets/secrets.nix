@@ -28,4 +28,5 @@ in {
   "copilot-gpt4-service-env.age".publicKeys = mkSecrets (homeServers ++ desktops);
   "chatgpt-next-web.age".publicKeys = mkSecrets (homeServers ++ desktops);
   "github-runners-poi-aaku.age".publicKeys = mkSecrets (homeServers ++ desktops);
+  "wildcard-api-key.age".publicKeys = mkSecrets (homeServers ++ desktops);
 }

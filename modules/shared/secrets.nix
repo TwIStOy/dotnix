@@ -56,5 +56,9 @@ in {
       file = "github-runners-poi-aaku.age";
       owner = user.name;
     };
+    wildcard-api-key = ageSecret {
+      file = "wildcard-api-key.age";
+      owner = user.name;
+    };
   };
 }
