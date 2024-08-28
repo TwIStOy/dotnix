@@ -9,17 +9,18 @@
   extensions = [
     "macos-classic"
     "catppuccin"
+    "Xcode Themes"
     "nix"
   ];
 
-  auto_install_extensions = builtins.foldl' (acc: ext: acc // {ext = true;}) {} extensions;
-  auto_update_extensions = builtins.foldl' (acc: ext: acc // {ext = true;}) {} extensions;
+  auto_install_extensions = builtins.foldl' (acc: ext: acc // {${ext} = true;}) {} extensions;
+  auto_update_extensions = builtins.foldl' (acc: ext: acc // {${ext} = true;}) {} extensions;
 
   gen-settings = {
     buffer_font_size,
     ui_font_size,
   }: {
-    theme = "Catppuccin Macchiato - No Italics";
+    theme = "Xcode Persentation Dark";
     auto_update = false;
     inherit auto_update_extensions;
     inherit auto_install_extensions;
