@@ -1,4 +1,5 @@
 {
+  pkgs,
   config,
   lib,
   ...
@@ -16,6 +17,9 @@ in {
         name = "linux-poi";
         tokenFile = "/run/agenix/github-runners-poi-aaku";
         url = "https://github.com/aaku-works";
+        extraPackages = with pkgs; [
+          docker
+        ];
       };
     };
   };
