@@ -16,6 +16,21 @@
   auto_install_extensions = builtins.foldl' (acc: ext: acc // {${ext} = true;}) {} extensions;
   auto_update_extensions = builtins.foldl' (acc: ext: acc // {${ext} = true;}) {} extensions;
 
+  shared-settings = {
+    language_models = {
+      openai = {
+        api_url = "https://api.gptsapi.net/v1";
+      };
+    };
+    assistant = {
+      version = "2";
+      default_model = {
+        model = "gpt-4o";
+        provider = "openai";
+      };
+    };
+  };
+
   gen-settings = {
     buffer_font_size,
     ui_font_size,
@@ -96,16 +111,7 @@
       };
       font_family = "MonaspiceAr Nerd Font";
     };
-    assistant = {
-      version = "1";
-      provider = {
-        name = "openai";
-        type = "openai";
-        default_model = "gpt-4o";
-        api_url = "https://api.gptsapi.net";
-      };
-    };
-    # TODO(Hawtian Wang): setup OPENAI_API_KEY later
+    load_direnv = "shell_hook";
   };
 
   keymaps = [
@@ -156,9 +162,10 @@ in {
 
     home-manager = dotnix-utils.hm.hmConfig {
       xdg.configFile."zed/settings.json" = {
-        text = builtins.toJSON (gen-settings {
-          inherit (cfg) buffer_font_size ui_font_size;
-        });
+        text = builtins.toJSON ((gen-settings {
+            inherit (cfg) buffer_font_size ui_font_size;
+          })
+          // shared-settings);
         force = true;
       };
       xdg.configFile."zed/keymap.json" = {
