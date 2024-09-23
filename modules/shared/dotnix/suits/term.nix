@@ -5,7 +5,7 @@
   dotnix-utils,
   ...
 }: let
-  inherit (dotnix-utils) enabled enableModules;
+  inherit (dotnix-utils) enableModules;
   cfg = config.dotnix.suits.term;
 in {
   options.dotnix.suits.term = {
