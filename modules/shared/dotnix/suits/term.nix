@@ -26,6 +26,10 @@ in {
         "zoxide"
       ];
 
+      utils = enableModules [
+        "rime-scheme"
+      ];
+
       hm.packages = with pkgs; [
         neofetch
         xdg-utils

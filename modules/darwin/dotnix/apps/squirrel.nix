@@ -15,7 +15,7 @@ in {
     assertions = [
       {
         assertion = pkgs.stdenv.isDarwin;
-        message = "Hammerspoon only works on macOS";
+        message = "Squirrel only works on macOS";
       }
     ];
 
@@ -28,8 +28,8 @@ in {
         source = pkgs.fetchFromGitHub {
           owner = "gaboolic";
           repo = "rime-shuangpin-fuzhuma";
-          rev = "2f32d39b805dd026704f7a824e2013595a70b7e3";
-          sha256 = "sha256-96vcD7f7ldOWLZyQkvFxsID8GQ7xy7rQToWvy877xlE=";
+          rev = "1.0.0";
+          sha256 = "sha256-ArETWI/pZvzuOakFXSPLNkQ831WXz5y0JtcsXR0hwX8=";
         };
         recursive = true;
       };
