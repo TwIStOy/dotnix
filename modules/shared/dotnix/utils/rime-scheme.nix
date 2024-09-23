@@ -19,10 +19,6 @@ in {
   };
 
   config = lib.mkIf cfg.enable {
-    dotnix.hm.packages = [
-      rime-shuangpin-fuzhuma
-    ];
-
     home-manager = dotnix-utils.hm.hmConfig {
       xdg.dataFile.shared-rime-scheme = {
         source = rime-shuangpin-fuzhuma;
