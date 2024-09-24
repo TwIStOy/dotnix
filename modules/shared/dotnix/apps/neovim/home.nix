@@ -12,7 +12,7 @@
   unstableVimPlugins = pkgs-unstable.vimPlugins;
 
   plugins = {
-    inherit (nurVimPlugins) gh-actions-nvim fugit2-nvim codesnap-nvim;
+    inherit (nurVimPlugins) gh-actions-nvim fugit2-nvim codesnap-nvim avante-nvim;
     inherit (unstableVimPlugins) telescope-fzf-native-nvim;
     inherit (unstableVimPlugins) markdown-preview-nvim;
     inherit (unstableVimPlugins) rest-nvim;

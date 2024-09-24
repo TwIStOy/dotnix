@@ -96,7 +96,7 @@
     };
 
     nur-hawtian = {
-      url = "github:TwIStOy/nur-packages?rev=d394c25e694f498be2053b1f777003806b57a979";
+      url = "github:TwIStOy/nur-packages?rev=0ea71e4c97482cdc1b8d394aeb7e4a8d91ed0088";
       inputs = {
         flake-utils.follows = "flake-utils";
         nixpkgs.follows = "nixpkgs-unstable";

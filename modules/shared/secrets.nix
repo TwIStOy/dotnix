@@ -60,5 +60,9 @@ in {
       file = "wildcard-api-key.age";
       owner = user.name;
     };
+    claude-api-key = ageSecret {
+      file = "claude-api-key.age";
+      owner = user.name;
+    };
   };
 }
