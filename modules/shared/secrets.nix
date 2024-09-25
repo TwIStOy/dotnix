@@ -64,5 +64,9 @@ in {
       file = "claude-api-key.age";
       owner = user.name;
     };
+    luee-net-api-key = ageSecret {
+      file = "luee-net-api-key.age";
+      owner = user.name;
+    };
   };
 }
