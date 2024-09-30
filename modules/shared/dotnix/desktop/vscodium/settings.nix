@@ -114,6 +114,11 @@
   "vim.operatorPendingModeKeyBindings" = [];
   "vim.insertModeKeyBindingsNonRecursive" = [];
   "vim.normalModeKeyBindingsNonRecursive" = [
+    {
+      before = ["K"];
+      commands = ["editor.action.showDefinitionPreviewHover"];
+      silent = true;
+    }
   ];
   "vim.visualModeKeyBindingsNonRecursive" = [];
   "vim.operatorPendingModeKeyBindingsNonRecursive" = [];

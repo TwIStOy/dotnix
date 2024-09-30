@@ -11,6 +11,7 @@
     "catppuccin"
     "Xcode Themes"
     "nix"
+    "lua"
   ];
 
   auto_install_extensions = builtins.foldl' (acc: ext: acc // {${ext} = true;}) {} extensions;
