@@ -4,10 +4,12 @@
   pkgs,
   pkgs-unstable,
   nur-hawtian,
+  inputs,
   ...
 }: let
   user-dotpath = "${config.home.homeDirectory}/.dotvim";
 
+  blinkPkgs = inputs.blink.packages.${pkgs.system};
   nurVimPlugins = nur-hawtian.packages.${pkgs.system}.vimPlugins;
   unstableVimPlugins = pkgs-unstable.vimPlugins;
 
@@ -16,6 +18,7 @@
     inherit (unstableVimPlugins) telescope-fzf-native-nvim;
     inherit (unstableVimPlugins) markdown-preview-nvim;
     inherit (unstableVimPlugins) rest-nvim;
+    inherit (blinkPkgs) blink-cmp;
   };
 
   bins = with pkgs-unstable; {
