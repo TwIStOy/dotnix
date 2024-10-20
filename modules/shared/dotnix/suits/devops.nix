@@ -22,6 +22,7 @@ in {
         ++ (
           with pkgs-unstable; [
             ansible
+            minikube # k8s
           ]
         );
     };
