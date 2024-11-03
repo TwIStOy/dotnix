@@ -37,24 +37,28 @@ in {
       ]
       ++ (with pkgs-unstable; [
         cmake-language-server
-        llvmPackages_18.clang-unwrapped
+        llvmPackages_19.clang-tools
       ])
       ++ [
         # format cmake files
         nur-hawtian.packages.${pkgs.system}.gersemi
       ];
     # generate clangd user configuration file
-    home-manager = dotnix-utils.hm.hmConfig {
-      xdg.configFile."clangd/config.yaml" = {
-        text = ''
-          CompileFlags:
-            Compiler: ${gcc}/bin/g++
-            Add: [${builtins.readFile "${nixAwareClangdConfig}/dist/extra_args"}]
-          Diagnostics:
-            Suppress: "builtin_definition"
-        '';
-        force = true;
-      };
-    };
+    home-manager = dotnix-utils.hm.hmConfig (
+      if !pkgs.stdenv.isDarwin
+      then {
+        xdg.configFile."clangd/config.yaml" = {
+          text = ''
+            CompileFlags:
+              Compiler: ${gcc}/bin/g++
+              Add: [${builtins.readFile "${nixAwareClangdConfig}/dist/extra_args"}]
+            Diagnostics:
+              Suppress: "builtin_definition"
+          '';
+          force = true;
+        };
+      }
+      else {}
+    );
   };
 }

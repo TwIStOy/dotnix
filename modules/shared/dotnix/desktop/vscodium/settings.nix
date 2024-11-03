@@ -41,7 +41,7 @@
   "merge-conflict.autoNavigateNextConflict.enabled" = true;
 
   # xaver.clang-format
-  "clang-format.executable" = "${pkgs-unstable.llvmPackages_18.clang-unwrapped}/bin/clang-format";
+  "clang-format.executable" = "${pkgs-unstable.llvmPackages_19.clang-unwrapped}/bin/clang-format";
 
   # llvm-vs-code-extensions.vscode-clangd
   "clangd.arguments" = [

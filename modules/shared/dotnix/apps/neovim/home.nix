@@ -23,8 +23,8 @@
 
   bins = with pkgs-unstable; {
     inherit fzf stylua lua-language-server statix;
-    clangd = llvmPackages_18.clang-unwrapped;
-    clang-format = llvmPackages_18.clang-unwrapped;
+    clangd = llvmPackages_19.clang-unwrapped;
+    clang-format = llvmPackages_19.clang-unwrapped;
     inherit (pkgs-unstable.python312Packages) black;
     inherit (pkgs) rustfmt yaml-language-server libgit2;
     inherit (pkgs-unstable) taplo;
