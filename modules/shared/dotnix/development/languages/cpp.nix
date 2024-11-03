@@ -44,21 +44,21 @@ in {
         nur-hawtian.packages.${pkgs.system}.gersemi
       ];
     # generate clangd user configuration file
-    home-manager = dotnix-utils.hm.hmConfig (
-      if !pkgs.stdenv.isDarwin
-      then {
-        xdg.configFile."clangd/config.yaml" = {
-          text = ''
-            CompileFlags:
-              Compiler: ${gcc}/bin/g++
-              Add: [${builtins.readFile "${nixAwareClangdConfig}/dist/extra_args"}]
-            Diagnostics:
-              Suppress: "builtin_definition"
-          '';
-          force = true;
-        };
-      }
-      else {}
-    );
+    # home-manager = dotnix-utils.hm.hmConfig (
+    #   if !pkgs.stdenv.isDarwin
+    #   then {
+    #     xdg.configFile."clangd/config.yaml" = {
+    #       text = ''
+    #         CompileFlags:
+    #           Compiler: ${gcc}/bin/g++
+    #           Add: [${builtins.readFile "${nixAwareClangdConfig}/dist/extra_args"}]
+    #         Diagnostics:
+    #           Suppress: "builtin_definition"
+    #       '';
+    #       force = true;
+    #     };
+    #   }
+    #   else {}
+    # );
   };
 }
