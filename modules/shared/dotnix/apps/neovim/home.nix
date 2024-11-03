@@ -38,12 +38,17 @@
     xmllint = libxml2;
   };
 
+  libs = with pkgs-unstable; {
+    inherit (luajitPackages) tiktoken_core;
+  };
+
   nixAwareNvimConfig = pkgs.stdenv.mkDerivation {
     name = "nix-aware-nvim-config";
 
     buildInputs =
       (lib.mapAttrsToList (_: pkg: pkg) plugins)
-      ++ (lib.mapAttrsToList (_: pkg: pkg) bins);
+      ++ (lib.mapAttrsToList (_: pkg: pkg) bins)
+      ++ (lib.mapAttrsToList (_: pkg: pkg) libs);
 
     phases = ["installPhase"];
 
@@ -53,6 +58,7 @@
       (builtins.toJSON {
         pkgs = plugins;
         bin = lib.mapAttrs (name: pkg: "${pkg}/bin/${name}") bins;
+        inherit libs;
         try_nix_only = true;
       });
 
@@ -69,12 +75,17 @@
     require("dotvim.bootstrap").setup()
   '';
 in {
-  home.packages = with pkgs; [
-    pkgs-unstable.python312Packages.pynvim
-    nodePackages.neovim
-    tree-sitter
-    nixAwareNvimConfig
-  ];
+  home.packages =
+    (with pkgs; [
+      nodePackages.neovim
+      tree-sitter
+      nixAwareNvimConfig
+    ])
+    ++ (
+      with pkgs-unstable; [
+        python312Packages.pynvim
+      ]
+    );
 
   programs.neovim = {
     enable = true;
