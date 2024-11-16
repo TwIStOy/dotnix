@@ -71,6 +71,7 @@
       "kitty"
       "xquartz"
       "devpod"
+      "follow"
     ];
   };
 }
