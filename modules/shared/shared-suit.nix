@@ -13,7 +13,6 @@ in {
 
   config = lib.mkIf cfg.enable {
     dotnix.suits = {
-      desktop = enabled;
       development = enabled;
       devops = enabled;
       term = enabled;
