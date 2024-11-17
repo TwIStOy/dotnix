@@ -14,7 +14,7 @@ in {
   config = lib.mkIf cfg.enable {
     dotnix = {
       shared-suit = enabled;
-      desktop = enabled;
+      suits.desktop = enabled;
       apps = enableModules [
         "yabai"
         "hammerspoon"
