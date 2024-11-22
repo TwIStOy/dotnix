@@ -24,8 +24,9 @@ in {
         themes = {
           catppuccin-mocha = {
             src = builtins.fetchurl {
-              url = "https://raw.githubusercontent.com/catppuccin/bat/main/Catppuccin-mocha.tmTheme";
-              sha256 = "sha256:1z434yxjq95bbfs9lrhcy2y234k34hhj5frwmgmni6j8cqj0vi58";
+              name = "bat-theme-catppuccin-mocha";
+              url = "https://raw.githubusercontent.com/catppuccin/bat/d2bbee4f7e7d5bac63c054e4d8eca57954b31471/themes/Catppuccin%20Mocha.tmTheme";
+              sha256 = "sha256:0jrpfd06hviw82xl74m3favq58a586wa7h1qymakx14l8zla26sh";
             };
           };
         };
