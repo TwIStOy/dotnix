@@ -8,6 +8,7 @@ let
   poi = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIChh+2JjsSms14xR5l8y2zzyCI5ryzEzeuq9N8wsaEqK";
   yukikaze = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIIY8aMFW3F68el/LQyZtONVuEMwJfejRvRdjLTps84f3";
   yamato = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAID52VHi3XJl9hfHC/ywRrjV05bKqRvKulbzud/59ekX7";
+  taihou = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIG9GFpFscLGWnUTbnYb/Y5BrAXRNTxctjTHVVNvS/LfC";
 
   # collections
   desktops = [
@@ -16,6 +17,7 @@ let
   ];
   homeServers = [
     poi
+    taihou
   ];
 
   # helpers
