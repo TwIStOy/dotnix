@@ -19,5 +19,6 @@ in {
   };
   nixosConfigurations = {
     poi = mkIntelLinuxSystem (import ./poi);
+    taihou = mkIntelLinuxSystem (import ./taihou);
   };
 }
