@@ -3,7 +3,15 @@ on:
   push:
     branches:
       - master
+    paths-ignore:
+      - "justfile"
+      - "**.md"
   pull_request:
+    branches:
+      - master
+    paths-ignore:
+      - "justfile"
+      - "**.md"
 
 jobs:
   nix:
@@ -13,4 +21,4 @@ jobs:
       - uses: DeterminateSystems/nix-installer-action@main
       - name: Install omnix
         run: nix --accept-flake-config profile install "github:juspay/omnix"
-      - run: om ci
+      - run: om ci --extra-access-tokens "github.com=${{ secrets.GITHUB_TOKEN }}"
