@@ -2,8 +2,15 @@ _: let
   hostname = "taihou";
 in {
   # Bootloader.
-  boot.loader.systemd-boot.enable = true;
-  boot.loader.efi.canTouchEfiVariables = true;
+  boot = {
+    loader = {
+      grub = {
+        enable = true;
+        device = "/dev/nvme0n1";
+        useOSProber = true;
+      };
+    };
+  };
 
   networking = {
     hostName = hostname;
