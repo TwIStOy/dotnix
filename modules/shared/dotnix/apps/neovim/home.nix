@@ -39,7 +39,7 @@
   };
 
   libs = with pkgs-unstable; {
-    inherit (luajitPackages) tiktoken_core;
+    inherit (luajitPackages) tiktoken_core magick;
   };
 
   nixAwareNvimConfig = pkgs.stdenv.mkDerivation {

@@ -33,4 +33,5 @@ in {
   "wildcard-api-key.age".publicKeys = mkSecrets (homeServers ++ desktops);
   "claude-api-key.age".publicKeys = mkSecrets (homeServers ++ desktops);
   "luee-net-api-key.age".publicKeys = mkSecrets (homeServers ++ desktops);
+  "github-cli-access-token.age".publicKeys = mkSecrets (homeServers ++ desktops);
 }

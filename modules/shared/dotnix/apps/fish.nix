@@ -17,6 +17,8 @@ in {
         enable = true;
         interactiveShellInit = ''
           set fish_greeting
+
+          export GITHUB_TOKEN="$(cat ${config.age.secrets.github-cli-access-token.path})"
         '';
         plugins = [
           {

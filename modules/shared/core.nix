@@ -24,4 +24,8 @@ in {
     ];
     builders-use-substitutes = true;
   };
+
+  environment.variables = {
+    EDITOR = "nvim";
+  };
 }

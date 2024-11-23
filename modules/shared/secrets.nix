@@ -68,5 +68,9 @@ in {
       file = "luee-net-api-key.age";
       owner = user.name;
     };
+    github-cli-access-token = ageSecret {
+      file = "github-cli-access-token.age";
+      owner = user.name;
+    };
   };
 }
