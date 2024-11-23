@@ -31,9 +31,8 @@ in {
         createRemoteHostWrappers = [
           "poi.remote"
           "poi.local"
-          "dev.work.local"
-          "dev.work.local.simple"
-          "dev.work.remote"
+          "taihou.remote"
+          "taihou.local"
         ];
         settings =
           {
