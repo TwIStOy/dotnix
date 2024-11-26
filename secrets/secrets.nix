@@ -34,4 +34,5 @@ in {
   "claude-api-key.age".publicKeys = mkSecrets (homeServers ++ desktops);
   "luee-net-api-key.age".publicKeys = mkSecrets (homeServers ++ desktops);
   "github-cli-access-token.age".publicKeys = mkSecrets (homeServers ++ desktops);
+  "wakatime-cfg.age".publicKeys = mkSecrets (homeServers ++ desktops);
 }

@@ -72,5 +72,13 @@ in {
       file = "github-cli-access-token.age";
       owner = user.name;
     };
+    wakatime-cfg =
+      (ageSecret {
+        file = "wakatime-cfg.age";
+        owner = user.name;
+      })
+      // {
+        path = "${config.users.users.${user.name}.home}/.wakatime.cfg";
+      };
   };
 }
