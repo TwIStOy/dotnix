@@ -18,10 +18,10 @@ in {
         (with pkgs; [
           lazydocker # docker TUI
           dive # explore layers in docker images
+          ansible
         ])
         ++ (
           with pkgs-unstable; [
-            ansible
             minikube # k8s
           ]
         );
