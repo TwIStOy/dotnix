@@ -85,6 +85,23 @@
           };
         };
       };
+      "nil" = {
+        settings = {
+          diagnostics = {
+            ignored = ["unused_binding"];
+          };
+        };
+        formatting = {
+          command = ["alejandra"];
+        };
+        nix = {
+          maxMemoryMB = 2 * 1024;
+          flake = {
+            autoArchive = true;
+            autoEvalInputs = false;
+          };
+        };
+      };
     };
     current_line_highlight = "line";
     indent_guides = {
@@ -104,6 +121,9 @@
       };
       Rust = {
         preferred_line_length = 100;
+      };
+      Nix = {
+        language_servers = ["nil" "!nixd"];
       };
     };
     terminal = {
