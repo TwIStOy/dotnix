@@ -103,26 +103,21 @@
     followRedirects = false;
   };
 in {
-  fonts.packages = [
-    monolisa
-    akzidenz-grotesk
-    maple-font
-    lxgw-wenkai
-    readex-pro
+  fonts.packages =
+    [
+      monolisa
+      akzidenz-grotesk
+      maple-font
+      lxgw-wenkai
+      readex-pro
 
-    pkgs.monaspace
-    # nerdfonts
-    # https://github.com/NixOS/nixpkgs/blob/nixos-24.05/pkgs/data/fonts/nerdfonts/shas.nix
-    (pkgs-unstable.nerdfonts.override {
-      fonts = [
-        # symbols icon only
-        "NerdFontsSymbolsOnly"
-        # Characters
-        "FiraCode"
-        "JetBrainsMono"
-        "Iosevka"
-        "Monaspace"
-      ];
-    })
-  ];
+      pkgs-unstable.monaspace
+    ]
+    ++ (with pkgs-unstable.nerd-fonts; [
+      symbols-only
+      fira-code
+      jetbrains-mono
+      iosevka
+      monaspace
+    ]);
 }
