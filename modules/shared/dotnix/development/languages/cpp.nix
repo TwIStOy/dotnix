@@ -24,6 +24,14 @@
       ($CXX -xc++ -E -v /dev/null) 2>&1 | awk 'BEGIN { incsearch = 0} /^End of search list/ { incsearch = 0 } { if(incsearch) { print $0 }} /^#include </ { incsearch = 1 }' | sed 's/^[[:space:]]*\(.*\)/"-isystem","\1"/' | tr '\n' ' ' | tr ' ' ',' | sed 's/,$//' > $out/dist/extra_args
     '';
   };
+
+  globalClangdConfigContent = ''
+    CompileFlags:
+      Compiler: ${gcc}/bin/g++
+      Add: [${builtins.readFile "${nixAwareClangdConfig}/dist/extra_args"}]
+    Diagnostics:
+      Suppress: "builtin_definition"
+  '';
 in {
   options.dotnix.development.languages.cpp = {
     enable = lib.mkEnableOption "Enable C++ development";
@@ -44,21 +52,21 @@ in {
         nur-hawtian.packages.${pkgs.system}.gersemi
       ];
     # generate clangd user configuration file
-    # home-manager = dotnix-utils.hm.hmConfig (
-    #   if !pkgs.stdenv.isDarwin
-    #   then {
-    #     xdg.configFile."clangd/config.yaml" = {
-    #       text = ''
-    #         CompileFlags:
-    #           Compiler: ${gcc}/bin/g++
-    #           Add: [${builtins.readFile "${nixAwareClangdConfig}/dist/extra_args"}]
-    #         Diagnostics:
-    #           Suppress: "builtin_definition"
-    #       '';
-    #       force = true;
-    #     };
-    #   }
-    #   else {}
-    # );
+
+    home-manager = dotnix-utils.hm.hmConfig (
+      if pkgs.stdenv.isDarwin
+      then {
+        home.file."Library/Preferences/clangd/config.yaml" = {
+          text = globalClangdConfigContent;
+          force = true;
+        };
+      }
+      else {
+        xdg.configFile."clangd/config.yaml" = {
+          text = globalClangdConfigContent;
+          force = true;
+        };
+      }
+    );
   };
 }
