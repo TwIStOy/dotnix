@@ -32,11 +32,11 @@
         "nixpkgs": "nixpkgs"
       },
       "locked": {
-        "lastModified": 1732764915,
-        "narHash": "sha256-LUbsGQgIORF3jeohSwjqnuiHHJ3pT1aHYD1m0ezOVnM=",
+        "lastModified": 1733194255,
+        "narHash": "sha256-f5BUyi8mxdnE9AnDKF40EOZdvZy1cnHTDqYde1hU9c4=",
         "owner": "Saghen",
         "repo": "blink.cmp",
-        "rev": "56f7cb679ef9e5c09351bfa67b081c68ad27349f",
+        "rev": "38b3ad6d4af9d392d3e5e0dabcb14e7d8e348314",
         "type": "github"
       },
       "original": {
