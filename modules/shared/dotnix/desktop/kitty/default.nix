@@ -125,12 +125,12 @@
   '';
 
   symbol-map-nerd-icons = map-nerd-icon-ranges {
-    family = "Symbols Nerd Font";
+    family = "Symbols Nerd Font Mono";
   };
 
   use-font-family = "MonoLisa";
 
-  contains-nerd-icons = name: (lib.strings.hasInfix "NF" name) || (lib.strings.hasInfix "Nerd Font" name);
+  contains-nerd-icons = name: (lib.strings.hasInfix "NF" name) || (lib.strings.hasInfix "Nerd Font Mono" name);
 in {
   options.dotnix.desktop.kitty = {
     enable = lib.mkEnableOption "Enable kitty terminal";
