@@ -18,7 +18,7 @@ in {
       };
 
       vscodium = {
-        enable = true;
+        enable = false;
       };
 
       neovide = {
