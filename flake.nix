@@ -9,10 +9,14 @@
     dotnix-utils = import ./lib {
       inherit inputs dotnix-constants;
     };
+    dotnix-utils-work = import ./lib {
+      inherit inputs;
+      dotnix-constants = dotnix-constants-work;
+    };
 
     mkSystemModule = import ./modules/mkSystem.nix (
       {
-        inherit self inputs dotnix-constants dotnix-constants-work dotnix-utils;
+        inherit self inputs dotnix-constants dotnix-constants-work dotnix-utils dotnix-utils-work;
       }
       // inputs
     );

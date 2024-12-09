@@ -1,7 +1,7 @@
 {
   user = {
-    name = "hawtian";
-    fullName = "Hawtian Wang";
-    email = "twistoy.wang@gmail.com";
+    name = "wanghaot";
+    fullName = "Haotian Wang";
+    email = "wanghaot@tesla.com";
   };
 }

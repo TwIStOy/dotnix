@@ -8,6 +8,7 @@
   dotnix-constants,
   dotnix-constants-work,
   dotnix-utils,
+  dotnix-utils-work,
   vscode-server,
   ...
 }: let
@@ -116,8 +117,8 @@ in {
       platModules = platformModules system;
       # inject the specialArgs into all modules and home-manager modules
       specialArgs = {
-        inherit dotnix-utils;
         dotnix-constants = dotnix-constants-work;
+        dotnix-utils = dotnix-utils-work;
         # unstable channel
         inherit pkgs-unstable;
         # my nur channel
@@ -143,7 +144,7 @@ in {
                 useUserPackages = true;
 
                 extraSpecialArgs = specialArgs;
-                users."${dotnix-constants.user.name}" = {
+                users."${dotnix-constants-work.user.name}" = {
                   imports =
                     [
                       ./home
