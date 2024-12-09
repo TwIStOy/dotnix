@@ -12,6 +12,8 @@ default:
 
 yamato use_nom="yes" details="yes": (_macos_rebuild "yamato" use_nom details)
 
+nagato use_nom="yes" details="yes": (_macos_rebuild "nagato" use_nom details)
+
 yukikaze use_nom="yes" details="yes": (_macos_rebuild "yukikaze" use_nom details)
 
 poi use_nom="yes" details="yes": (_nixos_rebuild "poi" use_nom details)

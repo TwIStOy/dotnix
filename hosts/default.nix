@@ -16,6 +16,7 @@ in {
   darwinConfigurations = {
     yamato = mkIntelDarwinSystem (import ./yamato);
     yukikaze = mkArmDarwinSystem (import ./yukikaze);
+    nagato = mkArmDarwinSystem (import ./nagato);
   };
   nixosConfigurations = {
     poi = mkIntelLinuxSystem (import ./poi);

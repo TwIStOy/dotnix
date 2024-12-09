@@ -15,7 +15,7 @@ in {
     dotnix.development.languages = {
       cpp = enabled;
       golang = enabled;
-      dart = enabled;
+      # dart = enabled;
       nix = enabled;
       node = enabled;
       python = enabled;

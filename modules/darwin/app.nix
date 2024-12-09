@@ -25,9 +25,7 @@
     masApps = {};
 
     taps = [
-      "homebrew/cask-fonts"
       "homebrew/services"
-      "homebrew/cask-versions"
       "osx-cross/avr"
       "osx-cross/arm"
       "leoafarias/fvm"
@@ -61,11 +59,8 @@
       "arc"
       "google-chrome"
       "visual-studio-code"
-      "telegram"
-      "discord"
       "karabiner-elements"
       "jetbrains-toolbox"
-      "tailscale"
       "neovide"
       "wireshark"
       "kitty"
