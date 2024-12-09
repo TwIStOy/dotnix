@@ -1,5 +1,6 @@
 {
   mkSystem,
+  mkWorkSystem,
   flake-utils,
   ...
 }: let
@@ -16,7 +17,9 @@ in {
   darwinConfigurations = {
     yamato = mkIntelDarwinSystem (import ./yamato);
     yukikaze = mkArmDarwinSystem (import ./yukikaze);
-    nagato = mkArmDarwinSystem (import ./nagato);
+    nagato = mkWorkSystem {
+      system = flake-utils.lib.system.aarch64-darwin;
+    } (import ./nagato);
   };
   nixosConfigurations = {
     poi = mkIntelLinuxSystem (import ./poi);

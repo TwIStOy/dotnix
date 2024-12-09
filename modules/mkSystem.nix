@@ -6,6 +6,7 @@
   home-manager,
   agenix,
   dotnix-constants,
+  dotnix-constants-work,
   dotnix-utils,
   vscode-server,
   ...
@@ -34,8 +35,8 @@
       then darwinModules
       else nixosModules
     );
-in
-  {system}: let
+in {
+  mkSystem = {system}: let
     pkgs-unstable = import inputs.nixpkgs-unstable {
       inherit system;
       config.allowUnfree = true;
@@ -92,4 +93,65 @@ in
               };
             }
           ];
-      }
+      };
+
+  mkWorkSystem = {system}: let
+    pkgs-unstable = import inputs.nixpkgs-unstable {
+      inherit system;
+      config.allowUnfree = true;
+      overlays = [
+        inputs.neovim-nightly-overlay.overlays.default
+      ];
+    };
+  in
+    {
+      modules,
+      home-modules,
+    }: let
+      isDarwin = hasSuffix "darwin" system;
+      mkSystemImpl =
+        if isDarwin
+        then nix-darwin.lib.darwinSystem
+        else nixpkgs.lib.nixosSystem;
+      platModules = platformModules system;
+      # inject the specialArgs into all modules and home-manager modules
+      specialArgs = {
+        inherit dotnix-utils;
+        dotnix-constants = dotnix-constants-work;
+        # unstable channel
+        inherit pkgs-unstable;
+        # my nur channel
+        inherit (inputs) nur-hawtian secrets-hawtian;
+        # self!
+        inherit self;
+        # inject `inputs`
+        inherit inputs;
+        # inject darwin check
+        inherit isDarwin;
+      };
+    in
+      mkSystemImpl {
+        inherit system specialArgs;
+
+        modules =
+          platModules
+          ++ modules
+          ++ [
+            {
+              home-manager = {
+                useGlobalPkgs = true;
+                useUserPackages = true;
+
+                extraSpecialArgs = specialArgs;
+                users."${dotnix-constants.user.name}" = {
+                  imports =
+                    [
+                      ./home
+                    ]
+                    ++ home-modules;
+                };
+              };
+            }
+          ];
+      };
+}
