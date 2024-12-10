@@ -9,7 +9,7 @@
   mkArmDarwinSystem = mkSystem {
     system = flake-utils.lib.system.aarch64-darwin;
   };
-  mkIntelLinuxSystem = mkSystem {
+  mkX64LinuxSystem = mkSystem {
     system = flake-utils.lib.system.x86_64-linux;
   };
 in {
@@ -22,7 +22,11 @@ in {
     } (import ./nagato);
   };
   nixosConfigurations = {
-    poi = mkIntelLinuxSystem (import ./poi);
-    taihou = mkIntelLinuxSystem (import ./taihou);
+    poi = mkX64LinuxSystem (import ./poi);
+    taihou = mkX64LinuxSystem (import ./taihou);
+    mutsu = mkSystem {
+      system = flake-utils.lib.system.x86_64-linux;
+      env = "tesla";
+    } (import ./mutsu);
   };
 }
