@@ -69,6 +69,7 @@
       "follow"
       "raycast"
       "orbstack"
+      "obsidian"
     ];
   };
 }
