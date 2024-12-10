@@ -28,4 +28,6 @@ in {
       builtins.attrNames
       (nixpkgs.lib.attrsets.filterAttrs isNixModule allFiles)
     );
+
+  pathFromRoot = nixpkgs.lib.path.append ../.;
 }

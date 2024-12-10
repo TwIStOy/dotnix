@@ -4,24 +4,15 @@
   outputs = {self, ...} @ inputs: let
     inherit (inputs) flake-utils nixpkgs nixpkgs-unstable;
 
-    dotnix-constants = import ./constants.nix;
-    dotnix-constants-work = import ./constants-work.nix;
-    dotnix-utils = import ./lib {
-      inherit inputs dotnix-constants;
-    };
-    dotnix-utils-work = import ./lib {
-      inherit inputs;
-      dotnix-constants = dotnix-constants-work;
-    };
+    vars = import ./vars;
 
-    mkSystemModule = import ./modules/mkSystem.nix (
+    buildDotnixUtils = import ./lib;
+    mkSystem = import ./modules/mkSystem.nix (
       {
-        inherit self inputs dotnix-constants dotnix-constants-work dotnix-utils dotnix-utils-work;
+        inherit self inputs vars buildDotnixUtils;
       }
       // inputs
     );
-
-    inherit (mkSystemModule) mkSystem mkWorkSystem;
 
     formatter = flake-utils.lib.eachDefaultSystem (system: {
       formatter = nixpkgs-unstable.legacyPackages.${system}.alejandra;
@@ -29,7 +20,7 @@
 
     hostsConfiguration = import ./hosts {
       inherit (inputs) flake-utils;
-      inherit mkSystem mkWorkSystem;
+      inherit mkSystem;
     };
 
     templates = {

@@ -1,6 +1,5 @@
 {
   mkSystem,
-  mkWorkSystem,
   flake-utils,
   ...
 }: let
@@ -17,8 +16,9 @@ in {
   darwinConfigurations = {
     yamato = mkIntelDarwinSystem (import ./yamato);
     yukikaze = mkArmDarwinSystem (import ./yukikaze);
-    nagato = mkWorkSystem {
+    nagato = mkSystem {
       system = flake-utils.lib.system.aarch64-darwin;
+      env = "tesla";
     } (import ./nagato);
   };
   nixosConfigurations = {

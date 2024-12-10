@@ -26,6 +26,7 @@ in {
           pull.rebase = false;
           gpg.format = "ssh";
           core.excludesfile = "~/.config/git/ignore";
+          "gpg \"ssh\"".program = "/Applications/1Password.app/Contents/MacOS/op-ssh-sign";
         };
 
         signing = {

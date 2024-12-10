@@ -67,6 +67,7 @@
       "xquartz"
       "devpod"
       "follow"
+      "raycast"
     ];
   };
 }
