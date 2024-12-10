@@ -68,6 +68,7 @@
       "devpod"
       "follow"
       "raycast"
+      "orbstack"
     ];
   };
 }
