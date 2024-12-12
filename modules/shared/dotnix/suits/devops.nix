@@ -18,7 +18,7 @@ in {
         (with pkgs; [
           lazydocker # docker TUI
           dive # explore layers in docker images
-          ansible
+          # ansible
         ])
         ++ (
           with pkgs-unstable; [
