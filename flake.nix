@@ -1,74 +1,7 @@
 {
   description = "Dotnix: hawtian's nix configuration for both macos and linux";
 
-  outputs = {self, ...} @ inputs: let
-    inherit (inputs) flake-utils nixpkgs nixpkgs-unstable;
-
-    vars = import ./vars;
-
-    buildDotnixUtils = import ./lib;
-    mkSystem = import ./modules/mkSystem.nix (
-      {
-        inherit self inputs vars buildDotnixUtils;
-      }
-      // inputs
-    );
-
-    formatter = flake-utils.lib.eachDefaultSystem (system: {
-      formatter = nixpkgs-unstable.legacyPackages.${system}.alejandra;
-    });
-
-    hostsConfiguration = import ./hosts {
-      inherit (inputs) flake-utils;
-      inherit mkSystem;
-    };
-
-    templates = {
-      templates.devenv = {
-        path = ./templates/devenv;
-        description = "devenv templates";
-      };
-    };
-
-    checks = flake-utils.lib.eachDefaultSystem (system: {
-      checks.pre-commit-check =
-        inputs.pre-commit-hooks.lib.${system}.run
-        {
-          src = ./.;
-          hooks = {
-            actionlint.enable = true;
-
-            statix = {
-              enable = true;
-            };
-
-            alejandra = {
-              enable = true;
-              excludes = [
-                "hardware-configuration.*.nix"
-                ".*vim-template.*"
-              ];
-            };
-          };
-
-          settings = {
-            # Work around for `statix`,
-            # issue: https://github.com/cachix/pre-commit-hooks.nix/issues/288
-            statix.ignore = [
-              "hardware-configuration.nix"
-              ".vim-template:*.nix"
-              ".vim-template:default.nix"
-            ];
-          };
-        };
-    });
-  in
-    nixpkgs.lib.attrsets.mergeAttrsList [
-      hostsConfiguration
-      formatter
-      templates
-      checks
-    ];
+  outputs = inputs: import ./outputs inputs;
 
   inputs = {
     # Official NixOS package source, using nixos's stable branch by default
@@ -146,6 +79,8 @@
 
     # for vim-plugin: blink.cmp
     blink.url = "github:Saghen/blink.cmp";
+
+    deploy-rs.url = "github:serokell/deploy-rs";
   };
 
   nixConfig = {
