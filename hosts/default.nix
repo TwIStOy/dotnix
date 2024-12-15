@@ -36,19 +36,30 @@
       if isDarwin
       then deployPkgs.deploy-rs.lib.activate.darwin
       else deployPkgs.deploy-rs.lib.activate.nixos;
-  in {
-    darwinConfigurations = {
-      "${name}" = systemDrv;
-    };
-    deploy.nodes."${name}" = {
-      hostname = name;
-      profiles.system = {
-        sshUser = constants.user.user.name;
-        activationTimeout = 6000;
-        path = activateFn systemDrv;
+  in
+    {
+      deploy.nodes."${name}" = {
+        hostname = name;
+        profiles.system = {
+          sshUser = constants.user.user.name;
+          activationTimeout = 6000;
+          path = activateFn systemDrv;
+        };
       };
-    };
-  };
+    }
+    // (
+      if isDarwin
+      then {
+        darwinConfigurations = {
+          "${name}" = systemDrv;
+        };
+      }
+      else {
+        nixosConfigurations = {
+          "${name}" = systemDrv;
+        };
+      }
+    );
 
   mkSimpleSystem = system: name
   :
