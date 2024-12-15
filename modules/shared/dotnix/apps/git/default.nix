@@ -1,5 +1,6 @@
 {
   config,
+  pkgs,
   lib,
   dotnix-utils,
   dotnix-constants,
@@ -20,14 +21,17 @@ in {
         userName = dotnix-constants.user.fullName;
         userEmail = dotnix-constants.user.email;
 
-        extraConfig = {
-          init.defaultBranch = "master";
-          push.autoSetupRemote = true;
-          pull.rebase = false;
-          gpg.format = "ssh";
-          core.excludesfile = "~/.config/git/ignore";
-          "gpg \"ssh\"".program = "/Applications/1Password.app/Contents/MacOS/op-ssh-sign";
-        };
+        extraConfig =
+          {
+            init.defaultBranch = "master";
+            push.autoSetupRemote = true;
+            pull.rebase = false;
+            gpg.format = "ssh";
+            core.excludesfile = "~/.config/git/ignore";
+          }
+          // (lib.optionalAttrs pkgs.stdenv.isDarwin {
+            "gpg \"ssh\"".program = "/Applications/1Password.app/Contents/MacOS/op-ssh-sign";
+          });
 
         signing = {
           key = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIG92SyvgOOe9pGPGHEY9VbDBWwqaRgm9tg1RJUxlfdCN";
