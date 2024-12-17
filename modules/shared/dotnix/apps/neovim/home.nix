@@ -77,7 +77,7 @@
 in {
   home.packages =
     (with pkgs; [
-      nodePackages.neovim
+      neovim-node-client
       tree-sitter
       nixAwareNvimConfig
     ])

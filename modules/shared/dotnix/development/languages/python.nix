@@ -13,7 +13,7 @@ in {
 
   config = lib.mkIf cfg.enable {
     dotnix.hm.packages = with pkgs; [
-      nodePackages.pyright # python language server
+      pyright # python language server
 
       (python3.withPackages (ps:
         with ps; [
