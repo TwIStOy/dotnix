@@ -10,6 +10,8 @@ in {
     apps.zed.ui_font_size = 16;
   };
 
+  dotnix.services.tailscale.enable = true;
+
   networking.hostName = hostname;
   networking.computerName = hostname;
 
