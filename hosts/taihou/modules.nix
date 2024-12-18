@@ -11,4 +11,6 @@ _: {
       enable = false;
     };
   };
+
+  dotnix.services.tailscale.enable = true;
 }
