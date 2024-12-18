@@ -37,4 +37,6 @@ in {
   "luee-net-api-key.age".publicKeys = mkSecrets (homeServers ++ desktops);
   "github-cli-access-token.age".publicKeys = mkSecrets (homeServers ++ desktops);
   "wakatime-cfg.age".publicKeys = mkSecrets (homeServers ++ desktops);
+  "tailscale-oauth-key.age".publicKeys = mkSecrets (homeServers ++ desktops);
+  "tailscale-auth-key.age".publicKeys = mkSecrets (homeServers ++ desktops);
 }

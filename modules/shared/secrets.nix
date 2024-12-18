@@ -72,6 +72,14 @@ in {
       file = "github-cli-access-token.age";
       owner = user.name;
     };
+    tailscale-oauth-key = ageSecret {
+      file = "tailscale-oauth-key.age";
+      owner = user.name;
+    };
+    tailscale-auth-key = ageSecret {
+      file = "tailscale-auth-key.age";
+      owner = user.name;
+    };
     wakatime-cfg =
       (ageSecret {
         file = "wakatime-cfg.age";
