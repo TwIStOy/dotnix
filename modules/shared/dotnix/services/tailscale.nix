@@ -88,33 +88,38 @@ in {
     };
   };
 
-  config = lib.mkIf cfg.enable {
-    environment.systemPackages = with pkgs-unstable; [
-      tailscale
-    ];
+  config = lib.mkIf cfg.enable ({
+      environment.systemPackages = with pkgs-unstable; [
+        tailscale
+      ];
 
-    services.tailscale =
-      {
-        enable = true;
-      }
-      // (
-        if (!isDarwin)
-        then {
-          openFirewall = true;
-          inherit authKeyFile;
-          inherit (cfg) authKeyParameters extraUpFlags;
+      services.tailscale =
+        {
+          enable = true;
         }
-        else {}
-      );
-
-    launchd = lib.mkIf pkgs.stdenv.isDarwin {
-      daemons.tailscale-autoconnect = {
-        command = "${autoConnectScript}";
-        serviceConfig = {
-          Label = "com.tailscale.tailscale-autoconnect";
-          RunAtLoad = true;
+        // (
+          if (!isDarwin)
+          then {
+            openFirewall = true;
+            inherit authKeyFile;
+            inherit (cfg) authKeyParameters extraUpFlags;
+          }
+          else {}
+        );
+    }
+    // (
+      if isDarwin
+      then {
+        launchd = {
+          daemons.tailscale-autoconnect = {
+            command = "${autoConnectScript}";
+            serviceConfig = {
+              Label = "com.tailscale.tailscale-autoconnect";
+              RunAtLoad = true;
+            };
+          };
         };
-      };
-    };
-  };
+      }
+      else {}
+    ));
 }
