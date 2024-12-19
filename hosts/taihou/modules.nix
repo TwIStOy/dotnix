@@ -10,7 +10,13 @@ _: {
     services.github-runner = {
       enable = false;
     };
-  };
 
-  dotnix.services.tailscale.enable = true;
+    services.tailscale = {
+      enable = true;
+      extraUpFlags = [
+        "--advertise-tags=tag:homeserver"
+        "--ssh"
+      ];
+    };
+  };
 }
