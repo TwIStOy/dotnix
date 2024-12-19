@@ -13,6 +13,7 @@ in {
       enable = true;
       extraUpFlags = [
         "--advertise-tags=tag:desktop"
+        "--ssh"
       ];
     };
   };
