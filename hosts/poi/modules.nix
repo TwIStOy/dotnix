@@ -10,5 +10,12 @@ _: {
     services.github-runner = {
       enable = false;
     };
+    services.tailscale = {
+      enable = true;
+      extraUpFlags = [
+        "--advertise-tags=tag:homeserver"
+        "--ssh"
+      ];
+    };
   };
 }
