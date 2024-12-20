@@ -9,9 +9,10 @@
   extensions = [
     "macos-classic"
     "catppuccin"
-    "Xcode Themes"
+    "xcode-themes"
     "nix"
     "lua"
+    "kanagawa-themes"
   ];
 
   auto_install_extensions = builtins.foldl' (acc: ext: acc // {${ext} = true;}) {} extensions;
@@ -26,8 +27,8 @@
     assistant = {
       version = "2";
       default_model = {
-        model = "gpt-4o";
-        provider = "openai";
+        model = "claude-3-5-sonnet";
+        provider = "copilot_chat";
       };
     };
   };
