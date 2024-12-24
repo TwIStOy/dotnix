@@ -142,7 +142,7 @@ in {
         enable = true;
         package = pkgs-unstable.kitty;
 
-        theme = "Catppuccin-Mocha";
+        themeFile = "Catppuccin-Mocha";
         settings = {
           font_family = use-font-family;
 
