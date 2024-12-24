@@ -1,4 +1,8 @@
-{pkgs, ...}: {
+{
+  pkgs,
+  pkgs-unstable,
+  ...
+}: {
   dotnix = {
     nixos-shared-suit = {
       enable = true;
@@ -17,9 +21,9 @@
   };
 
   services.github-runners = {
-    append = {
+    general-private-contrib = {
       enable = true;
-      name = "poi";
+      name = "poi-private-contrib";
       tokenFile = "/run/agenix/github-actions-runner-token";
       url = "https://github.com/TwIStOy-contrib";
       extraLabels = [
@@ -28,6 +32,21 @@
       replace = true;
       extraPackages = with pkgs; [
         docker
+      ];
+    };
+    account-book = {
+      enable = true;
+      name = "poi-account-book";
+      tokenFile = "/run/agenix/github-actions-runner-token";
+      url = "https://github.com/TwIStOy-contrib";
+      extraLabels = [
+        "nixos"
+        "beancount"
+      ];
+      runnerGroup = "beancount";
+      replace = true;
+      extraPackages = with pkgs-unstable; [
+        beancount
       ];
     };
   };
