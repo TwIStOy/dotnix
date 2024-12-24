@@ -27,7 +27,7 @@
     clang-format = llvmPackages_19.clang-unwrapped;
     inherit (pkgs-unstable.python312Packages) black;
     inherit (pkgs) rustfmt yaml-language-server libgit2;
-    inherit (pkgs-unstable) taplo;
+    inherit (pkgs-unstable) taplo beancount-language-server;
     rust-analyzer = pkgs.rust-analyzer-nightly;
     vscode-html-language-server = pkgs.vscode-langservers-extracted;
     vscode-eslint-language-server = pkgs.vscode-langservers-extracted;
