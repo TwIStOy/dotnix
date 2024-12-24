@@ -84,9 +84,9 @@ in {
       // {
         path = "${config.users.users.${user.name}.home}/.wakatime.cfg";
       };
-  };
-  github-actions-runner-token = ageSecret {
-    file = "github-actions-runner-token.age";
-    owner = user.name;
+    github-actions-runner-token = ageSecret {
+      file = "github-actions-runner-token.age";
+      owner = user.name;
+    };
   };
 }
