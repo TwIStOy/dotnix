@@ -14,6 +14,7 @@ in {
   config = lib.mkIf cfg.enable {
     dotnix.hm.packages = with pkgs; [
       beancount
+      fava
     ];
   };
 }
