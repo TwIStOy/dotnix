@@ -52,10 +52,6 @@ in {
       file = "chatgpt-next-web.age";
       owner = user.name;
     };
-    github-runners-poi-aaku = ageSecret {
-      file = "github-runners-poi-aaku.age";
-      owner = user.name;
-    };
     wildcard-api-key = ageSecret {
       file = "wildcard-api-key.age";
       owner = user.name;
@@ -88,5 +84,9 @@ in {
       // {
         path = "${config.users.users.${user.name}.home}/.wakatime.cfg";
       };
+  };
+  github-actions-runner-token = ageSecret {
+    file = "github-actions-runner-token.age";
+    owner = user.name;
   };
 }

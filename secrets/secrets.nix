@@ -31,7 +31,6 @@ in {
   "ssh-remote-hosts.age".publicKeys = mkSecrets (homeServers ++ desktops);
   "copilot-gpt4-service-env.age".publicKeys = mkSecrets (homeServers ++ desktops);
   "chatgpt-next-web.age".publicKeys = mkSecrets (homeServers ++ desktops);
-  "github-runners-poi-aaku.age".publicKeys = mkSecrets (homeServers ++ desktops);
   "wildcard-api-key.age".publicKeys = mkSecrets (homeServers ++ desktops);
   "claude-api-key.age".publicKeys = mkSecrets (homeServers ++ desktops);
   "luee-net-api-key.age".publicKeys = mkSecrets (homeServers ++ desktops);
@@ -39,4 +38,5 @@ in {
   "wakatime-cfg.age".publicKeys = mkSecrets (homeServers ++ desktops);
   "tailscale-oauth-key.age".publicKeys = mkSecrets (homeServers ++ desktops);
   "tailscale-auth-key.age".publicKeys = mkSecrets (homeServers ++ desktops);
+  "github-actions-runner-token.age".publicKeys = mkSecrets (homeServers ++ desktops);
 }
