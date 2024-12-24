@@ -23,6 +23,7 @@ in {
       lua = enabled;
       java = enabled;
       markdown = enabled;
+      beancount = enabled;
     };
   };
 }
