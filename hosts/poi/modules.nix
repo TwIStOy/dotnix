@@ -18,6 +18,7 @@
         "--ssh"
       ];
     };
+    development.languages.beancount.favaService.enable = true;
   };
 
   services.github-runners = {
