@@ -41,6 +41,7 @@ in {
       inherit (cfg) home;
       createHome = true;
       group = "fava";
+      shell = "/run/current-system/sw/bin/bash";
     };
     users.groups.fava = {};
 
@@ -62,9 +63,13 @@ in {
 
     systemd.services.account-book-updater = let
       commitFavaUpdateScript = pkgs.writeShellScriptBin "commitFavaUpdateScript" ''
+        set -e
+        ${pkgs.git}/bin/git config --local user.email "twistoy.wang@gmail.com"
+        ${pkgs.git}/bin/git config --local user.name "bot"
         if ! [[ $(${pkgs.git} status) =~ "working tree clean" ]]; then
+          ${pkgs.git}/bin/git branch --set-upstream-to=origin/master master
           ${pkgs.git}/bin/git add .
-          ${pkgs.git}/bin/git commit -m "auto commit"
+          ${pkgs.git}/bin/git commit -m "auto commit" || true
           ${pkgs.git}/bin/git pull --rebase
           ${pkgs.git}/bin/git push
         fi
@@ -82,7 +87,7 @@ in {
       script = ''
         set -e
         cd ${cfg.home}
-        if [ ! -d "${cfg.home}/main.bean" ]; then
+        if [ ! -f "${cfg.home}/main.bean" ]; then
           echo $GIT_SSH_COMMAND
           git init
           git remote rm origin || true
@@ -90,7 +95,7 @@ in {
           git fetch
           git checkout -t origin/master
         fi
-        ${pkgs.watchexec}/bin/watchexec -r -e bean,beancount -w ${cfg.home} ${commitFavaUpdateScript}
+        ${pkgs.watchexec}/bin/watchexec -r -e bean,beancount -w ${cfg.home} ${commitFavaUpdateScript}/bin/commitFavaUpdateScript
       '';
       serviceConfig = {
         User = "fava";
