@@ -18,7 +18,13 @@
         "--ssh"
       ];
     };
-    development.languages.beancount.favaService.enable = true;
+    services.fava = {
+      enable = true;
+      port = 5000;
+      home = "/var/lib/fava";
+      mainFile = "main.bean";
+      accountBookRepo = "git@github.com:TwIStOy-contrib/account-book.git";
+    };
   };
 
   services.github-runners = {

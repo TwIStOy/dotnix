@@ -88,5 +88,10 @@ in {
       file = "github-actions-runner-token.age";
       owner = user.name;
     };
+    bot-ssh-private-key = ageSecret {
+      file = "bot-ssh-private-key.age";
+      owner = user.name;
+      mode = "444";
+    };
   };
 }
