@@ -1,3 +1,14 @@
-{dotnix-utils, ...}: {
-  imports = dotnix-utils.path.listModules ./.;
+{isDarwin, ...}: {
+  imports =
+    [
+      ./github-runner.nix
+      ./tailscale.nix
+    ]
+    ++ (
+      if (!isDarwin)
+      then [
+        ./fava.nix
+      ]
+      else []
+    );
 }
