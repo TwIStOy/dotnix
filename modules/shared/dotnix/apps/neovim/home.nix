@@ -14,28 +14,28 @@
   unstableVimPlugins = pkgs-unstable.vimPlugins;
 
   plugins = {
-    inherit (nurVimPlugins) gh-actions-nvim fugit2-nvim codesnap-nvim avante-nvim;
+    inherit (nurVimPlugins) codesnap-nvim;
     inherit (unstableVimPlugins) telescope-fzf-native-nvim;
+    inherit (unstableVimPlugins) avante-nvim;
     inherit (unstableVimPlugins) markdown-preview-nvim;
     inherit (unstableVimPlugins) rest-nvim;
     inherit (blinkPkgs) blink-cmp;
   };
 
-  bins = with pkgs-unstable; {
-    inherit fzf stylua lua-language-server statix;
-    clangd = clang-tools;
-    clang-format = llvmPackages_19.clang-unwrapped;
+  bins = {
+    clangd = pkgs-unstable.clang-tools;
+    clang-format = pkgs-unstable.llvmPackages_19.clang-unwrapped;
     inherit (pkgs-unstable.python312Packages) black;
-    inherit (pkgs) rustfmt yaml-language-server libgit2;
-    inherit (pkgs-unstable) taplo beancount-language-server;
+    inherit (pkgs) rustfmt yaml-language-server libgit2 lua-language-server statix;
+    inherit (pkgs-unstable) taplo beancount-language-server fzf stylua;
     rust-analyzer = pkgs.rust-analyzer-nightly;
     vscode-html-language-server = pkgs.vscode-langservers-extracted;
     vscode-eslint-language-server = pkgs.vscode-langservers-extracted;
     vscode-markdown-language-server = pkgs.vscode-langservers-extracted;
     vscode-json-language-server = pkgs.vscode-langservers-extracted;
     vscode-css-language-server = pkgs.vscode-langservers-extracted;
-    jdtls = jdt-language-server;
-    xmllint = libxml2;
+    jdtls = pkgs-unstable.jdt-language-server;
+    xmllint = pkgs-unstable.libxml2;
   };
 
   libs = with pkgs-unstable; {

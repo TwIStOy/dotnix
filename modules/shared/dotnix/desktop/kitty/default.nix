@@ -2,7 +2,7 @@
   config,
   lib,
   dotnix-utils,
-  pkgs-unstable,
+  pkgs,
   ...
 }: let
   cfg = config.dotnix.desktop.kitty;
@@ -140,7 +140,7 @@ in {
     home-manager = dotnix-utils.hm.hmConfig {
       programs.kitty = {
         enable = true;
-        package = pkgs-unstable.kitty;
+        package = pkgs.kitty;
 
         themeFile = "Catppuccin-Mocha";
         settings = {

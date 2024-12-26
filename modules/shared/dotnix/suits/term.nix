@@ -2,6 +2,7 @@
   config,
   lib,
   pkgs,
+  pkgs-unstable,
   dotnix-utils,
   ...
 }: let
@@ -30,38 +31,43 @@ in {
         "rime-scheme"
       ];
 
-      hm.packages = with pkgs; [
-        neofetch
-        xdg-utils
+      hm.packages = with pkgs;
+        [
+          neofetch
+          xdg-utils
 
-        # decompress
-        zip
-        xz
-        unzip
-        p7zip
+          # decompress
+          zip
+          xz
+          unzip
+          p7zip
 
-        # common tools
-        delta
-        (ripgrep.override {withPCRE2 = true;})
-        hyperfine
-        fd
-        skim
-        btop
-        tokei
-        ydict
-        curl
-        wget
-        dig
-        expect
-        gnugrep
-        gnused
-        gawk
-        jq
-        yq-go
+          # common tools
+          delta
+          (ripgrep.override {withPCRE2 = true;})
+          hyperfine
+          fd
+          skim
+          btop
+          tokei
+          ydict
+          wget
+          dig
+          expect
+          gnugrep
+          gnused
+          gawk
+          jq
+          yq-go
 
-        xclip
-        fswatch
-      ];
+          xclip
+          fswatch
+        ]
+        ++ (
+          with pkgs-unstable; [
+            curl
+          ]
+        );
     };
 
     home-manager = dotnix-utils.hm.hmConfig {
