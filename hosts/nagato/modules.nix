@@ -15,6 +15,10 @@ in {
         "--advertise-tags=tag:desktop"
       ];
     };
+
+    desktop.neovide.createRemoteHostWrappers = [
+      "dev.work.local"
+    ];
   };
 
   networking.hostName = hostname;
