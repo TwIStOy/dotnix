@@ -72,6 +72,7 @@
       "raycast"
       "orbstack"
       "obsidian"
+      "ghostty"
     ];
   };
 }
