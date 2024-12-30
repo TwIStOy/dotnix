@@ -28,6 +28,7 @@ in {
           "ThinItalic"
         ];
         font-features = ["+ss01" "+ss02"];
+        map-nerdfont-ranges = false;
       };
 
       neovide.createRemoteHostWrappers = [
