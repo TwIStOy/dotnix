@@ -6,7 +6,29 @@ in {
     darwin-shared-suit = enabled;
     desktop = {
       neovide.extraSettings.font.size = 18;
-      terminal.font-size = 18;
+      terminal = {
+        font-size = 18;
+        font-family = "Maple Mono NF CN";
+        font-variants = builtins.map (variant: "MapleMono-NF-CN-${variant}") [
+          "Bold"
+          "BoldItalic"
+          "ExtraBold"
+          "ExtraBoldItalic"
+          "ExtraLight"
+          "ExtraLightItalic"
+          "Italic"
+          "Light"
+          "LightItalic"
+          "Medium"
+          "MediumItalic"
+          "Regular"
+          "SemiBold"
+          "SemiBoldItalic"
+          "Thin"
+          "ThinItalic"
+        ];
+        font-features = ["+ss01" "+ss02"];
+      };
 
       neovide.createRemoteHostWrappers = [
         "dev.work.local"
