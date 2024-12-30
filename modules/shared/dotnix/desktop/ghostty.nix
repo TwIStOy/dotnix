@@ -37,6 +37,10 @@
       macos-titlebar-proxy-icon = "hidden";
       macos-option-as-alt = "true";
       macos-auto-secure-input = "false";
+
+      font-thicken = "true";
+      background-opacity = "0.9";
+      background-blur-radius = "20";
     }
     // (
       if termCfg.adjust-cell-width != ""
@@ -94,7 +98,7 @@
       else []
     )
     ++ (
-      builtins.map (feature: "font_feature ${feature}") termCfg.font-features
+      builtins.map (feature: {font-feature = feature;}) termCfg.font-features
     )
     ++ (
       lib.attrsets.mapAttrsToList (key: value: toConfigItem "keybind" "${key}=${value}") keybindings
