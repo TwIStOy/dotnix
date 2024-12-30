@@ -17,6 +17,10 @@ in {
         enable = true;
       };
 
+      ghostty = {
+        enable = true;
+      };
+
       vscodium = {
         enable = false;
       };

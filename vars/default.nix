@@ -14,11 +14,15 @@ let
     if builtins.pathExists filePath
     then import filePath
     else import defaultPath;
+
+  # env-unrelated constants
+  constants = import ./constants.nix;
 in rec {
   inherit availableEnvs;
 
   varsFor = env: {
     user = varFor "user" env;
+    inherit constants;
   };
 
   allVars = builtins.listToAttrs (

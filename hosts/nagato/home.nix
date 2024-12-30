@@ -1,6 +1,4 @@
 _: {
-  programs.kitty.settings.font_size = 18;
-
   programs.ssh = {
     matchBlocks = {
       "dev.work.local" = {

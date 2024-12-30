@@ -6,131 +6,124 @@
   ...
 }: let
   cfg = config.dotnix.desktop.kitty;
+  termCfg = config.dotnix.desktop.terminal;
 
   font-utils = import ./font-utils.nix;
 
   inherit (font-utils) to-font-config map-nerd-icon-ranges;
 
-  maple-config = to-font-config {
-    family = "MapleMono-NF-CN";
-    variants = [
-      "Bold"
-      "BoldItalic"
-      "ExtraBold"
-      "ExtraBoldItalic"
-      "ExtraLight"
-      "ExtraLightItalic"
-      "Italic"
-      "Light"
-      "LightItalic"
-      "Medium"
-      "MediumItalic"
-      "Regular"
-      "SemiBold"
-      "SemiBoldItalic"
-      "Thin"
-      "ThinItalic"
-    ];
-    features = "+ss01 +ss02";
-  };
+  # maple-config = to-font-config {
+  #   family = "MapleMono-NF-CN";
+  #   variants = [
+  #     "Bold"
+  #     "BoldItalic"
+  #     "ExtraBold"
+  #     "ExtraBoldItalic"
+  #     "ExtraLight"
+  #     "ExtraLightItalic"
+  #     "Italic"
+  #     "Light"
+  #     "LightItalic"
+  #     "Medium"
+  #     "MediumItalic"
+  #     "Regular"
+  #     "SemiBold"
+  #     "SemiBoldItalic"
+  #     "Thin"
+  #     "ThinItalic"
+  #   ];
+  #   features = "+ss01 +ss02";
+  # };
+  #
+  # monolisa-config = to-font-config {
+  #   family = "";
+  #   variants = [
+  #     "MonoLisa-Bold"
+  #     "MonoLisa-BoldItalic"
+  #     "MonoLisa-Regular"
+  #     "MonoLisa-RegularItalic"
+  #     "MonoLisaBlack-Regular"
+  #     "MonoLisaBlack-Italic"
+  #     "MonoLisaExtraBold-Regular"
+  #     "MonoLisaExtraBold-Italic"
+  #     "MonoLisaExtraLight-Regular"
+  #     "MonoLisaExtraLight-Italic"
+  #     "MonoLisaLight-Regular"
+  #     "MonoLisaLight-Italic"
+  #     "MonoLisaMedium-Regular"
+  #     "MonoLisaMedium-Italic"
+  #     "MonoLisaSemiBold-Regular"
+  #     "MonoLisaSemiBold-Italic"
+  #     "MonoLisaThin-Regular"
+  #     "MonoLisaThin-Italic"
+  #     "MonoLisaVariableRegular-Black"
+  #     "MonoLisaVariableRegular-Black"
+  #     "MonoLisaVariableItalic-Black"
+  #     "MonoLisaVariableItalic-Black"
+  #     "MonoLisaVariableRegular-Bold"
+  #     "MonoLisaVariableRegular-Bold"
+  #     "MonoLisaVariableItalic-Bold"
+  #     "MonoLisaVariableItalic-Bold"
+  #     "MonoLisaVariableRegular-ExtraBold"
+  #     "MonoLisaVariableRegular-ExtraBold"
+  #     "MonoLisaVariableItalic-ExtraBold"
+  #     "MonoLisaVariableItalic-ExtraBold"
+  #     "MonoLisaVariableRegular-ExtraLight"
+  #     "MonoLisaVariableRegular-ExtraLight"
+  #     "MonoLisaVariableItalic-ExtraLight"
+  #     "MonoLisaVariableItalic-ExtraLight"
+  #     "MonoLisaVariable-Italic"
+  #     "MonoLisaVariable-Italic"
+  #     "MonoLisaVariableRegular-Light"
+  #     "MonoLisaVariableRegular-Light"
+  #     "MonoLisaVariableItalic-Light"
+  #     "MonoLisaVariableItalic-Light"
+  #     "MonoLisaVariableRegular-Medium"
+  #     "MonoLisaVariableRegular-Medium"
+  #     "MonoLisaVariableItalic-Medium"
+  #     "MonoLisaVariableItalic-Medium"
+  #     "MonoLisaVariable-Regular"
+  #     "MonoLisaVariable-Regular"
+  #     "MonoLisaVariableRegular-SemiBold"
+  #     "MonoLisaVariableRegular-SemiBold"
+  #     "MonoLisaVariableItalic-SemiBold"
+  #     "MonoLisaVariableItalic-SemiBold"
+  #     "MonoLisaVariableRegular-Thin"
+  #     "MonoLisaVariableRegular-Thin"
+  #     "MonoLisaVariableItalic-Thin"
+  #     "MonoLisaVariableItalic-Thin"
+  #   ];
+  #   features = "-calt +ss01 +ss07 +ss09 +ss11 +ss16 +ss18";
+  #   extra-config = ''
+  #     modify_font cell_width 90%
+  #   '';
+  # };
+  #
+  # iosevka-normal-config = to-font-config {
+  #   family = "Iosevka";
+  #   variants = [
+  #     ""
+  #     "SemiBold"
+  #     "Bold"
+  #   ];
+  #   features = "+ss07 cv49=16 cv94=1 VXLA=2 VXLC=2 cv34=12 cv31=13";
+  # };
+  #
+  # iosevka-italic-config = to-font-config {
+  #   family = "Iosevka";
+  #   variants = [
+  #     "Italic"
+  #     "Oblique"
+  #     "Bold-Italic"
+  #     "Bold-Oblique"
+  #   ];
+  #   features = "+ss07 cv49=16 cv94=1 VXLA=2 VXLC=2 cv34=12 cv36=27 cv32=2 cv25=27 cv31=13";
+  # };
 
-  monolisa-config = to-font-config {
-    family = "";
-    variants = [
-      "MonoLisa-Bold"
-      "MonoLisa-BoldItalic"
-      "MonoLisa-Regular"
-      "MonoLisa-RegularItalic"
-      "MonoLisaBlack-Regular"
-      "MonoLisaBlack-Italic"
-      "MonoLisaExtraBold-Regular"
-      "MonoLisaExtraBold-Italic"
-      "MonoLisaExtraLight-Regular"
-      "MonoLisaExtraLight-Italic"
-      "MonoLisaLight-Regular"
-      "MonoLisaLight-Italic"
-      "MonoLisaMedium-Regular"
-      "MonoLisaMedium-Italic"
-      "MonoLisaSemiBold-Regular"
-      "MonoLisaSemiBold-Italic"
-      "MonoLisaThin-Regular"
-      "MonoLisaThin-Italic"
-      "MonoLisaVariableRegular-Black"
-      "MonoLisaVariableRegular-Black"
-      "MonoLisaVariableItalic-Black"
-      "MonoLisaVariableItalic-Black"
-      "MonoLisaVariableRegular-Bold"
-      "MonoLisaVariableRegular-Bold"
-      "MonoLisaVariableItalic-Bold"
-      "MonoLisaVariableItalic-Bold"
-      "MonoLisaVariableRegular-ExtraBold"
-      "MonoLisaVariableRegular-ExtraBold"
-      "MonoLisaVariableItalic-ExtraBold"
-      "MonoLisaVariableItalic-ExtraBold"
-      "MonoLisaVariableRegular-ExtraLight"
-      "MonoLisaVariableRegular-ExtraLight"
-      "MonoLisaVariableItalic-ExtraLight"
-      "MonoLisaVariableItalic-ExtraLight"
-      "MonoLisaVariable-Italic"
-      "MonoLisaVariable-Italic"
-      "MonoLisaVariableRegular-Light"
-      "MonoLisaVariableRegular-Light"
-      "MonoLisaVariableItalic-Light"
-      "MonoLisaVariableItalic-Light"
-      "MonoLisaVariableRegular-Medium"
-      "MonoLisaVariableRegular-Medium"
-      "MonoLisaVariableItalic-Medium"
-      "MonoLisaVariableItalic-Medium"
-      "MonoLisaVariable-Regular"
-      "MonoLisaVariable-Regular"
-      "MonoLisaVariableRegular-SemiBold"
-      "MonoLisaVariableRegular-SemiBold"
-      "MonoLisaVariableItalic-SemiBold"
-      "MonoLisaVariableItalic-SemiBold"
-      "MonoLisaVariableRegular-Thin"
-      "MonoLisaVariableRegular-Thin"
-      "MonoLisaVariableItalic-Thin"
-      "MonoLisaVariableItalic-Thin"
-    ];
-    features = "-calt +ss01 +ss07 +ss09 +ss11 +ss16 +ss18";
-    extra-config = ''
-      modify_font cell_width 90%
-    '';
-  };
-
-  iosevka-normal-config = to-font-config {
-    family = "Iosevka";
-    variants = [
-      ""
-      "SemiBold"
-      "Bold"
-    ];
-    features = "+ss07 cv49=16 cv94=1 VXLA=2 VXLC=2 cv34=12 cv31=13";
-  };
-
-  iosevka-italic-config = to-font-config {
-    family = "Iosevka";
-    variants = [
-      "Italic"
-      "Oblique"
-      "Bold-Italic"
-      "Bold-Oblique"
-    ];
-    features = "+ss07 cv49=16 cv94=1 VXLA=2 VXLC=2 cv34=12 cv36=27 cv32=2 cv25=27 cv31=13";
-  };
-
-  iosevka-config = ''
-    ${iosevka-normal-config}
-    ${iosevka-italic-config}
-  '';
-
-  symbol-map-nerd-icons = map-nerd-icon-ranges {
-    family = "Symbols Nerd Font Mono";
-  };
-
-  use-font-family = "MonoLisa";
-
-  contains-nerd-icons = name: (lib.strings.hasInfix "NF" name) || (lib.strings.hasInfix "Nerd Font Mono" name);
+  capitalize = c:
+    if c == ""
+    then ""
+    else builtins.substring 0 1 (lib.toUpper c) + builtins.substring 1 (builtins.stringLength c - 1) c;
 in {
   options.dotnix.desktop.kitty = {
     enable = lib.mkEnableOption "Enable kitty terminal";
@@ -142,9 +135,10 @@ in {
         enable = true;
         package = pkgs.kitty;
 
-        themeFile = "Catppuccin-Mocha";
+        themeFile = lib.strings.concatStringsSep "-" (builtins.map capitalize (lib.strings.splitString "-" termCfg.theme));
         settings = {
-          font_family = use-font-family;
+          font_family = termCfg.font-family;
+          font_size = termCfg.font-size;
 
           disable_ligatures = "never";
           scrollback_lines = "10000";
@@ -181,7 +175,8 @@ in {
 
           kitty_mod = "cmd";
           clear_all_shortcuts = "yes";
-          shell = "/run/current-system/sw/bin/fish --login";
+
+          inherit (termCfg) shell;
 
           clipboard_control = "write-clipboard write-primary read-clipboard read-primary";
 
@@ -228,18 +223,31 @@ in {
         };
 
         extraConfig = ''
-          ${maple-config}
-          ${monolisa-config}
-          ${iosevka-config}
+          ${to-font-config {
+            family = termCfg.font-family;
+            variants = termCfg.font-variants;
+            features = lib.strings.concatStringsSep " " termCfg.font-features;
+          }}
           ${
-            if !(contains-nerd-icons use-font-family)
-            then symbol-map-nerd-icons
+            if termCfg.map-nerdfont-ranges
+            then
+              map-nerd-icon-ranges {
+                family = termCfg.nerdfont-family;
+              }
+            else ""
+          }
+          ${
+            if termCfg.adjust-cell-width != ""
+            then "modify_font cell_width ${termCfg.adjust-cell-width}"
+            else ""
+          }
+          ${
+            if termCfg.adjust-cell-height != ""
+            then "modify_font cell_height ${termCfg.adjust-cell-height}"
             else ""
           }
 
           modify_font underline_position 22
-          modify_font cell_width 90%
-          modify_font baseline 0
         '';
       };
     };

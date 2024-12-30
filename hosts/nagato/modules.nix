@@ -4,8 +4,15 @@
 in {
   dotnix = {
     darwin-shared-suit = enabled;
+    desktop = {
+      neovide.extraSettings.font.size = 18;
+      terminal.font-size = 18;
 
-    desktop.neovide.extraSettings.font.size = 18;
+      neovide.createRemoteHostWrappers = [
+        "dev.work.local"
+      ];
+    };
+
     apps.zed.buffer_font_size = 18;
     apps.zed.ui_font_size = 16;
 
@@ -15,10 +22,6 @@ in {
         "--advertise-tags=tag:desktop"
       ];
     };
-
-    desktop.neovide.createRemoteHostWrappers = [
-      "dev.work.local"
-    ];
   };
 
   networking.hostName = hostname;

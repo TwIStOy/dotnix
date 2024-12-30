@@ -6,6 +6,8 @@ in {
     darwin-shared-suit = enabled;
 
     desktop.neovide.extraSettings.font.size = 18;
+    desktop.terminal.font-size = 18;
+
     apps.zed.buffer_font_size = 18;
     apps.zed.ui_font_size = 16;
 
