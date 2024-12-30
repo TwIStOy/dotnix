@@ -33,7 +33,7 @@
       quick-terminal-animation-duration = "0.5";
       quick-terminal-autohide = "false";
 
-      macos-titlebar-style = "native";
+      macos-titlebar-style = "transparent";
       macos-titlebar-proxy-icon = "hidden";
       macos-option-as-alt = "true";
       macos-auto-secure-input = "false";
@@ -41,6 +41,8 @@
       font-thicken = "true";
       background-opacity = "0.9";
       background-blur-radius = "20";
+
+      window-title-font-family = "Maple Mono NF CN";
     }
     // (
       if termCfg.adjust-cell-width != ""
