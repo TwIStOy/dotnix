@@ -16,6 +16,8 @@
       extraUpFlags = [
         "--advertise-tags=tag:homeserver"
         "--ssh"
+        "--advertise-routes=192.168.50.0/24"
+        "--accept-dns=false"
       ];
     };
     services.fava = {
