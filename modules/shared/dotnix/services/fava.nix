@@ -64,9 +64,10 @@ in {
     systemd.services.account-book-updater = let
       commitFavaUpdateScript = pkgs.writeShellScriptBin "commitFavaUpdateScript" ''
         set -e
+        export GIT_SSH_COMMAND="${pkgs.openssh}/bin/ssh -i /run/agenix/bot-ssh-private-key -o UserKnownHostsFile=/dev/null -o StrictHostKeyChecking=no -o ProxyCommand='${pkgs.connect}/bin/connect -S 192.168.50.217:8889 -a none %h %p'";
         ${pkgs.git}/bin/git config --local user.email "twistoy.wang@gmail.com"
         ${pkgs.git}/bin/git config --local user.name "bot"
-        if ! [[ $(${pkgs.git} status) =~ "working tree clean" ]]; then
+        if ! [[ $(${pkgs.git}/bin/git status) =~ "working tree clean" ]]; then
           ${pkgs.git}/bin/git branch --set-upstream-to=origin/master master
           ${pkgs.git}/bin/git add .
           ${pkgs.git}/bin/git commit -m "auto commit" || true
@@ -78,11 +79,12 @@ in {
       description = "Update the account book";
       wantedBy = ["multi-user.target"];
       environment = {
-        GIT_SSH_COMMAND = "${pkgs.openssh}/bin/ssh -i /run/agenix/bot-ssh-private-key -o UserKnownHostsFile=/dev/null -o StrictHostKeyChecking=no";
+        GIT_SSH_COMMAND = "${pkgs.openssh}/bin/ssh -i /run/agenix/bot-ssh-private-key -o UserKnownHostsFile=/dev/null -o StrictHostKeyChecking=no -o ProxyCommand='${pkgs.netcat}/bin/nc -X 5 -x 192.168.50.217:8889 %h %p'";
       };
       path = with pkgs; [
         git
         openssh
+        netcat
       ];
       script = ''
         set -e
