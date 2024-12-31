@@ -22,11 +22,11 @@ jobs:
           experimental-features = nix-command flakes
     - name: "build public iso"
       run: |
-        nix build .#nixosConfigurations.cloud-iso.config.system.build.diskoImages
+        nix build .#nixosConfigurations.cloud-iso.config.formats.install-iso
     - name: "provide default iso"
       uses: actions/upload-artifact@v4
       with:
         name: live-iso
         path: |
-          result/iso/*.iso
+          result/*.iso
 

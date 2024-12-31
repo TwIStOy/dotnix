@@ -1,12 +1,10 @@
 {
-  inputs,
   config,
-  pkgs,
   lib,
   ...
 }: {
   imports = [
-    inputs.disko.nixosModules.disko
+    # inputs.disko.nixosModules.disko
   ];
 
   boot = {
@@ -21,8 +19,8 @@
       systemd.enable = true;
     };
 
+    loader.systemd-boot.enable = true;
     loader.grub = {
-      enable = !config.boot.isContainer;
       default = "saved";
       devices = ["/dev/vda"];
     };

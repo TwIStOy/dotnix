@@ -18,6 +18,8 @@ in {
         (with pkgs; [
           lazydocker # docker TUI
           dive # explore layers in docker images
+          kubernetes-helm
+          fluxcd
           # ansible
         ])
         ++ (

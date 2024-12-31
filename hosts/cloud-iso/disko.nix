@@ -1,9 +1,10 @@
 _: {
   disko = {
-    enableConfig = false;
+    enableConfig = true;
 
     devices = {
       disk.main = {
+        imageSize = "20G";
         device = "/dev/vda";
         type = "disk";
         content = {
@@ -44,15 +45,15 @@ _: {
     };
   };
 
-  fileSystems."/" = {
-    device = "/dev/disk/by-label/nixos";
-    fsType = "btrfs";
-    options = ["compress-force=zstd" "nosuid" "nodev"];
-  };
-
-  fileSystems."/boot" = {
-    device = "/dev/disk/by-label/boot";
-    fsType = "vfat";
-    options = ["fmask=0077" "dmask=0077"];
-  };
+  # fileSystems."/" = {
+  #   device = "/dev/disk/by-label/nixos";
+  #   fsType = "btrfs";
+  #   options = ["compress-force=zstd" "nosuid" "nodev"];
+  # };
+  #
+  # fileSystems."/boot" = {
+  #   device = "/dev/disk/by-label/boot";
+  #   fsType = "vfat";
+  #   options = ["fmask=0077" "dmask=0077"];
+  # };
 }
