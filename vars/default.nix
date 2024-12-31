@@ -1,5 +1,5 @@
 let
-  availableEnvs = ["default" "tesla"];
+  availableEnvs = ["default" "tesla" "cloud"];
 
   fixModuleName = name:
     if name == "default"

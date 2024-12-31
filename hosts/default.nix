@@ -81,6 +81,13 @@
   };
   poi = mkX64LinuxSystem "poi";
   taihou = mkX64LinuxSystem "taihou";
+  cloudIso = makeSystemDrv {
+    name = "cloud-iso";
+    system = flake-utils.lib.system.x86_64-linux;
+    path = ./cloud-iso;
+    env = "cloud";
+  };
+
   # mutsu = makeSystemDrv {
   #   name = "mutsu";
   #   system = flake-utils.lib.system.x86_64-linux;
@@ -98,5 +105,6 @@ in
     nagato
     poi
     taihou
+    cloudIso
     # mutsu
   ]

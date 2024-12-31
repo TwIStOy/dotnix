@@ -81,6 +81,11 @@
     blink.url = "github:Saghen/blink.cmp";
 
     deploy-rs.url = "github:serokell/deploy-rs";
+
+    disko = {
+      url = "github:nix-community/disko";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
   nixConfig = {
