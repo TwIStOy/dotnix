@@ -25,6 +25,8 @@ in {
         ++ (
           with pkgs-unstable; [
             minikube # k8s
+            kubectx
+            kubelogin-oidc
           ]
         );
     };
