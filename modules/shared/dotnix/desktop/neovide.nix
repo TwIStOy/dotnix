@@ -129,7 +129,7 @@ in {
           "neovide/remote-hosts/${host}" = {
             source = pkgs.writeShellScript host ''
               #!/bin/bash
-              ssh ${host} "bash -l -c \"nvim $@\""
+              ssh ${host} "fish -l -c \"nvim $@\""
             '';
             force = true;
             executable = true;

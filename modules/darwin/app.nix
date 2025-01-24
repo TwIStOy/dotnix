@@ -7,9 +7,10 @@
   ];
 
   programs.zsh.enable = true;
-  environment.shells = [
-    pkgs.zsh
-    pkgs.fish
+  environment.shells = with pkgs; [
+    zsh
+    fish
+    darwin.iproute2mac
   ];
 
   homebrew = {
