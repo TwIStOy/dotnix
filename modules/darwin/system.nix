@@ -69,6 +69,8 @@ _: {
         # expand save panel by default(保存文件时的路径选择/文件名输入页)
         NSNavPanelExpandedStateForSaveMode = true;
         NSNavPanelExpandedStateForSaveMode2 = true;
+        # Move windows by holding 'ctrl' + 'cmd' and dragging any part of the window
+        NSWindowShouldDragOnGesture = true;
       };
 
       CustomUserPreferences = {

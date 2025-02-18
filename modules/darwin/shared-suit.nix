@@ -16,7 +16,7 @@ in {
       shared-suit = enabled;
       suits.desktop = enabled;
       apps = enableModules [
-        "yabai"
+        "aerospace"
         "hammerspoon"
         "karabiner"
         "pbcopy-paste"
