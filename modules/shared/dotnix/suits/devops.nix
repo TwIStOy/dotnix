@@ -22,7 +22,6 @@ in {
           fluxcd
           # ansible
           fluxcd
-          kubectx
         ])
         ++ (
           with pkgs-unstable; [

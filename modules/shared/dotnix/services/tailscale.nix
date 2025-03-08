@@ -1,6 +1,5 @@
 {
   pkgs,
-  pkgs-unstable,
   config,
   lib,
   isDarwin,
@@ -47,7 +46,7 @@ in {
 
     package = lib.mkOption {
       type = lib.types.package;
-      default = pkgs-unstable.tailscale;
+      default = pkgs.tailscale;
       description = "Path to the tailscale binary";
     };
 
@@ -89,7 +88,7 @@ in {
   };
 
   config = lib.mkIf cfg.enable ({
-      environment.systemPackages = with pkgs-unstable; [
+      environment.systemPackages = with pkgs; [
         tailscale
       ];
 

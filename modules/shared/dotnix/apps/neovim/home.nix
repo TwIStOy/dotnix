@@ -3,18 +3,16 @@
   lib,
   pkgs,
   pkgs-unstable,
-  nur-hawtian,
   inputs,
   ...
 }: let
   user-dotpath = "${config.home.homeDirectory}/.dotvim";
 
   blinkPkgs = inputs.blink.packages.${pkgs.system};
-  nurVimPlugins = nur-hawtian.packages.${pkgs.system}.vimPlugins;
   unstableVimPlugins = pkgs-unstable.vimPlugins;
 
   plugins = {
-    inherit (nurVimPlugins) codesnap-nvim;
+    inherit (unstableVimPlugins) codesnap-nvim;
     inherit (unstableVimPlugins) telescope-fzf-native-nvim;
     inherit (unstableVimPlugins) avante-nvim;
     inherit (unstableVimPlugins) markdown-preview-nvim;
@@ -28,7 +26,7 @@
     inherit (pkgs-unstable.python312Packages) black;
     inherit (pkgs) rustfmt yaml-language-server libgit2 lua-language-server statix;
     inherit (pkgs-unstable) taplo beancount-language-server fzf stylua helm-ls;
-    rust-analyzer = pkgs.rust-analyzer-nightly;
+    rust-analyzer = pkgs.rust-analyzer;
     vscode-html-language-server = pkgs.vscode-langservers-extracted;
     vscode-eslint-language-server = pkgs.vscode-langservers-extracted;
     vscode-markdown-language-server = pkgs.vscode-langservers-extracted;
