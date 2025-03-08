@@ -21,6 +21,8 @@ in {
           kubernetes-helm
           fluxcd
           # ansible
+          fluxcd
+          kubectx
         ])
         ++ (
           with pkgs-unstable; [

@@ -16,6 +16,7 @@ in {
       extraUpFlags = [
         "--advertise-tags=tag:desktop"
         "--ssh"
+        "--accept-routes"
       ];
     };
   };
