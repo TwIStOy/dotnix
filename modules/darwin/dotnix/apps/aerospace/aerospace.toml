@@ -57,6 +57,7 @@ alt-6 = 'workspace 6'
 alt-7 = 'workspace 7'
 alt-8 = 'workspace 8'
 alt-9 = 'workspace 9'
+alt-t = 'workspace t'
 
 # See: https://nikitabobko.github.io/AeroSpace/commands#move-node-to-workspace
 alt-shift-1 = 'move-node-to-workspace 1'
@@ -116,10 +117,15 @@ run = ["layout tiling", "move-node-to-workspace 3"]
 [[on-window-detected]]
 if.app-id = 'com.mitchellh.ghostty'
 # an ugly workaround to make Ghostty work with AeroSpace, see: https://github.com/ghostty-org/ghostty/issues/3170
-run = ["layout tiling", "move-node-to-workspace 9"]
+run = ["layout tiling", "move-node-to-workspace t"]
+
+[[on-window-detected]]
+if.app-id = 'net.kovidgoyal.kitty'
+# an ugly workaround to make Ghostty work with AeroSpace, see: https://github.com/ghostty-org/ghostty/issues/3170
+run = ["layout tiling", "move-node-to-workspace t"]
 
 [workspace-to-monitor-force-assignment]
 1 = "main"
 2 = "main"
 3 = "main"
-9 = "secondary"
+t = "secondary"
