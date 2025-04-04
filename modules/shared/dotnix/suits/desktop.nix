@@ -69,6 +69,9 @@ in {
             ];
           };
           vsync = true;
+          "box-drawing" = {
+            mode = "native";
+          };
         };
       };
     };
