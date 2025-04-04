@@ -248,7 +248,24 @@ in {
           }
 
           modify_font underline_position 22
+
+          startup_session ~/.config/kitty/sessions/default
         '';
+      };
+
+      # session files
+      xdg.configFile = {
+        "kitty/sessions" = {
+          source = ./sessions;
+          force = true;
+          recursive = true;
+        };
+
+        "kitty/watchers" = {
+          source = ./watchers;
+          force = true;
+          recursive = true;
+        };
       };
     };
   };
