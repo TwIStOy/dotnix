@@ -51,8 +51,6 @@
       # "xcbeautify" # beautifier tool for xcodebuild
       # "xcode-build-server" # xcodeproject to lspconfigs
       "swift-format"
-
-      "emacs-plus@30"
     ];
 
     casks = [
