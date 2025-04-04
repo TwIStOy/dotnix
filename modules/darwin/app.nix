@@ -33,6 +33,7 @@
       "qmk/qmk"
       "FelixKratz/formulae"
       "d12frosted/emacs-plus"
+      "nikitabobko/tap"
     ];
 
     brews = [
