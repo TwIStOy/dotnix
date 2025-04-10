@@ -121,7 +121,10 @@ run = ["layout tiling", "move-node-to-workspace t"]
 
 [[on-window-detected]]
 if.app-id = 'net.kovidgoyal.kitty'
-# an ugly workaround to make Ghostty work with AeroSpace, see: https://github.com/ghostty-org/ghostty/issues/3170
+run = ["layout tiling", "move-node-to-workspace t"]
+
+[[on-window-detected]]
+if.app-id = 'com.neovide.neovide'
 run = ["layout tiling", "move-node-to-workspace t"]
 
 [workspace-to-monitor-force-assignment]

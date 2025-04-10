@@ -24,9 +24,9 @@
     clangd = pkgs-unstable.clang-tools;
     clang-format = pkgs-unstable.llvmPackages_19.clang-unwrapped;
     inherit (pkgs-unstable.python312Packages) black;
-    inherit (pkgs) rustfmt yaml-language-server libgit2 lua-language-server statix;
-    inherit (pkgs-unstable) taplo beancount-language-server fzf stylua helm-ls;
-    rust-analyzer = pkgs.rust-analyzer;
+    inherit (pkgs) rustfmt yaml-language-server libgit2 statix;
+    inherit (pkgs-unstable) taplo beancount-language-server fzf stylua helm-ls lua-language-server;
+    inherit (pkgs) rust-analyzer;
     vscode-html-language-server = pkgs.vscode-langservers-extracted;
     vscode-eslint-language-server = pkgs.vscode-langservers-extracted;
     vscode-markdown-language-server = pkgs.vscode-langservers-extracted;
