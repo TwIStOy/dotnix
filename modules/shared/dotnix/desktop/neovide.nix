@@ -101,10 +101,11 @@ in {
 
   config = lib.mkIf cfg.enable {
     dotnix.hm.packages = let
+      # Adding "--wsl" to the neovide command line is a HACK to make neovide use local clipboard instead of remote.
       mkNeovideWrapper = host:
         pkgs.writeShellScriptBin "neovide-${host}" ''
           #!/bin/bash
-          ${neovideBin} --neovim-bin "$XDG_CONFIG_HOME/neovide/remote-hosts/${host}" $@
+          ${neovideBin} --neovim-bin "$XDG_CONFIG_HOME/neovide/remote-hosts/${host}" $@ --wsl
         '';
     in
       (

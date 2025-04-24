@@ -40,4 +40,5 @@ in {
   "tailscale-auth-key.age".publicKeys = mkSecrets (homeServers ++ desktops);
   "github-actions-runner-token.age".publicKeys = mkSecrets (homeServers ++ desktops);
   "bot-ssh-private-key.age".publicKeys = mkSecrets (homeServers ++ desktops);
+  "tesla-password.age".publicKeys = mkSecrets (homeServers ++ desktops);
 }
