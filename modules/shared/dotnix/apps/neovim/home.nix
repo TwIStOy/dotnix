@@ -23,7 +23,7 @@
   bins = {
     clangd = pkgs-unstable.clang-tools;
     clang-format = pkgs-unstable.llvmPackages_19.clang-unwrapped;
-    inherit (pkgs-unstable.python312Packages) black;
+    inherit (pkgs-unstable) black;
     inherit (pkgs) rustfmt yaml-language-server libgit2 statix;
     inherit (pkgs-unstable) taplo beancount-language-server fzf stylua helm-ls lua-language-server;
     inherit (pkgs) rust-analyzer;
@@ -81,7 +81,7 @@ in {
     ])
     ++ (
       with pkgs-unstable; [
-        python312Packages.pynvim
+        python313Packages.pynvim
       ]
     );
 
