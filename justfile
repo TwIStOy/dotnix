@@ -21,10 +21,10 @@ poi use_nom="yes" details="yes": (_nixos_rebuild "poi" use_nom details)
 taihou use_nom="yes" details="yes": (_nixos_rebuild "taihou" use_nom details)
 
 _macos_rebuild hostname use_nom="yes" details="no": && (_macos_switch hostname details)
-  @{{ if use_nom == "yes" { "nom" } else { "nix" } }} build .#darwinConfigurations.{{hostname}}.system --extra-experimental-features 'nix-command flakes' {{ if details != "no" { "--show-trace" } else { "" } }}
+  @{{ if use_nom == "yes" { "nom" } else { "nix" } }} build .#darwinConfigurations.{{hostname}}.system --accept-flake-config --extra-experimental-features 'nix-command flakes' {{ if details != "no" { "--show-trace" } else { "" } }}
 
 _nixos_rebuild hostname use_nom="yes" details="no": && (_nixos_switch hostname details)
-  {{ if use_nom == "yes" { "nom" } else { "nix" } }} build .#nixosConfigurations.{{hostname}}.config.system.build.toplevel {{ if details != "no" { "--show-trace --verbose" } else { "" } }} 
+  {{ if use_nom == "yes" { "nom" } else { "nix" } }} build .#nixosConfigurations.{{hostname}}.config.system.build.toplevel --accept-flake-config {{ if details != "no" { "--show-trace --verbose" } else { "" } }} 
 
 _macos_switch hostname details="no": _cleanup_rime_ls_build_prism_bin _cleanup_atuin_config
   @./result/sw/bin/darwin-rebuild switch --flake .#{{hostname}} {{ if details != "no" { "--show-trace" } else { "" } }}

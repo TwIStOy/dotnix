@@ -30,6 +30,7 @@
           vendor_id = 1133;
         };
         mouse_flip_vertical_wheel = true;
+        mouse_flip_horizontal_wheel = true;
       }
       {
         ignore = false;

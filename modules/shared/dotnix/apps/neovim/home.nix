@@ -22,16 +22,16 @@
 
   bins = {
     clangd = pkgs-unstable.clang-tools;
-    clang-format = pkgs-unstable.llvmPackages_19.clang-unwrapped;
+    clang-format = pkgs-unstable.llvmPackages_20.clang-unwrapped;
     inherit (pkgs-unstable) black;
-    inherit (pkgs) rustfmt yaml-language-server libgit2 statix;
-    inherit (pkgs-unstable) taplo beancount-language-server fzf stylua helm-ls lua-language-server;
+    inherit (pkgs) rustfmt libgit2 statix;
+    inherit (pkgs-unstable) taplo beancount-language-server fzf stylua helm-ls lua-language-server yaml-language-server;
     inherit (pkgs) rust-analyzer;
-    vscode-html-language-server = pkgs.vscode-langservers-extracted;
-    vscode-eslint-language-server = pkgs.vscode-langservers-extracted;
-    vscode-markdown-language-server = pkgs.vscode-langservers-extracted;
-    vscode-json-language-server = pkgs.vscode-langservers-extracted;
-    vscode-css-language-server = pkgs.vscode-langservers-extracted;
+    vscode-html-language-server = pkgs-unstable.vscode-langservers-extracted;
+    vscode-eslint-language-server = pkgs-unstable.vscode-langservers-extracted;
+    vscode-markdown-language-server = pkgs-unstable.vscode-langservers-extracted;
+    vscode-json-language-server = pkgs-unstable.vscode-langservers-extracted;
+    vscode-css-language-server = pkgs-unstable.vscode-langservers-extracted;
     jdtls = pkgs-unstable.jdt-language-server;
     xmllint = pkgs-unstable.libxml2;
   };
@@ -74,7 +74,7 @@
   '';
 in {
   home.packages =
-    (with pkgs; [
+    (with pkgs-unstable; [
       neovim-node-client
       tree-sitter
       nixAwareNvimConfig
