@@ -37,7 +37,8 @@
     buffer_font_size,
     ui_font_size,
   }: {
-    theme = "Xcode Persentation Dark";
+    theme = "Catppuccin Frappé (Blur)";
+    icon_theme = "Catppuccin Frappé";
     auto_update = false;
     inherit auto_update_extensions;
     inherit auto_install_extensions;
