@@ -13,7 +13,7 @@ default-root-container-layout = 'accordion'
 default-root-container-orientation = 'auto'
 
 on-focused-monitor-changed = ['move-mouse monitor-lazy-center']
-automatically-unhide-macos-hidden-apps = false
+automatically-unhide-macos-hidden-apps = true
 
 [key-mapping]
 preset = 'qwerty'
@@ -48,27 +48,19 @@ alt-minus = 'resize smart -50'
 alt-equal = 'resize smart +50'
 
 # See: https://nikitabobko.github.io/AeroSpace/commands#workspace
-alt-1 = 'workspace 1'
-alt-2 = 'workspace 2'
-alt-3 = 'workspace 3'
-alt-4 = 'workspace 4'
-alt-5 = 'workspace 5'
-alt-6 = 'workspace 6'
-alt-7 = 'workspace 7'
-alt-8 = 'workspace 8'
-alt-9 = 'workspace 9'
-alt-t = 'workspace t'
+alt-t = 'workspace terminal'
+alt-b = 'workspace browser'
+alt-c = 'workspace chat'
+alt-i = 'workspace ide'
+alt-o = 'workspace note'
+alt-r = 'workspace rest' # All other apps
 
 # See: https://nikitabobko.github.io/AeroSpace/commands#move-node-to-workspace
-alt-shift-1 = 'move-node-to-workspace 1'
-alt-shift-2 = 'move-node-to-workspace 2'
-alt-shift-3 = 'move-node-to-workspace 3'
-alt-shift-4 = 'move-node-to-workspace 4'
-alt-shift-5 = 'move-node-to-workspace 5'
-alt-shift-6 = 'move-node-to-workspace 6'
-alt-shift-7 = 'move-node-to-workspace 7'
-alt-shift-8 = 'move-node-to-workspace 8'
-alt-shift-9 = 'move-node-to-workspace 9'
+alt-shift-t = 'move-node-to-workspace terminal'
+alt-shift-b = 'move-node-to-workspace browser'
+alt-shift-c = 'move-node-to-workspace chat'
+alt-shift-o = 'move-node-to-workspace note'
+alt-shift-r = 'move-node-to-workspace rest'
 
 # See: https://nikitabobko.github.io/AeroSpace/commands#workspace-back-and-forth
 alt-tab = 'workspace-back-and-forth'
@@ -83,10 +75,7 @@ alt-shift-semicolon = 'mode service'
 [mode.service.binding]
 esc = ['reload-config', 'mode main']
 r = ['flatten-workspace-tree', 'mode main'] # reset layout
-f = [
-  'layout floating tiling',
-  'mode main',
-] # Toggle between floating and tiling layout
+f = [ 'layout floating tiling', 'mode main' ] # Toggle between floating and tiling layout
 backspace = ['close-all-windows-but-current', 'mode main']
 
 # sticky is not yet supported https://github.com/nikitabobko/AeroSpace/issues/2
@@ -104,31 +93,66 @@ shift-down = ['volume set 0', 'mode main']
 
 [[on-window-detected]]
 check-further-callbacks = true
-run = ['layout floating', "move-node-to-workspace 1"]
+run = ['layout floating', "move-node-to-workspace rest"]
 
 [[on-window-detected]]
 if.app-id = "company.thebrowser.Browser"
-run = ["layout tiling", "move-node-to-workspace 2"]
+run = ["layout tiling", "move-node-to-workspace browser"]
 
 [[on-window-detected]]
 if.app-id = "md.obsidian"
-run = ["layout tiling", "move-node-to-workspace 3"]
+run = ["layout tiling", "move-node-to-workspace note"]
 
 [[on-window-detected]]
 if.app-id = 'com.mitchellh.ghostty'
 # an ugly workaround to make Ghostty work with AeroSpace, see: https://github.com/ghostty-org/ghostty/issues/3170
-run = ["layout tiling", "move-node-to-workspace t"]
+run = ["layout tiling", "move-node-to-workspace terminal"]
 
 [[on-window-detected]]
 if.app-id = 'net.kovidgoyal.kitty'
-run = ["layout tiling", "move-node-to-workspace t"]
+run = ["layout tiling", "move-node-to-workspace terminal"]
 
 [[on-window-detected]]
 if.app-id = 'com.neovide.neovide'
-run = ["layout tiling", "move-node-to-workspace t"]
+run = ["layout tiling", "move-node-to-workspace ide"]
+
+[[on-window-detected]]
+if.app-id = 'com.microsoft.VSCodeInsiders'
+run = ["layout tiling", "move-node-to-workspace ide"]
+
+[[on-window-detected]]
+if.app-id = 'com.google.Chrome'
+run = "move-node-to-workspace browser"
+
+[[on-window-detected]]
+if.app-id = 'com.apple.Safari'
+run = "move-node-to-workspace browser"
+
+[[on-window-detected]]
+if.app-id = 'com.apple.MobileSMS'
+run = "move-node-to-workspace chat"
+
+[[on-window-detected]]
+if.app-id = 'com.hnc.Discord'
+run = "move-node-to-workspace chat"
+
+[[on-window-detected]]
+if.app-id = 'com.microsoft.teams2'
+run = "move-node-to-workspace chat"
+
+[[on-window-detected]]
+if.app-id = 'Mattermost.Desktop'
+run = "move-node-to-workspace chat"
+
+[[on-window-detected]]
+if.app-id = 'com.microsoft.Outlook'
+run = "move-node-to-workspace chat"
 
 [workspace-to-monitor-force-assignment]
-1 = "main"
-2 = "main"
-3 = "main"
-t = "secondary"
+browser = "main"
+chat = "main"
+ide = "main"
+note = "secondary"
+terminal = "secondary"
+rest = "main"
+
