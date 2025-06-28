@@ -26,6 +26,7 @@
     inherit (pkgs-unstable) black;
     inherit (pkgs) rustfmt libgit2 statix;
     inherit (pkgs-unstable) taplo beancount-language-server fzf stylua helm-ls lua-language-server yaml-language-server;
+    inherit (pkgs-unstable) emmylua_check emmylua_ls;
     inherit (pkgs) rust-analyzer;
     vscode-html-language-server = pkgs-unstable.vscode-langservers-extracted;
     vscode-eslint-language-server = pkgs-unstable.vscode-langservers-extracted;

@@ -15,7 +15,7 @@ in {
     dotnix.hm.packages = with pkgs-unstable; [
       luajit
       stylua
-      lua-language-server
+      emmylua_check
     ];
     home-manager =
       dotnix-utils.hm.hmConfig {
