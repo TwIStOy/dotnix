@@ -71,7 +71,7 @@
     vim.loader.enable()
     local dotpath = "${user-dotpath}"
     vim.opt.rtp:prepend(dotpath)
-    require("dotvim.bootstrap").setup()
+    require("dotvim.starts")
   '';
 in {
   home.packages =
