@@ -20,7 +20,7 @@ in {
     ];
 
     homebrew = {
-      casks = ["squirrel"];
+      casks = ["squirrel-app"];
     };
 
     home-manager = dotnix-utils.hm.hmConfig {
