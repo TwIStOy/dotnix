@@ -121,6 +121,10 @@ if.app-id = 'com.microsoft.VSCodeInsiders'
 run = ["layout tiling", "move-node-to-workspace ide"]
 
 [[on-window-detected]]
+if.app-id = 'com.jetbrains.cwm.guest'
+run = ["layout tiling", "move-node-to-workspace ide"]
+
+[[on-window-detected]]
 if.app-id = 'com.google.Chrome'
 run = "move-node-to-workspace browser"
 
