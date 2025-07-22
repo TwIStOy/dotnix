@@ -113,6 +113,10 @@ if.app-id = 'net.kovidgoyal.kitty'
 run = ["layout tiling", "move-node-to-workspace terminal"]
 
 [[on-window-detected]]
+if.app-id = 'dev.zed.Zed-Preview'
+run = ["layout tiling", "move-node-to-workspace ide"]
+
+[[on-window-detected]]
 if.app-id = 'com.neovide.neovide'
 run = ["layout tiling", "move-node-to-workspace ide"]
 
@@ -155,7 +159,7 @@ run = "move-node-to-workspace chat"
 [workspace-to-monitor-force-assignment]
 browser = "main"
 chat = "main"
-ide = "main"
+ide = "secondary"
 note = "secondary"
 terminal = "secondary"
 rest = "main"
