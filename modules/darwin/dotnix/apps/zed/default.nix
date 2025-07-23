@@ -19,15 +19,9 @@
   auto_update_extensions = builtins.foldl' (acc: ext: acc // {${ext} = true;}) {} extensions;
 
   shared-settings = {
-    language_models = {
-      openai = {
-        api_url = "https://api.gptsapi.net/v1";
-      };
-    };
-    assistant = {
-      version = "2";
+    agent = {
       default_model = {
-        model = "claude-3-5-sonnet";
+        model = "claude-sonnet-4";
         provider = "copilot_chat";
       };
     };
@@ -37,7 +31,7 @@
     buffer_font_size,
     ui_font_size,
   }: {
-    theme = "Catppuccin Frappé (Blur)";
+    theme = "Catppuccin Macchiato";
     icon_theme = "Catppuccin Frappé";
     auto_update = false;
     inherit auto_update_extensions;
@@ -61,6 +55,12 @@
     inherit ui_font_size;
     scrollbar = {
       show = "never";
+    };
+    command_aliases = {
+      W = "w";
+      Wq = "wq";
+      WQ = "wq";
+      Q = "q";
     };
     lsp = {
       "rust-analyzer" = {
@@ -137,26 +137,6 @@
     load_direnv = "shell_hook";
   };
 
-  keymaps = [
-    {
-      context = "Editor && VimControl && !VimWaiting && !menu";
-      bindings = {
-        "[ c" = "editor::GoToPrevDiagnostic";
-        "] c" = "editor::GoToDiagnostic";
-      };
-    }
-    {
-      context = "Editor && vim_mode == insert && !menu";
-      bindings = {
-        "ctrl-l" = "editor::AcceptInlineCompletion";
-      };
-    }
-    {
-      context = "Editor && vim_mode == normal && !menu";
-      bindings = {
-      };
-    }
-  ];
 in {
   options.dotnix.apps.zed = {
     enable = lib.mkEnableOption "Zed";
@@ -192,7 +172,7 @@ in {
         force = true;
       };
       xdg.configFile."zed/keymap.json" = {
-        text = builtins.toJSON keymaps;
+        text = builtins.readFile ./keymap.json;
         force = true;
       };
     };

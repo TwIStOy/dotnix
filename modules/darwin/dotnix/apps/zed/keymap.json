@@ -1,0 +1,45 @@
+[
+  {
+    "context": "VimControl && !menu",
+    "bindings": {
+      "[ e": null,
+      "] e": null,
+      "ctrl-]": null,
+      "g r n": null,
+      "g r r": null,
+      "g r i": null,
+      "g r a": null,
+      "g h": null,
+      "ctrl-k": "editor::MoveLineUp",
+      "ctrl-j": "editor::MoveLineDown",
+      "[ c": "editor::GoToPreviousDiagnostic",
+      "] c": "editor::GoToDiagnostic",
+      "g shift-r": "editor::Rename",
+      "g r": "editor::FindAllReferences",
+      "g i": "editor::GoToImplementation",
+      "g d": "editor::GoToDefinition",
+      "g t": "editor::GoToTypeDefinition",
+      "g shift-d": "editor::GoToDeclaration",
+      "K": "editor::Hover"
+    }
+  },
+  {
+    "bindings": {
+      "ctrl-l": "editor::AcceptEditPrediction"
+    },
+    "context": "Editor && vim_mode == insert && edit_prediction && !menu"
+  },
+  {
+    "context": "(Editor && edit_prediction)",
+    "bindings": {
+      "tab": null
+    }
+  },
+  {
+    "context": "ProjectPanel && not_editing",
+    "bindings": {
+      "enter": "project_panel::Open"
+    }
+  }
+]
+

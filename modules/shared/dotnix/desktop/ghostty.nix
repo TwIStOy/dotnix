@@ -22,7 +22,6 @@
   simpleSettings =
     {
       inherit (termCfg) font-family font-size theme;
-      command = termCfg.shell;
       working-directory = "home";
       clipboard-read = "allow";
       clipboard-write = "allow";
@@ -43,6 +42,8 @@
       background-blur-radius = "20";
 
       window-title-font-family = "Maple Mono NF CN";
+
+      custom-shader = "ghostty-shader-playground/shaders/cursor_frozen.glsl";
     }
     // (
       if termCfg.adjust-cell-width != ""
@@ -110,12 +111,33 @@
 in {
   options.dotnix.desktop.ghostty = {
     enable = lib.mkEnableOption "Enable module dotnix.desktop.ghostty";
+
+    only-connect-dev-server = lib.mkOption {
+      type = lib.types.str;
+      default = "";
+      description = "Which server to connect to when opening a new terminal. If set, it will connect to the dev server via SSH.";
+    };
   };
 
   config = lib.mkIf cfg.enable {
     home-manager = dotnix-utils.hm.hmConfig {
       xdg.configFile = let
-        configLines = builtins.map generateConfigLine settings;
+        configLines = builtins.map generateConfigLine (
+          settings
+          ++ (
+            if cfg.only-connect-dev-server != ""
+            then [
+              {
+                command = "ssh ${cfg.only-connect-dev-server}";
+              }
+            ]
+            else [
+              {
+                command = termCfg.shell;
+              }
+            ]
+          )
+        );
         # concat lines
         configContent = lib.concatStringsSep "\n" (
           builtins.foldl' (x: y: x ++ y) [] configLines
@@ -126,6 +148,15 @@ in {
             ${configContent}
           '';
           force = true;
+        };
+        "ghostty/ghostty-shader-playground" = {
+          source = pkgs.fetchFromGitHub {
+            # https://github.com/KroneCorylus/ghostty-shader-playground.git
+            owner = "KroneCorylus";
+            repo = "ghostty-shader-playground";
+            rev = "b539cea7b34cdc883726db018ae09e8e3f862aea";
+            sha256 = "sha256-dfk2Ti+T1jEC5M8ijaO1KnfzW6MP5yswovZgoptqO3A=";
+          };
         };
       };
     };

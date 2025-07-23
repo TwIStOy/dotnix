@@ -34,6 +34,8 @@ in {
       neovide.createRemoteHostWrappers = [
         "dev.work.local"
       ];
+
+      ghostty.only-connect-dev-server = "dev.work.local.tmux";
     };
 
     apps.zed.buffer_font_size = 18;
