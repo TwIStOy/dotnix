@@ -44,6 +44,8 @@
       window-title-font-family = "Maple Mono NF CN";
 
       custom-shader = "ghostty-shader-playground/shaders/cursor_frozen.glsl";
+
+      auto-update-channel = "tip";
     }
     // (
       if termCfg.adjust-cell-width != ""
