@@ -73,10 +73,10 @@
 
   yamato = mkIntelDarwinSystem "yamato";
   yukikaze = mkArmDarwinSystem "yukikaze";
-  nagato = makeSystemDrv {
-    name = "nagato";
+  LCNDWWYVTFMFX = makeSystemDrv {
+    name = "LCNDWWYVTFMFX";
     system = flake-utils.lib.system.aarch64-darwin;
-    path = ./nagato;
+    path = ./LCNDWWYVTFMFX;
     env = "tesla";
   };
   poi = mkX64LinuxSystem "poi";
@@ -102,7 +102,7 @@ in
   recursiveMergeAttrs [
     yamato
     yukikaze
-    nagato
+    LCNDWWYVTFMFX
     poi
     taihou
     cloudIso

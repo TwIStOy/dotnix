@@ -1,6 +1,6 @@
 {dotnix-utils, ...}: let
   inherit (dotnix-utils) enabled;
-  hostname = "nagato";
+  hostname = "LCNDWWYVTFMFX";
 in {
   dotnix = {
     darwin-shared-suit = enabled;
