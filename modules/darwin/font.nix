@@ -97,9 +97,9 @@
 
   maple-font = fontFromGithub {
     name = "maple-font";
-    version = "v7.0";
+    version = "v7.5";
     url = "https://github.com/subframe7536/maple-font/releases/download/$VERSION/MapleMono-NF-CN-unhinted.zip";
-    sha256 = "162dzb9yp1h7ll09ibbxipi8qkkws4bnqk7skiwc8674n0wngdn7";
+    sha256 = "11g0yck9c5akaqy09vn4l12l5hwrqbjandp8gwwlikd0w3lpdl1v";
     followRedirects = false;
   };
 in {

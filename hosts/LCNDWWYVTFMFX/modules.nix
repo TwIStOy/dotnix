@@ -27,7 +27,7 @@ in {
           "Thin"
           "ThinItalic"
         ];
-        font-features = ["+ss01" "+ss02"];
+        font-features = ["+zero" "+ss01" "+ss02" "+ss03" "+ss07" "+ss09" "+ss10" "+cv03" "+cv10" "+cv34" "+cv61"];
         map-nerdfont-ranges = false;
       };
 

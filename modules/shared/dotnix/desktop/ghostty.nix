@@ -19,9 +19,12 @@
     (range: {font-codepoint-map = "${range}=${termCfg.nerdfont-family}";})
     dotnix-constants.constants.nerd-icon-ranges;
 
+  font-features = builtins.concatStringsSep ", " termCfg.font-features;
+
   simpleSettings =
     {
       inherit (termCfg) font-family font-size theme;
+      font-feature = font-features;
       working-directory = "home";
       clipboard-read = "allow";
       clipboard-write = "allow";
