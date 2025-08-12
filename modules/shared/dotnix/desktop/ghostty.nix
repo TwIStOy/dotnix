@@ -90,7 +90,6 @@
     "cmd+p" = "toggle_split_zoom";
     "cmd+left_bracket" = "goto_split:previous";
     "cmd+right_bracket" = "goto_split:next";
-    "global:cmd+grave_accent" = "toggle_quick_terminal";
   };
 
   settings =

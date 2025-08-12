@@ -38,8 +38,17 @@ in {
       ghostty.only-connect-dev-server = "dev.work.local.tmux";
     };
 
-    apps.zed.buffer_font_size = 18;
-    apps.zed.ui_font_size = 16;
+    apps.zed = {
+      buffer_font_size = 18;
+      ui_font_size = 16;
+      ssh_connections = [
+        {
+          host = "dev.work.local";
+          projects = [
+          ];
+        }
+      ];
+    };
 
     services.tailscale = {
       enable = true;

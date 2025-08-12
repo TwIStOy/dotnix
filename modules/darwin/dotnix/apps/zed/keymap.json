@@ -10,6 +10,7 @@
       "g r i": null,
       "g r a": null,
       "g h": null,
+      "g shift-s": null,
       "ctrl-k": "editor::MoveLineUp",
       "ctrl-j": "editor::MoveLineDown",
       "[ c": "editor::GoToPreviousDiagnostic",
@@ -20,7 +21,27 @@
       "g d": "editor::GoToDefinition",
       "g t": "editor::GoToTypeDefinition",
       "g shift-d": "editor::GoToDeclaration",
-      "K": "editor::Hover"
+      "K": "editor::Hover",
+      "space s s": "project_symbols::Toggle",
+      "space f c": "editor::Format",
+      "ctrl-w -": "pane::SplitHorizontal",
+      "space w -": "pane::SplitHorizontal",
+      "ctrl-w |": "pane::SplitVertical",
+      "space w |": "pane::SplitVertical",
+      "space 1": ["workspace::ActivatePane", 0],
+      "space 2": ["workspace::ActivatePane", 1],
+      "space 3": ["workspace::ActivatePane", 2],
+      "space 4": ["workspace::ActivatePane", 3],
+      "space 5": ["workspace::ActivatePane", 4],
+      "space 6": ["workspace::ActivatePane", 5],
+      "space q": "pane::CloseActiveItem",
+      "space c h": "pane::CloseOtherItems"
+    }
+  },
+  {
+    "context": "VimControl && !menu && Editor && (extension == h || extension == cpp || extension == c || extension == hpp)",
+    "bindings": {
+      "space f a": "editor::SwitchSourceHeader"
     }
   },
   {
@@ -42,4 +63,3 @@
     }
   }
 ]
-

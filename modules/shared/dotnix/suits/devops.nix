@@ -28,6 +28,7 @@ in {
             minikube # k8s
             kubectx
             kubelogin-oidc
+            squashfsTools
           ]
         );
     };

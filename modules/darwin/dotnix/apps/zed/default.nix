@@ -13,6 +13,7 @@
     "nix"
     "lua"
     "kanagawa-themes"
+    "mcp-server-github"
   ];
 
   auto_install_extensions = builtins.foldl' (acc: ext: acc // {${ext} = true;}) {} extensions;
@@ -20,9 +21,15 @@
 
   shared-settings = {
     agent = {
-      default_model = {
-        model = "claude-sonnet-4";
-        provider = "copilot_chat";
+      always_allow_tool_actions = true;
+    };
+    context_servers = {
+      mcp-server-github = {
+        source = "extension";
+        enabled = true;
+        settings = {
+          github_personal_access_token = "\${cmd:cat /run/agenix/github-cli-access-token}";
+        };
       };
     };
   };
@@ -37,6 +44,9 @@
     inherit auto_update_extensions;
     inherit auto_install_extensions;
     vim_mode = true;
+    vim = {
+      use_system_clipboard = "on_yank";
+    };
     cursor_blink = false;
     relative_line_numbers = true;
     ui_font_family = "Readex Pro";
@@ -134,9 +144,9 @@
       };
       font_family = "MonaspiceAr Nerd Font";
     };
-    load_direnv = "shell_hook";
+    load_direnv = "direct";
+    format_on_save = false;
   };
-
 in {
   options.dotnix.apps.zed = {
     enable = lib.mkEnableOption "Zed";
@@ -154,6 +164,14 @@ in {
       default = 16;
       description = ''
         The font size of the UI.
+      '';
+    };
+
+    ssh_connections = lib.mkOption {
+      type = lib.types.listOf lib.types.anything;
+      default = [];
+      description = ''
+        SSH connections to be used by Zed.
       '';
     };
   };
