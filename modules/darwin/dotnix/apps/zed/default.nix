@@ -37,12 +37,14 @@
   gen-settings = {
     buffer_font_size,
     ui_font_size,
+    ssh_connections,
   }: {
     theme = "Catppuccin Macchiato";
     icon_theme = "Catppuccin Frappé";
     auto_update = false;
     inherit auto_update_extensions;
     inherit auto_install_extensions;
+    inherit ssh_connections;
     vim_mode = true;
     vim = {
       use_system_clipboard = "on_yank";
@@ -184,7 +186,7 @@ in {
     home-manager = dotnix-utils.hm.hmConfig {
       xdg.configFile."zed/settings.json" = {
         text = builtins.toJSON ((gen-settings {
-            inherit (cfg) buffer_font_size ui_font_size;
+            inherit (cfg) buffer_font_size ui_font_size ssh_connections;
           })
           // shared-settings);
         force = true;
