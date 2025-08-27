@@ -62,6 +62,8 @@ in {
 
           xclip
           fswatch
+
+          ffmpeg-full
         ]
         ++ (
           with pkgs-unstable; [
