@@ -74,6 +74,7 @@
       "orbstack"
       "obsidian"
       "ghostty"
+      "coteditor"
     ];
   };
 }

@@ -19,6 +19,18 @@ in {
     };
 
     home-manager = dotnix-utils.hm.hmConfig {
+      xdg.configFile."aerospace/display-info.sh" = {
+        text = builtins.readFile ./display-info.sh;
+        force = true;
+        executable = true;
+      };
+
+      xdg.configFile."aerospace/moving-floating.sh" = {
+        text = builtins.readFile ./moving-floating.sh;
+        force = true;
+        executable = true;
+      };
+
       home = {
         file = {
           "${homeDir}/.aerospace.toml" = {
