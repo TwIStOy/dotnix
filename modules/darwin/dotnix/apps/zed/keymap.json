@@ -1,5 +1,11 @@
 [
   {
+    "context": "VimControl && Workspace",
+    "bindings": {
+      "space f t": "workspace::ToggleLeftDock"
+    }
+  },
+  {
     "context": "VimControl && !menu",
     "bindings": {
       "[ e": null,
@@ -35,7 +41,9 @@
       "space 5": ["workspace::ActivatePane", 4],
       "space 6": ["workspace::ActivatePane", 5],
       "space q": "pane::CloseActiveItem",
-      "space c h": "pane::CloseOtherItems"
+      "space c h": "pane::CloseOtherItems",
+      "] ]": "editor::GoToNextDocumentHighlight",
+      "[ [": "editor::GoToPreviousDocumentHighlight"
     }
   },
   {
@@ -45,21 +53,24 @@
     }
   },
   {
-    "bindings": {
-      "ctrl-l": "editor::AcceptEditPrediction"
-    },
-    "context": "Editor && vim_mode == insert && edit_prediction && !menu"
-  },
-  {
     "context": "(Editor && edit_prediction)",
     "bindings": {
-      "tab": null
+      "tab": null,
+      "alt-tab": null,
+      "ctrl-l": "editor::AcceptEditPrediction"
     }
   },
   {
     "context": "ProjectPanel && not_editing",
     "bindings": {
       "enter": "project_panel::Open"
+    }
+  },
+  {
+    "context": "(Editor && edit_prediction_conflict)",
+    "bindings": {
+      "alt-tab": null,
+      "ctrl-l": "editor::AcceptEditPrediction"
     }
   }
 ]

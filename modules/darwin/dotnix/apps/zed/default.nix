@@ -147,7 +147,16 @@
       font_family = "MonaspiceAr Nerd Font";
     };
     load_direnv = "direct";
-    format_on_save = false;
+    ensure_file_extension_on_save = true;
+    formatter = {
+      external = {
+        command = "sed";
+        arguments = ["-e" "s/ *$//"];
+      };
+    };
+    feature = {
+      edit_prediction_provider = "copilot";
+    };
   };
 in {
   options.dotnix.apps.zed = {
