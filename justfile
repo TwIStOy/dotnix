@@ -27,7 +27,7 @@ _nixos_rebuild hostname use_nom="yes" details="no": && (_nixos_switch hostname d
   {{ if use_nom == "yes" { "nom" } else { "nix" } }} build .#nixosConfigurations.{{hostname}}.config.system.build.toplevel --accept-flake-config {{ if details != "no" { "--show-trace --verbose" } else { "" } }} 
 
 _macos_switch hostname details="no": _cleanup_rime_ls_build_prism_bin _cleanup_atuin_config
-  @./result/sw/bin/darwin-rebuild switch --flake .#{{hostname}} {{ if details != "no" { "--show-trace" } else { "" } }}
+  @sudo -E ./result/sw/bin/darwin-rebuild switch --flake .#{{hostname}} {{ if details != "no" { "--show-trace" } else { "" } }}
 
 _nixos_switch hostname details="no": _cleanup_rime_ls_build_prism_bin _cleanup_atuin_config
   @sudo nixos-rebuild switch --flake .#{{hostname}}

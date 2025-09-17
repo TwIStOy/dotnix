@@ -55,63 +55,16 @@
       platforms = lib.platforms.all;
     };
   };
-
-  fontFromGithub = {
-    name,
-    url,
-    sha256,
-    version,
-    followRedirects ? true,
-  }:
-    pkgs.stdenv.mkDerivation ({
-        pname = name;
-        inherit version;
-        src = builtins.fetchurl {
-          url = builtins.replaceStrings ["$VERSION"] [version] url;
-          inherit sha256;
-        };
-        nativeBuildInputs = with pkgs; [unzip];
-
-        dontPatch = true;
-        dontConfigure = true;
-        dontBuild = true;
-        doCheck = false;
-        dontFixup = true;
-
-        installPhase = ''
-          runHook preInstall
-          install -Dm644 *.ttf -t $out/share/fonts/truetype
-          runHook postInstall
-        '';
-      }
-      // lib.optionalAttrs (!followRedirects) {
-        sourceRoot = ".";
-      });
-
-  lxgw-wenkai = fontFromGithub {
-    name = "lxgw-wenkai";
-    version = "v1.330";
-    url = "https://github.com/lxgw/LxgwWenKai/releases/download/$VERSION/lxgw-wenkai-$VERSION.zip";
-    sha256 = "033qc5xyxdf777sa6xxipg86ch2jbyybvfhw8yzwl20690apwc9g";
-  };
-
-  maple-font = fontFromGithub {
-    name = "maple-font";
-    version = "v7.5";
-    url = "https://github.com/subframe7536/maple-font/releases/download/$VERSION/MapleMono-NF-CN-unhinted.zip";
-    sha256 = "11g0yck9c5akaqy09vn4l12l5hwrqbjandp8gwwlikd0w3lpdl1v";
-    followRedirects = false;
-  };
 in {
   fonts.packages =
     [
       monolisa
       akzidenz-grotesk
-      maple-font
-      lxgw-wenkai
       readex-pro
 
+      pkgs-unstable.maple-mono.NF-CN-unhinted
       pkgs-unstable.monaspace
+      pkgs-unstable.lxgw-wenkai-screen
     ]
     ++ (with pkgs-unstable.nerd-fonts; [
       symbols-only

@@ -5,7 +5,7 @@
 }: {
   home = {
     username = dotnix-constants.user.name;
-    stateVersion = "24.11";
+    stateVersion = "25.05";
   };
 
   # Let Home Manager install and manage itself.

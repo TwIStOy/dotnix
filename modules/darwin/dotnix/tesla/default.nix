@@ -10,6 +10,7 @@ in {
     enable = lib.mkEnableOption "Enable module dotnix.tesla";
   };
 
-  config = lib.mkIf cfg.enable {
-  };
+  config =
+    lib.mkIf cfg.enable {
+    };
 }

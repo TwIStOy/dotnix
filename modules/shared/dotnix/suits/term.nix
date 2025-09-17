@@ -19,7 +19,6 @@ in {
         "eza"
         "fish"
         "neovim"
-        "rime_ls"
         "starship"
         "tealdeer"
         "tmux"
@@ -69,6 +68,7 @@ in {
           with pkgs-unstable; [
             curl
             krabby
+            rime-ls
           ]
         );
     };

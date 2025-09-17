@@ -17,7 +17,6 @@
 
       apple_frameworks = pkgs-unstable.darwin.apple_sdk.frameworks;
       darwinFrameworks = with apple_frameworks; [
-        Security
         CoreFoundation
         AppKit
         ApplicationServices
@@ -127,7 +126,7 @@
 
   inputs = {
     # Official NixOS package source, using nixos's stable branch by default
-    nixpkgs.url = "github:nixos/nixpkgs/nixos-24.05";
+    nixpkgs.url = "github:nixos/nixpkgs/nixos-25.05";
     nixpkgs-unstable.url = "github:nixos/nixpkgs/nixos-unstable";
 
     # devenv, construct a development environment easily

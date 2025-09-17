@@ -22,7 +22,7 @@
 
   bins = {
     clangd = pkgs-unstable.clang-tools;
-    clang-format = pkgs-unstable.llvmPackages_20.clang-unwrapped;
+    clang-format = pkgs-unstable.llvmPackages_21.clang-unwrapped;
     inherit (pkgs-unstable) black;
     inherit (pkgs) rustfmt libgit2 statix;
     inherit (pkgs-unstable) taplo beancount-language-server fzf stylua helm-ls lua-language-server yaml-language-server;

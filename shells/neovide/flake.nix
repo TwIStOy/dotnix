@@ -31,13 +31,12 @@
                 pkg-config
                 libiconv
               ]
-              ++ lib.lists.optionals stdenv.isDarwin (with darwin.apple_sdk_11_0.frameworks; [
+              ++ lib.lists.optionals stdenv.isDarwin (with darwin.apple_sdk.frameworks; [
                 AppKit
                 ApplicationServices
                 CoreVideo
                 fixDarwinDylibNames
                 OpenGL
-                Security
               ])
               ++ (with pkgs-unstable; [
                 rustc
@@ -85,7 +84,7 @@
 
   inputs = {
     # Official NixOS package source, using nixos's stable branch by default
-    nixpkgs.url = "github:nixos/nixpkgs/nixos-24.05";
+    nixpkgs.url = "github:nixos/nixpkgs/nixos-25.05";
     nixpkgs-unstable.url = "github:nixos/nixpkgs/nixos-unstable";
 
     # devenv, construct a development environment easily

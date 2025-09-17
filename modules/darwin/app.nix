@@ -10,7 +10,7 @@
   environment.shells = with pkgs; [
     zsh
     fish
-    darwin.iproute2mac
+    iproute2mac
   ];
 
   homebrew = {

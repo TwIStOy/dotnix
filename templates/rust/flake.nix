@@ -36,7 +36,6 @@
                   AppKit
                   ApplicationServices
                   fixDarwinDylibNames
-                  Security
                 ])
               );
 
