@@ -79,9 +79,6 @@
     # for vim-plugin: blink.cmp
     blink.url = "github:Saghen/blink.cmp";
 
-    # emmylua-analyzer-rust
-    emmylua-analyzer-rust.url = "github:EmmyLuaLs/emmylua-analyzer-rust";
-
     deploy-rs.url = "github:serokell/deploy-rs";
 
     disko = {

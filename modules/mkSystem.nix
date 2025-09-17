@@ -44,9 +44,6 @@ in
       config.allowUnfree = true;
       overlays = [
         inputs.neovim-nightly-overlay.overlays.default
-        (final: prev: {
-          inherit (inputs.emmylua-analyzer-rust.packages.${final.system}) emmylua_check emmylua_ls;
-        })
       ];
     };
     isDarwin = hasSuffix "darwin" system;
