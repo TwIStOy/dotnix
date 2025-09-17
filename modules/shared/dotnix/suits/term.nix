@@ -3,6 +3,7 @@
   lib,
   pkgs,
   pkgs-unstable,
+  nur-hawtian,
   dotnix-utils,
   ...
 }: let
@@ -68,9 +69,11 @@ in {
           with pkgs-unstable; [
             curl
             krabby
-            rime-ls
           ]
-        );
+        )
+        ++ [
+          nur-hawtian.packages.${pkgs.system}.rime-ls
+        ];
     };
 
     home-manager = dotnix-utils.hm.hmConfig {
