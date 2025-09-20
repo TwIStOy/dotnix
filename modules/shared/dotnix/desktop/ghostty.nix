@@ -21,9 +21,17 @@
 
   font-features = builtins.concatStringsSep ", " termCfg.font-features;
 
+  capitalize = c:
+    if c == ""
+    then ""
+    else builtins.substring 0 1 (lib.toUpper c) + builtins.substring 1 (builtins.stringLength c - 1) c;
+
+  theme = lib.strings.concatStringsSep " " (builtins.map capitalize (lib.strings.splitString "-" termCfg.theme));
+
   simpleSettings =
     {
-      inherit (termCfg) font-family font-size theme;
+      inherit (termCfg) font-family font-size;
+      inherit theme;
       font-feature = font-features;
       working-directory = "home";
       clipboard-read = "allow";
