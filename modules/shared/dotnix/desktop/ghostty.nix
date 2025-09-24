@@ -57,6 +57,7 @@
       custom-shader = "ghostty-shader-playground/shaders/cursor_frozen.glsl";
 
       auto-update-channel = "tip";
+      shell-integration-features = "ssh-env,ssh-terminfo";
     }
     // (
       if termCfg.adjust-cell-width != ""
