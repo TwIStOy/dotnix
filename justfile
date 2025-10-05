@@ -69,12 +69,7 @@ fmt:
 ci-fmt:
   @nix fmt -- --exclude "./modules/shared/dotnix/development/languages/.vim-template.*.nix" --exclude "./modules/shared/dotnix/apps/.vim-template:*.nix" --exclude "./modules/darwin/dotnix/.vim-template:*.nix" --exclude "./modules/shared/dotnix/development/languages/.vim-template:*.nix" --check .
 
-[parallel]
-ci-build: \
-    (_macos_build "yamato" "no" "yes") \
-    (_nixos_build "poi" "no" "yes") \
-    (_nixos_build "taihou" "no" "yes") \
-    (_macos_build "LCNDWWYVTFMFX" "no" "yes") \
-    (_macos_build "yukikaze" "no" "yes")
+ci-eval:
+  @nix run --extra-experimental-features 'nix-command flakes' nixpkgs#nix-eval-jobs -- --flake .
 
-ci: ci-fmt && ci-build
+ci: ci-fmt ci-eval
