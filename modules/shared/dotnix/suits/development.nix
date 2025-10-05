@@ -30,6 +30,7 @@ in {
           enable = true;
           unstable = [
             "cmake"
+            "just"
           ];
         };
         ai-tools = {
