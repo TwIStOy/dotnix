@@ -76,3 +76,5 @@ ci-build: \
     (_nixos_build "taihou" "no" "yes") \
     (_macos_build "LCNDWWYVTFMFX" "no" "yes") \
     (_macos_build "yukikaze" "no" "yes")
+
+ci: ci-fmt && ci-build

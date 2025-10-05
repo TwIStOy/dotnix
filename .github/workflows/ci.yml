@@ -1,4 +1,4 @@
-name: Formatting Check
+name: CI
 
 on:
   push:
@@ -28,8 +28,9 @@ jobs:
           extra_nix_config: |
             access-tokens = github.com=${{ secrets.GITHUB_TOKEN }}
             experimental-features = nix-command flakes
+      - uses: DeterminateSystems/magic-nix-cache-action@main
       - uses: extractions/setup-just@v2
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-      - name: Run nix fmt
-        run: just ci-fmt
+      - name: Run CI job
+        run: just ci
