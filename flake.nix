@@ -76,9 +76,6 @@
     # use more vscode extensions
     nix-vscode-extensions.url = "github:nix-community/nix-vscode-extensions";
 
-    # for vim-plugin: blink.cmp
-    blink.url = "github:Saghen/blink.cmp";
-
     deploy-rs.url = "github:serokell/deploy-rs";
 
     disko = {

@@ -3,12 +3,10 @@
   lib,
   pkgs,
   pkgs-unstable,
-  inputs,
   ...
 }: let
   user-dotpath = "${config.home.homeDirectory}/.dotvim";
 
-  blinkPkgs = inputs.blink.packages.${pkgs.system};
   unstableVimPlugins = pkgs-unstable.vimPlugins;
 
   plugins = {
@@ -17,17 +15,25 @@
     inherit (unstableVimPlugins) avante-nvim;
     inherit (unstableVimPlugins) markdown-preview-nvim;
     inherit (unstableVimPlugins) rest-nvim;
-    inherit (blinkPkgs) blink-cmp;
   };
 
   bins = {
+    inherit (pkgs) rustfmt libgit2 statix rust-analyzer;
+    inherit
+      (pkgs-unstable)
+      taplo
+      beancount-language-server
+      fzf
+      stylua
+      helm-ls
+      lua-language-server
+      yaml-language-server
+      emmylua-check
+      emmylua-ls
+      black
+      ;
     clangd = pkgs-unstable.clang-tools;
     clang-format = pkgs-unstable.llvmPackages_21.clang-unwrapped;
-    inherit (pkgs-unstable) black;
-    inherit (pkgs) rustfmt libgit2 statix;
-    inherit (pkgs-unstable) taplo beancount-language-server fzf stylua helm-ls lua-language-server yaml-language-server;
-    inherit (pkgs-unstable) emmylua-check emmylua-ls;
-    inherit (pkgs) rust-analyzer;
     vscode-html-language-server = pkgs-unstable.vscode-langservers-extracted;
     vscode-eslint-language-server = pkgs-unstable.vscode-langservers-extracted;
     vscode-markdown-language-server = pkgs-unstable.vscode-langservers-extracted;
