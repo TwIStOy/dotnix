@@ -1,8 +1,12 @@
 model_provider="openrouter"
 model="openai/gpt-5-codex"
+experimental_use_rmcp_client = true
 
 [model_providers.openrouter]
 name = "OpenRouter"
 base_url = "https://openrouter.ai/api/v1"
 env_key = "OPENROUTER_API_KEY"
 
+[mcp_servers.fetch]
+command = "uvx"
+args = ["mcp-server-fetch"]
