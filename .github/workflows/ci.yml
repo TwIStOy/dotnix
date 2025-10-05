@@ -36,3 +36,23 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       - name: Run CI job
         run: just ci
+  build:
+    runs-on: ubuntu-latest
+    needs: checks
+    strategy:
+      fail-fast: true
+      matrix:
+        host_name: [LCNDWWYVTFMFX, yukikaze, poi, taihou]
+    steps:
+      - uses: actions/checkout@v5
+      - uses: cachix/install-nix-action@v31
+        with:
+          install_url: https://nixos.org/nix/install
+          extra_nix_config: |
+            access-tokens = github.com=${{ secrets.GITHUB_TOKEN }}
+            experimental-features = nix-command flakes
+      - uses: DeterminateSystems/magic-nix-cache-action@main
+      - uses: extractions/setup-just@v3
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      - run: just ci-${{ matrix.host_name }}
