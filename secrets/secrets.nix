@@ -41,4 +41,5 @@ in {
   "github-actions-runner-token.age".publicKeys = mkSecrets (homeServers ++ desktops);
   "bot-ssh-private-key.age".publicKeys = mkSecrets (homeServers ++ desktops);
   "tesla-password.age".publicKeys = mkSecrets (homeServers ++ desktops);
+  "openrouter-api-key.age".publicKeys = mkSecrets (homeServers ++ desktops);
 }

@@ -93,5 +93,9 @@ in {
       owner = user.name;
       mode = "444";
     };
+    openrouter-api-key = ageSecret {
+      file = "openrouter-api-key.age";
+      owner = user.name;
+    };
   };
 }
