@@ -1,6 +1,5 @@
 set shell := ["bash", "-uc"]
 
-alias ya := yamato
 alias yu := yukikaze
 
 host := `hostname -s`
