@@ -31,6 +31,9 @@ in {
             "cmake"
           ];
         };
+        ai-tools = {
+          enable = true;
+        };
         languages = {
           all = enabled;
         };

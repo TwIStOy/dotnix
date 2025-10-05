@@ -13,12 +13,6 @@
     "${key}" = value;
   };
 
-  # font-codepoint-map
-  font-codepoint-map-settings =
-    builtins.map
-    (range: {font-codepoint-map = "${range}=${termCfg.nerdfont-family}";})
-    dotnix-constants.constants.nerd-icon-ranges;
-
   font-features = builtins.concatStringsSep ", " termCfg.font-features;
 
   capitalize = c:
@@ -107,11 +101,6 @@
   settings =
     (
       lib.attrsets.mapAttrsToList (key: value: toConfigItem key value) simpleSettings
-    )
-    ++ (
-      if termCfg.map-nerdfont-ranges
-      then font-codepoint-map-settings
-      else []
     )
     ++ (
       builtins.map (feature: {font-feature = feature;}) termCfg.font-features
