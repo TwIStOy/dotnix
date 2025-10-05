@@ -27,8 +27,6 @@ in {
       ret = [
         # GitHub Copilot CLI
         "github-copilot-cli"
-        # OpenAI Codex CLI
-        "codex"
       ];
       retPkg = builtins.map resolvePkg ret;
     in
