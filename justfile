@@ -1,6 +1,5 @@
 set shell := ["bash", "-uc"]
 
-alias ya := yamato
 alias yu := yukikaze
 
 host := `hostname -s`
@@ -10,15 +9,21 @@ default:
   @echo "System: {{system}}, Host: {{host}}"
   @{{just_executable()}} {{host}}
 
-yamato use_nom="yes" details="yes": (_macos_rebuild "yamato" use_nom details)
-
 LCNDWWYVTFMFX use_nom="yes" details="yes": (_macos_rebuild "LCNDWWYVTFMFX" use_nom details)
+
+ci-LCNDWWYVTFMFX: (_macos_build "LCNDWWYVTFMFX" "no" "yes")
 
 yukikaze use_nom="yes" details="yes": (_macos_rebuild "yukikaze" use_nom details)
 
+ci-yukikaze: (_macos_build "yukikaze" "no" "yes")
+
 poi use_nom="yes" details="yes": (_nixos_rebuild "poi" use_nom details)
 
+ci-poi: (_nixos_build "poi" "no" "yes")
+
 taihou use_nom="yes" details="yes": (_nixos_rebuild "taihou" use_nom details)
+
+ci-taihou: (_nixos_build "taihou" "no" "yes")
 
 _macos_build hostname use_nom="yes" details="no":
   @{{ if use_nom == "yes" { "nom" } else { "nix" } }} build .#darwinConfigurations.{{hostname}}.system --accept-flake-config --extra-experimental-features 'nix-command flakes' {{ if details != "no" { "--show-trace" } else { "" } }}

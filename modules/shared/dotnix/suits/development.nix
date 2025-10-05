@@ -33,9 +33,6 @@ in {
             "just"
           ];
         };
-        ai-tools = {
-          enable = true;
-        };
         languages = {
           all = enabled;
         };
