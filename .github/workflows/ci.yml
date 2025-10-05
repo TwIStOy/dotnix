@@ -7,12 +7,14 @@ on:
     paths-ignore:
       - "**.md"
       - "Justfile"
+      - ".github/workflows/*"
   pull_request:
     branches:
       - master
     paths-ignore:
       - "**.md"
       - "Justfile"
+      - ".github/workflows/*"
 
 jobs:
   checks:
