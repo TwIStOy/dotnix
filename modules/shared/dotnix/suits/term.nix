@@ -68,6 +68,7 @@ in {
         ++ (
           with pkgs-unstable; [
             curl
+            grpcurl
             krabby
           ]
         )

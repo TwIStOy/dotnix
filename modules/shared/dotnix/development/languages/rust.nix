@@ -18,6 +18,7 @@ in {
       rustfmt
       cargo
       cargo-nextest
+      cargo-outdated
     ];
     home-manager =
       dotnix-utils.hm.hmConfig {
