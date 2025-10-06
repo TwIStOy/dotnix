@@ -29,8 +29,7 @@ jobs:
         uses: DeterminateSystems/update-flake-lock@main
         id: update
         with:
-          token: ${{ secrets.GH_TOKEN_FOR_UPDATES }}
-          branch: update_flake/${{ github.ref_name }}
+          token: ${{ secrets.BOT_TOKEN_FOR_UPDATES }}
           pr-title: "Update Nix flake inputs"
           pr-labels: |
             dependencies
