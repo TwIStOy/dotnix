@@ -31,6 +31,7 @@
       emmylua-check
       emmylua-ls
       black
+      zls
       ;
     clangd = pkgs-unstable.clang-tools;
     clang-format = pkgs-unstable.llvmPackages_21.clang-unwrapped;

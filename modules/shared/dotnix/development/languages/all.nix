@@ -24,6 +24,7 @@ in {
       java = enabled;
       markdown = enabled;
       beancount = enabled;
+      zig = enabled;
     };
   };
 }
