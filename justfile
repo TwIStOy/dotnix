@@ -59,7 +59,7 @@ commit:
 
 gc:
   # garbage collect all unused nix store entries
-  @sudo nix store gc --debug
+  @sudo nix store gc --debug--extra-experimental-features nix-command
   @sudo nix-collect-garbage --delete-old
 
 nvim-clean:
@@ -67,6 +67,9 @@ nvim-clean:
 
 nvim-test: nvim-clean
   @ln -s $HOME/.config/nvim/init-user.lua $HOME/.config/nvim/init.lua
+
+darwin-set-proxy:
+  sudo python3 scripts/darwin-set-proxy.py
 
 fmt:
   @nix fmt -- --exclude "./modules/shared/dotnix/development/languages/.vim-template.*.nix" --exclude "./modules/shared/dotnix/apps/.vim-template:*.nix" --exclude "./modules/darwin/dotnix/.vim-template:*.nix" --exclude "./modules/shared/dotnix/development/languages/.vim-template:*.nix" .
