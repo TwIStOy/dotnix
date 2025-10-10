@@ -59,7 +59,7 @@ commit:
 
 gc:
   # garbage collect all unused nix store entries
-  @sudo nix store gc --debug--extra-experimental-features nix-command
+  @sudo nix store gc --debug --extra-experimental-features nix-command
   @sudo nix-collect-garbage --delete-old
 
 nvim-clean:
