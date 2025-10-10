@@ -16,6 +16,8 @@ in {
       github-copilot-cli
       # Claude Code Cli
       claude-code
+      # Opencode
+      opencode
     ];
   };
 }
