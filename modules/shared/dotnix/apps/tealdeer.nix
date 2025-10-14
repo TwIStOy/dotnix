@@ -3,7 +3,6 @@
   lib,
   dotnix-utils,
   pkgs,
-  pkgs-unstable,
   ...
 }: let
   cfg = config.dotnix.apps.tealdeer;
@@ -17,7 +16,7 @@ in {
   };
 
   config = lib.mkIf cfg.enable {
-    dotnix.hm.packages = with pkgs-unstable; [
+    dotnix.hm.packages = with pkgs; [
       tealdeer
     ];
 
