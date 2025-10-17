@@ -80,6 +80,14 @@
         ];
         treat_as_built_in_keyboard = false;
       }
+      {
+        identifiers = {
+          # keydous nj80 pro
+          product_id = 20517;
+          vendor_id = 12625;
+          is_keyboard = true;
+        };
+      }
     ];
     fn_function_keys = [
       {

@@ -70,6 +70,7 @@ in {
             curl
             grpcurl
             krabby
+            jc
           ]
         )
         ++ [
